@@ -1,0 +1,54 @@
+[
+    {
+        "strName": "ItmRack1x101",
+        "strNameShort": "Personal Rack",
+        "strNameFriendly": "Personal Rack",
+        "strDesc": "Rakow's \"Replete\"-series of vertical aluminum shelving: a utilitarian staple in semi-secure micro-g stowage and lading. Personal variant. Can't store oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x1000.0"
+        ],
+        "strContainerCT": "TIsFitContainerRack",
+        "nContainerHeight": 1,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmRack1x101Loose",
+        "strNameShort": "Personal Rack",
+        "strNameFriendly": "Personal Rack (Loose)",
+        "strDesc": "Rakow's \"Replete\"-series of vertical aluminum shelving: a utilitarian staple in semi-secure micro-g stowage and lading. Personal variant. Can't store oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x1000.0"
+        ],
+        "strContainerCT": "TIsFitContainerRack",
+        "nContainerHeight": 1,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmRack1x101Dmg",
+        "strNameShort": "Personal Rack",
+        "strNameFriendly": "Personal Rack (Damaged)",
+        "strDesc": "Rakow's \"Replete\"-series of vertical aluminum shelving: a utilitarian staple in semi-secure micro-g stowage and lading. Personal variant. Can't store oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x200.0"
+        ],
+        "strContainerCT": "TIsFitContainerRack",
+        "nContainerHeight": 1,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmRack1x101DmgLoose",
+        "strNameShort": "Personal Rack",
+        "strNameFriendly": "Personal Rack (Loose, Damaged)",
+        "strDesc": "Rakow's \"Replete\"-series of vertical aluminum shelving: a utilitarian staple in semi-secure micro-g stowage and lading. Personal variant. Can't store oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x200.0"
+        ],
+        "strContainerCT": "TIsFitContainerRack",
+        "nContainerHeight": 1,
+        "nContainerWidth": 6
+    }
+]

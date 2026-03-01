@@ -1,0 +1,27 @@
+[
+    {
+        "strName": "HelmetEVA04",
+        "strIASlot": "SLOTHelmet04",
+        "strIAUnslot": "UNSLOTHelmet04"
+    },
+    {
+        "strName": "HelmetEVA04Dmg",
+        "strIASlot": "SLOTHelmet04Dmg",
+        "strIAUnslot": "UNSLOTHelmet04Dmg"
+    },
+    {
+        "strName": "BodyEVA03",
+        "strIASlot": "SLOTEVASuit03",
+        "strIAUnslot": "UNSLOTEVASuit03"
+    },
+    {
+        "strName": "BodyEVA03Off",
+        "strIASlot": "SLOTEVASuit03Off",
+        "strIAUnslot": "UNSLOTEVASuit03Off"
+    },
+    {
+        "strName": "BodyEVA03Dmg",
+        "strIASlot": "SLOTEVASuit03Off",
+        "strIAUnslot": "UNSLOTEVASuit03Off"
+    }
+]

@@ -1,0 +1,9 @@
+[
+    {
+        "strName": "Simple Conditions",
+        "aValues": [
+            "StatEmittedTemp","StatEmittedTemp","Temperature (K) that [us] emits and projects outside, instead of [us]'s average temperature across our mass.","0","0","Neutral","false",
+            "IsWearingClosedCycle","Wearing Closed Cycle Suit","[us] is wearing a suit with closed life support cycle.","2","2","Neutral","false"
+        ]
+    }
+]

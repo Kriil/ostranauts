@@ -1,0 +1,51 @@
+[
+    {
+        "strName": "ItmMaintenancePump01Off",
+        "aCOs": [
+            "ItmMaintenancePump01Off=1.0x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmMaintenancePump01Idle",
+        "aCOs": [
+            "ItmMaintenancePump01Idle=1.0x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmMaintenancePump01Work",
+        "aCOs": [
+            "ItmMaintenancePump01Work=1.0x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmMaintenancePump01Halt",
+        "aCOs": [
+            "ItmMaintenancePump01Halt=1.0x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmMaintenancePump01Dmg",
+        "aCOs": [
+            "ItmMaintenancePump01Dmg=1.0x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmMaintenancePump01OffLoose",
+        "aCOs": [
+            "ItmMaintenancePump01OffLoose=1.0x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmMaintenancePump01DmgLoose",
+        "aCOs": [
+            "ItmMaintenancePump01DmgLoose=1.0x1"
+        ],
+        "strType": "item"
+    }
+]

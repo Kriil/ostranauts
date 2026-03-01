@@ -1,0 +1,9 @@
+[
+  {
+    "strName" : "ItmVORBScrapKioskInv",
+    "aLoots"  : [
+      "--ADD--",
+      "ItmScrapPlastic=1.0x4-8"
+    ]
+  }
+]

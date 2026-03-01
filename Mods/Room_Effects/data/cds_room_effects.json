@@ -1,0 +1,16 @@
+[
+    {
+        "strName": "StatShipEngineeringWorkBonus",
+        "strNameFriendly": "Ship Engineering Room Work Bonus",
+        "strColor": "Neutral",
+        "strDesc": "Ship-wide work bonus from having at least one Engineering room.",
+        "bResetTimer": false,
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0,
+        "bFatal": false,
+        "bRemoveAll": true,
+        "bPersists": false,
+        "aNext": [],
+        "fDuration": 0.0
+    }
+]

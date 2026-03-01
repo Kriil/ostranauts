@@ -1,0 +1,18 @@
+[
+    {
+        "strName": "ItmToolWorkLamp01",
+        "mapSlotEffects": [
+            "--ADD--",
+            "mount_EVALamp",
+            "EVAMountWorkLamp01Off"
+        ]
+    },
+    {
+        "strName": "ItmToolWorkLamp01On",
+        "mapSlotEffects": [
+            "--ADD--",
+            "mount_EVALamp",
+            "EVAMountWorkLamp01On"
+        ]
+    }
+]

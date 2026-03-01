@@ -1,0 +1,42 @@
+[
+    {
+        "strName": "ItmVent02Open",
+        "strDesc": "The Kang VF Series air vents, commonly found on higher-end ships as part of the life support system, controlling free flow of gas between compartments. When powered, this advanced model will automatically seal closed when sensing unsafe Oxygen pressure on either side and will open, when it is safe once again.",
+        "aInteractions": [
+            "--INS--1",
+            "ACTTogglePower"
+        ]
+    },
+    {
+        "strName": "ItmVent02Closed",
+        "strDesc": "The Kang VF Series air vents, commonly found on higher-end ships as part of the life support system, controlling free flow of gas between compartments. When powered, this advanced model will automatically seal closed when sensing unsafe Oxygen pressure on either side and will open, when it is safe once again.",
+        "aInteractions": [
+            "--INS--1",
+            "ACTTogglePower"
+        ],
+        "aUpdateCommands": [
+            "--INS--1",
+            "GasPressureSense,Vent02PressureSafeA",
+            "GasPressureSense,Vent02PressureSafeB",
+            "GasPressureSense,Vent02PressureSafe"
+        ],
+        "aTickers": [
+            "--ADD--",
+            "PressureSenseSlowA",
+            "PressureSenseSlowB",
+            "PressureSense"
+        ]
+    },
+    {
+        "strName": "ItmVent02Off",
+        "strDesc": "The Kang VF Series air vents, commonly found on higher-end ships as part of the life support system, controlling free flow of gas between compartments. When powered, this advanced model will automatically seal closed when sensing unsafe Oxygen pressure on either side and will open, when it is safe once again.",
+        "aInteractions": [
+            "--INS--1",
+            "ACTTogglePower"
+        ]
+    },
+    {
+        "strName": "ItmVent02Loose",
+        "strDesc": "The Kang VF Series air vents, commonly found on higher-end ships as part of the life support system, controlling free flow of gas between compartments. When powered, this advanced model will automatically seal closed when sensing unsafe Oxygen pressure on either side and will open, when it is safe once again."
+    }
+]

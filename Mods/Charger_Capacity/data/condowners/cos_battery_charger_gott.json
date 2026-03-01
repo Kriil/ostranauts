@@ -1,0 +1,22 @@
+[
+    {
+        "strName": "ItmChargerBattDrill01",
+        "nContainerWidth": 2
+    },
+    {
+        "strName": "ItmChargerBattDrill01Dmg",
+        "nContainerWidth": 2
+    },
+    {
+        "strName": "ItmChargerBattDrill01DmgLoose",
+        "nContainerWidth": 2
+    },
+    {
+        "strName": "ItmChargerBattDrill01Off",
+        "nContainerWidth": 2
+    },
+    {
+        "strName": "ItmChargerBattDrill01OffLoose",
+        "nContainerWidth": 2
+    }
+]

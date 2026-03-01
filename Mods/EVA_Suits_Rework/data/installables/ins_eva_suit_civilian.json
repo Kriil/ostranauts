@@ -1,0 +1,64 @@
+[
+    {
+        "strName": "OutfitHelmet05Dismantle",
+        "strReference": "OutfitHelmet03Dismantle",
+        "strActionCO": "OutfitHelmet05"
+    },
+    {
+        "strName": "OutfitHelmet05DmgRepair",
+        "strReference": "OutfitHelmet03DmgRepair",
+        "strActionCO": "OutfitHelmet05Dmg",
+        "aInputs": [
+            "TIsMobo=1.0x1",
+            "TIsPartsElecSmall=1.0x1",
+            "TIsPartsMechSmall=1.0x1"
+        ],
+        "aLootCOs": [
+            "OutfitHelmet05"
+        ]
+    },
+    {
+        "strName": "OutfitHelmet05Undamage",
+        "strReference": "OutfitHelmet03Undamage",
+        "strActionCO": "OutfitHelmet05",
+        "aLootCOs": [
+            "OutfitHelmet05"
+        ]
+    },
+    {
+        "strName": "OutfitEVA05OffDismantle",
+        "strReference": "OutfitEVA01OffDismantle",
+        "strActionCO": "OutfitEVA05Off"
+    },
+    {
+        "strName": "OutfitEVA05DmgRepair",
+        "strReference": "OutfitEVA01DmgRepair",
+        "strActionCO": "OutfitEVA05Dmg",
+        "aInputs": [
+            "TIsMobo=1.0x1",
+            "TIsMotor=1.0x1",
+            "TIsPartsElecSmall=1.0x2",
+            "TIsPartsMechSmall=1.0x1",
+            "TIsScrapCarbonFiber=1.0x1"
+        ],
+        "aLootCOs": [
+            "OutfitEVA05Off"
+        ]
+    },
+    {
+        "strName": "OutfitEVA05Undamage",
+        "strReference": "OutfitEVA01Undamage",
+        "strActionCO": "OutfitEVA05",
+        "aLootCOs": [
+            "OutfitEVA05"
+        ]
+    },
+    {
+        "strName": "OutfitEVA05OffUndamage",
+        "strReference": "OutfitEVA01OffUndamage",
+        "strActionCO": "OutfitEVA05Off",
+        "aLootCOs": [
+            "OutfitEVA05Off"
+        ]
+    }
+]

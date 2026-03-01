@@ -1,0 +1,37 @@
+[
+    {
+        "strName": "TIsBarterChargen",
+        "aForbids": [
+            "--DEL--",
+            "IsPermitOKLGSalvage"
+        ]
+    },
+    {
+        "strName": "TIsBarterOKLGSupplyKiosk",
+        "aForbids": [
+            "--DEL--",
+            "IsPermitOKLGSalvage"
+        ]
+    },
+    {
+        "strName": "TIsBarterFlotillaScrapKiosk",
+        "aForbids": [
+            "--DEL--",
+            "IsPermitOKLGSalvage"
+        ]
+    },
+    {
+        "strName": "TIsBarterFlotillaOrganizerBuy",
+        "aForbids": [
+            "--DEL--",
+            "IsPermitOKLGSalvage"
+        ]
+    },
+    {
+        "strName": "TIsBarterVORBScrapKiosk",
+        "aForbids": [
+            "--DEL--",
+            "IsPermitOKLGSalvage"
+        ]
+    }
+]

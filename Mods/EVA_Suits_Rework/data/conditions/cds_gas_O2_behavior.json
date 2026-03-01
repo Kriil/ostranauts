@@ -1,0 +1,46 @@
+[
+    {
+        "strName": "DcGasPpO2",
+        "strNameFriendly": "Suitable O2",
+        "strDesc": "[us] has O2 suitable pressure that is normal for humans."
+    },
+    {
+        "strName": "DcGasPpO2Part",
+        "strNameFriendly": "Partial O2",
+        "strColor": "Good",
+        "strDesc": "[us] has O2 partial pressure that is normal for humans.",
+        "bResetTimer": false,
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0,
+        "bFatal": false,
+        "bRemoveAll": false,
+        "aNext": [],
+        "fDuration": 0.0
+    },
+    {
+        "strName": "DcGasPpO2Safe",
+        "strNameFriendly": "Safe O2",
+        "strColor": "Good",
+        "strDesc": "[us] has O2 safe pressure that is normal for humans.",
+        "bResetTimer": false,
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0,
+        "bFatal": false,
+        "bRemoveAll": false,
+        "aNext": [],
+        "fDuration": 0.0
+    },
+    {
+        "strName": "DcGasPpO2Abundant",
+        "strNameFriendly": "Abundant O2",
+        "strColor": "Good",
+        "strDesc": "[us] has O2 abundant pressure that is normal for humans.",
+        "bResetTimer": false,
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0,
+        "bFatal": false,
+        "bRemoveAll": false,
+        "aNext": [],
+        "fDuration": 0.0
+    }
+]

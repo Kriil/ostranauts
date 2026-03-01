@@ -1,0 +1,20 @@
+[
+    {
+        "strName": "StatReadyNanites",
+        "strNameFriendly": "Active Nanites Amount",
+        "strColor": "Neutral",
+        "strDesc": "Number of active nanites that [us] has at the moment.",
+        "bPersists": true,
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0
+    },
+    {
+        "strName": "StatWorkLock",
+        "strNameFriendly": "Work Locked",
+        "strColor": "Neutral",
+        "strDesc": "[us] is working and can't run other subroutines.",
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0,
+        "fClampMax": 60.0
+    }
+]

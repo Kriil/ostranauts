@@ -1,0 +1,23 @@
+[
+  {
+    "strName": "Mod Loading Order",
+    "strNotes": "Controls the order mods are loaded. 'core' refers to base game data and should usually be first.",
+    "aLoadOrder": [
+      "core",
+      "Minor_Fixes_Plus",
+      "Full_Auto_Vents",
+      "Charger_Capacity",
+      "OKLG_Sells_Scrap_Plastic",
+      "Exp_Transponders",
+      "Extended_License",
+      "Fast_Tow_Braces",
+      "Glass_Only_EVA",
+      "Learnable_Skills",
+      "Lighter_Shadows",
+      "Space_Engineering",
+      "EVA_Suits_Rework",
+      "Storage_Rebalance"
+    ],
+    "aIgnorePatterns": []
+  }
+]

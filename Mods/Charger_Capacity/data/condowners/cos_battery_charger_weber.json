@@ -1,0 +1,22 @@
+[
+    {
+        "strName": "ItmChargerBattery04",
+        "nContainerWidth": 2
+    },
+    {
+        "strName": "ItmChargerBattery04Dmg",
+        "nContainerWidth": 2
+    },
+    {
+        "strName": "ItmChargerBattery04DmgLoose",
+        "nContainerWidth": 2
+    },
+    {
+        "strName": "ItmChargerBattery04Off",
+        "nContainerWidth": 2
+    },
+    {
+        "strName": "ItmChargerBattery04OffLoose",
+        "nContainerWidth": 2
+    }
+]

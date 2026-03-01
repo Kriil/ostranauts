@@ -1,0 +1,62 @@
+[
+    {
+        "strName": "ItmStorageBin2x2C04",
+        "strNameShort": "Compact Bin",
+        "strNameFriendly": "Compact Bin",
+        "strDesc": "Rakow's \"Reserve\" series of reinforced bulkhead storage bins have better capacity whilst requiring less space, which is a premium on crowded vessels. Compact variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x1500.0",
+            "--DEL--",
+            "IsOversized"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 2,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmStorageBin2x2C04Loose",
+        "strNameShort": "Compact Bin",
+        "strNameFriendly": "Compact Bin (Loose)",
+        "strDesc": "Rakow's \"Reserve\" series of reinforced bulkhead storage bins have better capacity whilst requiring less space, which is a premium on crowded vessels. Compact variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x1500.0",
+            "--DEL--",
+            "IsOversized"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 2,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmStorageBin2x2C04Dmg",
+        "strNameShort": "Compact Bin",
+        "strNameFriendly": "Compact Bin (Damaged)",
+        "strDesc": "Rakow's \"Reserve\" series of reinforced bulkhead storage bins have better capacity whilst requiring less space, which is a premium on crowded vessels. Compact variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x300.0",
+            "--DEL--",
+            "IsOversized"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 2,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmStorageBin2x2C04DmgLoose",
+        "strNameShort": "Compact Bin",
+        "strNameFriendly": "Compact Bin (Loose, Damaged)",
+        "strDesc": "Rakow's \"Reserve\" series of reinforced bulkhead storage bins have better capacity whilst requiring less space, which is a premium on crowded vessels. Compact variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x300.0",
+            "--DEL--",
+            "IsOversized"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 2,
+        "nContainerWidth": 6
+    }
+]
