@@ -295,8 +295,9 @@ Mod Folder Structure
 Your mod should have this structure:
 
 Ostranauts_Data/
-├── loading_order.json
+├── StreamingAssets/
 └── Mods/
+    ├── loading_order.json
     ├── YourModName/
     │   ├── mod_info.json
     │   ├── data/
@@ -311,7 +312,6 @@ Ostranauts_Data/
     │   └── images/
     │       ├── ItmMyItem.png
     │       └── ItmMyItemn.png
-    └── StreamingAssets/
 Copy
 Required Files
 mod_info.json
