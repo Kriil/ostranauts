@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7E3728FA-6BBF-40F4-851F-C5BF630922C6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FFU_Beyond_Reach</RootNamespace>
+    <AssemblyName>FFU_Beyond_Reach</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp" />
+    <Reference Include="BepInEx" />
+    <Reference Include="MonoMod" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="UnityEngine" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FFU_BR_Defs.cs" />
+    <Compile Include="LitJson\patch_JsonMapper.cs" />
+    <Compile Include="Microsoft\CodeAnalysis\EmbeddedAttribute.cs" />
+    <Compile Include="patch_CondRule.cs" />
+    <Compile Include="patch_CondTrigger.cs" />
+    <Compile Include="patch_DataHandler.cs" />
+    <Compile Include="patch_JsonAd.cs" />
+    <Compile Include="patch_JsonAIPersonality.cs" />
+    <Compile Include="patch_JsonAttackMode.cs" />
+    <Compile Include="patch_JsonAudioEmitter.cs" />
+    <Compile Include="patch_JsonCareer.cs" />
+    <Compile Include="patch_JsonCargoSpec.cs" />
+    <Compile Include="patch_JsonChargeProfile.cs" />
+    <Compile Include="patch_JsonColor.cs" />
+    <Compile Include="patch_JsonCond.cs" />
+    <Compile Include="patch_JsonCondOwner.cs" />
+    <Compile Include="patch_JsonContext.cs" />
+    <Compile Include="patch_JsonCOOverlay.cs" />
+    <Compile Include="patch_JsonCrime.cs" />
+    <Compile Include="patch_JsonCustomTokens.cs" />
+    <Compile Include="patch_JsonDCOCollection.cs" />
+    <Compile Include="patch_JsonGasRespire.cs" />
+    <Compile Include="patch_JsonGUIPropMap.cs" />
+    <Compile Include="patch_JsonHeadline.cs" />
+    <Compile Include="patch_JsonHomeworld.cs" />
+    <Compile Include="patch_JsonInfoNode.cs" />
+    <Compile Include="patch_JsonInstallable.cs" />
+    <Compile Include="patch_JsonInteraction.cs" />
+    <Compile Include="patch_JsonInteractionOverride.cs" />
+    <Compile Include="patch_JsonItemDef.cs" />
+    <Compile Include="patch_JsonJob.cs" />
+    <Compile Include="patch_JsonJobItems.cs" />
+    <Compile Include="patch_JsonLedgerDef.cs" />
+    <Compile Include="patch_JsonLifeEvent.cs" />
+    <Compile Include="patch_JsonMarketActorConfig.cs" />
+    <Compile Include="patch_JsonModInfo.cs" />
+    <Compile Include="patch_JsonMusic.cs" />
+    <Compile Include="patch_JsonParallax.cs" />
+    <Compile Include="patch_JsonPDAAppIcon.cs" />
+    <Compile Include="patch_JsonPersonSpec.cs" />
+    <Compile Include="patch_JsonPledge.cs" />
+    <Compile Include="patch_JsonPlot.cs" />
+    <Compile Include="patch_JsonPlotBeat.cs" />
+    <Compile Include="patch_JsonPlotBeatOverride.cs" />
+    <Compile Include="patch_JsonPlotManagerSettings.cs" />
+    <Compile Include="patch_JsonPowerInfo.cs" />
+    <Compile Include="patch_JsonProductionMap.cs" />
+    <Compile Include="patch_JsonRaceTrack.cs" />
+    <Compile Include="patch_JsonRacingLeague.cs" />
+    <Compile Include="patch_JsonRoomSpec.cs" />
+    <Compile Include="patch_JsonShip.cs" />
+    <Compile Include="patch_JsonShipSpec.cs" />
+    <Compile Include="patch_JsonSimple.cs" />
+    <Compile Include="patch_JsonSlot.cs" />
+    <Compile Include="patch_JsonSlotEffects.cs" />
+    <Compile Include="patch_JsonStarSystemSave.cs" />
+    <Compile Include="patch_JsonTicker.cs" />
+    <Compile Include="patch_JsonTip.cs" />
+    <Compile Include="patch_JsonTransit.cs" />
+    <Compile Include="patch_JsonVerbs.cs" />
+    <Compile Include="patch_JsonWound.cs" />
+    <Compile Include="patch_JsonZoneTrigger.cs" />
+    <Compile Include="patch_Loot.cs" />
+    <Compile Include="patch_Ship.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Runtime\CompilerServices\IgnoresAccessChecksToAttribute.cs" />
+    <Compile Include="System\Runtime\CompilerServices\RefSafetyRulesAttribute.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

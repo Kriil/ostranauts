@@ -9,6 +9,9 @@ public class JsonUserSettings
 	// Likely the singleton settings record id.
 	public string strName { get; set; }
 
+	// Stores the path used by the Options -> Files "Mods" button and data loader.
+	// This build expects `loading_order.json` inside the `Ostranauts_Data/Mods`
+	// folder and derives the visible folder from that path.
 	public string strPathMods { get; set; }
 
 	public string strDateFormat { get; set; }
@@ -80,6 +83,7 @@ public class JsonUserSettings
 	}
 
 	// Initializes a default settings profile for first run / missing settings.
+	// This also seeds the default JSON-mod path used by the Options -> Files UI.
 	public void Init()
 	{
 		this.strName = "UserSettings";

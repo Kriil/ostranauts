@@ -1,0 +1,70 @@
+[
+    {
+        "strName": "OutfitHelmet07Dismantle",
+        "strReference": "OutfitHelmet03Dismantle",
+        "strActionCO": "OutfitHelmet07"
+    },
+    {
+        "strName": "OutfitHelmet07DmgRepair",
+        "strReference": "OutfitHelmet03DmgRepair",
+        "strActionCO": "OutfitHelmet07Dmg",
+        "aInputs": [
+            "TIsMobo=1.0x1",
+            "TIsPartsElecSmall=1.0x2",
+            "TIsPartsMechSmall=1.0x1",
+            "TIsScrapCarbonFiber=1.0x2",
+            "TIsScrapAluminum=1.0x1",
+            "TIsScrapSteel=1.0x1"
+        ],
+        "aLootCOs": [
+            "OutfitHelmet07"
+        ]
+    },
+    {
+        "strName": "OutfitHelmet07Undamage",
+        "strReference": "OutfitHelmet03Undamage",
+        "strActionCO": "OutfitHelmet07",
+        "aLootCOs": [
+            "OutfitHelmet07"
+        ]
+    },
+    {
+        "strName": "OutfitEVA07OffDismantle",
+        "strReference": "OutfitEVA01OffDismantle",
+        "strActionCO": "OutfitEVA07Off"
+    },
+    {
+        "strName": "OutfitEVA07DmgRepair",
+        "strReference": "OutfitEVA01DmgRepair",
+        "strActionCO": "OutfitEVA07Dmg",
+        "aInputs": [
+            "TIsMobo=1.0x2",
+            "TIsMotor=1.0x3",
+            "TIsScreen=1.0x1",
+            "TIsPartsElecSmall=1.0x2",
+            "TIsPartsMechSmall=1.0x2",
+            "TIsScrapCarbonFiber=1.0x3",
+            "TIsScrapAluminum=1.0x2",
+            "TIsScrapSteel=1.0x2"
+        ],
+        "aLootCOs": [
+            "OutfitEVA07Off"
+        ]
+    },
+    {
+        "strName": "OutfitEVA07Undamage",
+        "strReference": "OutfitEVA01Undamage",
+        "strActionCO": "OutfitEVA07",
+        "aLootCOs": [
+            "OutfitEVA07"
+        ]
+    },
+    {
+        "strName": "OutfitEVA07OffUndamage",
+        "strReference": "OutfitEVA01OffUndamage",
+        "strActionCO": "OutfitEVA07Off",
+        "aLootCOs": [
+            "OutfitEVA07Off"
+        ]
+    }
+]

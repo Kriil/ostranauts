@@ -1,0 +1,24 @@
+[
+    {
+        "strName": "OutfitHelmet07",
+        "strReference": "OutfitHelmet03",
+        "strImg": "CrewHelmet07",
+        "strImgDamaged": "CrewHelmet07Dmg02"
+    },
+    {
+        "strName": "OutfitHelmet07Dmg",
+        "strReference": "OutfitHelmet03Dmg",
+        "strImg": "CrewHelmet07Dmg02"
+    },
+    {
+        "strName": "OutfitEVA07",
+        "strReference": "OutfitEVA01",
+        "strImg": "CrewSuit07",
+        "strImgDamaged": "CrewSuit07"
+    },
+    {
+        "strName": "OutfitEVA07Dmg",
+        "strReference": "OutfitEVA01Dmg",
+        "strImg": "CrewSuit07Dmg02"
+    }
+]

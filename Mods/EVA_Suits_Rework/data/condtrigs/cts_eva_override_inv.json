@@ -1,0 +1,47 @@
+[
+    {
+        "strName": "TIsFitContainerEVABatteryAny",
+        "strReference": "TIsFitContainerEVABattery"
+    },
+    {
+        "strName": "TIsFitContainerEVABottleAny",
+        "strReference": "TIsFitContainerEVABottle"
+    },
+    {
+        "strName": "TIsFitContainerEVAFilterAny",
+        "strReference": "TIsFitContainerEVAFilter"
+    },
+    {
+        "strName": "TIsPowerStorageEVA",
+        "nMaxDepth": 4,
+        "aReqs": [
+            "--ADD--",
+            "IsEVAConnected"
+        ]
+    },
+    {
+        "strName": "TIsFitContainerEVABattery",
+        "nMaxDepth": 4,
+        "aReqs": [
+            "--ADD--",
+            "IsEVAConnected"
+        ]
+    },
+    {
+        "strName": "TIsFitContainerEVABottle",
+        "nMaxDepth": 4,
+        "aReqs": [
+            "--ADD--",
+            "IsEVAConnected",
+            "StatGasMolO2"
+        ]
+    },
+    {
+        "strName": "TIsFitContainerEVAFilter",
+        "nMaxDepth": 4,
+        "aReqs": [
+            "--ADD--",
+            "IsEVAConnected"
+        ]
+    }
+]

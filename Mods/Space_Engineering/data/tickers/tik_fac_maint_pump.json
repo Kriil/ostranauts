@@ -1,0 +1,9 @@
+[
+    {
+        "strName": "MaintenancePumpUnlock",
+        "strCondLoot": "CONDSoftUnlock",
+        "fPeriod": 0.000278,
+        "fTimeLeft": 0.000278,
+        "bRepeat": true
+    }
+]

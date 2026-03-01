@@ -1,0 +1,62 @@
+[
+    {
+        "strName": "MSEVA03SwitchOffAllow",
+        "strReference": "MSEVASwitchOffAllow",
+        "objLootModeSwitch": "OutfitEVA03OffEmpty"
+    },
+    {
+        "strName": "MSEVA03SwitchOnAllow",
+        "strReference": "MSEVASwitchOnAllow",
+        "objLootModeSwitch": "OutfitEVA03Empty"
+    },
+    {
+        "strName": "SLOTHelmet04",
+        "strReference": "SLOTHelmet01",
+        "LootCondsThem": "CONDHelmet04"
+    },
+    {
+        "strName": "SLOTHelmet04Dmg",
+        "strReference": "SLOTHelmet01Dmg",
+        "LootCondsThem": "CONDHelmet04Dmg"
+    },
+    {
+        "strName": "UNSLOTHelmet04",
+        "strReference": "UNSLOTHelmet01",
+        "LootCondsThem": "CONDHelmet04Remove"
+    },
+    {
+        "strName": "UNSLOTHelmet04Dmg",
+        "strReference": "UNSLOTHelmet01Dmg",
+        "LootCondsThem": "CONDHelmet04DmgRemove"
+    },
+    {
+        "strName": "SLOTEVASuit03",
+        "strReference": "SLOTEVASuit01",
+        "LootCondsThem": "CONDEVASuit03"
+    },
+    {
+        "strName": "SLOTEVASuit03Off",
+        "strReference": "SLOTEVASuit01Off",
+        "LootCondsThem": "CONDEVASuit03Off"
+    },
+    {
+        "strName": "UNSLOTEVASuit03",
+        "strReference": "UNSLOTEVASuit01",
+        "LootCondsThem": "CONDEVASuit03Remove"
+    },
+    {
+        "strName": "UNSLOTEVASuit03Off",
+        "strReference": "UNSLOTEVASuit01Off",
+        "LootCondsThem": "CONDEVASuit03OffRemove"
+    },
+    {
+        "strName": "MSHelmet04Dmg",
+        "strReference": "MSHelmet03Dmg",
+        "objLootModeSwitch": "ItmEVAHelmet04Dmg"
+    },
+    {
+        "strName": "MSDestroyEVASuit03",
+        "strReference": "MSDestroyEVASuit",
+        "objLootModeSwitch": "ItmEVASuit03ComponentsAndSelf"
+    }
+]

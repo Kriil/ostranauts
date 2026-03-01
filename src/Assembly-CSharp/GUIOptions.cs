@@ -584,6 +584,10 @@ public class GUIOptions : MonoBehaviour
 		}
 	}
 
+	// Opens the configured JSON-mod folder from Options -> Files.
+	// This is the data-mod path (`Ostranauts_Data/Mods`), not the separate
+	// `BepInEx/plugins` code-mod path. If `loading_order.json` is missing there,
+	// the UI seeds a minimal default one.
 	private void TryOpenModFolder()
 	{
 		try

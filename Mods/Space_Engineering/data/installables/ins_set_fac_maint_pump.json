@@ -1,0 +1,136 @@
+[
+    {
+        "strName": "MaintenancePump01OffInstall",
+        "strActionCO": "ItmMaintenancePump01OffLoose",
+        "strActionGroup": "Work",
+        "strTooltip": "Installs item.",
+        "strInteractionTemplate": "ACTInstallTEMP",
+        "CTThem": "TIsMaintenancePump01Uninstalled",
+        "aInputs": [
+            "TIsMaintenancePump01Uninstalled=1.0x4"
+        ],
+        "fTargetPointRange": 2.0,
+        "fDuration": 0.001,
+        "bSparks": true,
+        "aToolCTsUse": [
+            "TIsToolMortorq"
+        ],
+        "aLootCOs": [
+            "ItmMaintenancePump01Off"
+        ],
+        "strStartInstall": "ItmMaintenancePump01Off",
+        "strBuildType": "APPS",
+        "strJobType": "install",
+        "strAllowLootCTsUs": "CTWorkProgressAPPS",
+        "strAllowLootCTsThem": "CONDInstallProgressx5",
+        "strProgressStat": "StatInstallProgress",
+        "strCTThemMultCondTools": "IsToolMortorq",
+        "strCTThemMultCondUs": "StatInstallRateAPPS"
+    },
+    {
+        "strName": "MaintenancePump01DmgInstall",
+        "strActionCO": "ItmMaintenancePump01DmgLoose",
+        "strActionGroup": "Work",
+        "strTooltip": "Installs item.",
+        "strInteractionTemplate": "ACTInstallTEMP",
+        "CTThem": "TIsMaintenancePump01UninstalledDmg",
+        "aInputs": [
+            "TIsMaintenancePump01UninstalledDmg=1.0x4"
+        ],
+        "fTargetPointRange": 2.0,
+        "fDuration": 0.001,
+        "bSparks": true,
+        "aToolCTsUse": [
+            "TIsToolMortorq"
+        ],
+        "aLootCOs": [
+            "ItmMaintenancePump01Dmg"
+        ],
+        "strStartInstall": "ItmMaintenancePump01Dmg",
+        "strBuildType": "",
+        "strJobType": "install",
+        "strAllowLootCTsUs": "CTWorkProgressAPPS",
+        "strAllowLootCTsThem": "CONDInstallProgressx5",
+        "strProgressStat": "StatInstallProgress",
+        "strCTThemMultCondTools": "IsToolMortorq",
+        "strCTThemMultCondUs": "StatInstallRateAPPS"
+    },
+    {
+        "strName": "MaintenancePump01OffUninstall",
+        "strActionCO": "ItmMaintenancePump01Off",
+        "strActionGroup": "Work",
+        "strTooltip": "Uninstalls item.",
+        "strInteractionTemplate": "ACTUninstallTEMP",
+        "CTThem": "TIsMaintenancePump01Installed",
+        "fTargetPointRange": 2.0,
+        "fDuration": 0.001,
+        "bSparks": true,
+        "aToolCTsUse": [
+            "TIsToolMortorq"
+        ],
+        "aLootCOs": [
+            "ItmMaintenancePump01OffLoose",
+            "ItmMaintenancePump01OffLoose",
+            "ItmMaintenancePump01OffLoose",
+            "ItmMaintenancePump01OffLoose"
+        ],
+        "strJobType": "uninstall",
+        "strAllowLootCTsUs": "CTWorkProgressAPPS",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5",
+        "strProgressStat": "StatUninstallProgress",
+        "strCTThemMultCondTools": "IsToolMortorq",
+        "strCTThemMultCondUs": "StatInstallRateAPPS"
+    },
+    {
+        "strName": "MaintenancePump01IdleUninstall",
+        "strActionCO": "ItmMaintenancePump01Idle",
+        "strActionGroup": "Work",
+        "strTooltip": "Uninstalls item.",
+        "strInteractionTemplate": "ACTUninstallTEMP",
+        "CTThem": "TIsMaintenancePump01Installed",
+        "fTargetPointRange": 2.0,
+        "fDuration": 0.001,
+        "bSparks": true,
+        "aToolCTsUse": [
+            "TIsToolMortorq"
+        ],
+        "aLootCOs": [
+            "ItmMaintenancePump01OffLoose",
+            "ItmMaintenancePump01OffLoose",
+            "ItmMaintenancePump01OffLoose",
+            "ItmMaintenancePump01OffLoose"
+        ],
+        "strJobType": "uninstall",
+        "strAllowLootCTsUs": "CTWorkProgressAPPS",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5",
+        "strProgressStat": "StatUninstallProgress",
+        "strCTThemMultCondTools": "IsToolMortorq",
+        "strCTThemMultCondUs": "StatInstallRateAPPS"
+    },
+    {
+        "strName": "MaintenancePump01DmgUninstall",
+        "strActionCO": "ItmMaintenancePump01Dmg",
+        "strActionGroup": "Work",
+        "strTooltip": "Uninstalls item.",
+        "strInteractionTemplate": "ACTUninstallTEMP",
+        "CTThem": "TIsMaintenancePump01InstalledDmg",
+        "fTargetPointRange": 2.0,
+        "fDuration": 0.001,
+        "bSparks": true,
+        "aToolCTsUse": [
+            "TIsToolMortorq"
+        ],
+        "aLootCOs": [
+            "ItmMaintenancePump01DmgLoose",
+            "ItmMaintenancePump01DmgLoose",
+            "ItmMaintenancePump01DmgLoose",
+            "ItmMaintenancePump01DmgLoose"
+        ],
+        "strJobType": "uninstall",
+        "strAllowLootCTsUs": "CTWorkProgressAPPS",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5",
+        "strProgressStat": "StatUninstallProgress",
+        "strCTThemMultCondTools": "IsToolMortorq",
+        "strCTThemMultCondUs": "StatInstallRateAPPS"
+    }
+]

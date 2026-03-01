@@ -1,0 +1,51 @@
+[
+    {
+        "strName": "ItmTransponder01LooseChanceNovice",
+        "aCOs": [
+            "ItmTransponder01DmgLoose=0.9x1|ItmTransponder01Loose=0.1x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmTransponder01LooseChanceBeginner",
+        "aCOs": [
+            "ItmTransponder01DmgLoose=0.7x1|ItmTransponder01Loose=0.3x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmTransponder01LooseChanceSkilled",
+        "aCOs": [
+            "ItmTransponder01DmgLoose=0.5x1|ItmTransponder01Loose=0.5x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmTransponder01LooseChanceProficient",
+        "aCOs": [
+            "ItmTransponder01DmgLoose=0.35x1|ItmTransponder01Loose=0.65x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmTransponder01LooseChanceSeasoned",
+        "aCOs": [
+            "ItmTransponder01DmgLoose=0.2x1|ItmTransponder01Loose=0.8x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmTransponder01LooseChanceExpert",
+        "aCOs": [
+            "ItmTransponder01DmgLoose=0.1x1|ItmTransponder01Loose=0.9x1"
+        ],
+        "strType": "item"
+    },
+    {
+        "strName": "ItmTransponder01LooseChanceMaster",
+        "aCOs": [
+            "ItmTransponder01Loose=1.0x1"
+        ],
+        "strType": "item"
+    }
+]

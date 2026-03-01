@@ -1,0 +1,98 @@
+[
+    {
+        "strName": "TIsEngElectronicNovice",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "strMathCond": "StatTrainingEngElectronic",
+        "aMathOps": [
+            {"strID": "LT20", "strCond": null, "nMathOp": 5, "fMathVal": 20}
+        ],
+        "aForbids": [
+            "SkillEngElectronic"
+        ],
+        "bAND": true
+    },
+    {
+        "strName": "TIsEngElectronicBeginner",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "strMathCond": "StatTrainingEngElectronic",
+        "aMathOps": [
+            {"strID": "GE20", "strCond": null, "nMathOp": 4, "fMathVal": 20},
+            {"strID": "LT50", "strCond": null, "nMathOp": 5, "fMathVal": 50}
+        ],
+        "aForbids": [
+            "SkillEngElectronic"
+        ],
+        "bAND": true
+    },
+    {
+        "strName": "TIsEngElectronicSkilled",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "strMathCond": "StatTrainingEngElectronic",
+        "aMathOps": [
+            {"strID": "GE50", "strCond": null, "nMathOp": 4, "fMathVal": 50},
+            {"strID": "LT70", "strCond": null, "nMathOp": 5, "fMathVal": 70}
+        ],
+        "aForbids": [
+            "SkillEngElectronic"
+        ],
+        "bAND": true
+    },
+    {
+        "strName": "TIsEngElectronicProficient",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "strMathCond": "StatTrainingEngElectronic",
+        "aMathOps": [
+            {"strID": "GE70", "strCond": null, "nMathOp": 4, "fMathVal": 70},
+            {"strID": "LT85", "strCond": null, "nMathOp": 5, "fMathVal": 85}
+        ],
+        "aForbids": [
+            "SkillEngElectronic"
+        ],
+        "bAND": true
+    },
+    {
+        "strName": "TIsEngElectronicSeasoned",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "strMathCond": "StatTrainingEngElectronic",
+        "aMathOps": [
+            {"strID": "GE85", "strCond": null, "nMathOp": 4, "fMathVal": 85},
+            {"strID": "LT95", "strCond": null, "nMathOp": 5, "fMathVal": 95}
+        ],
+        "aForbids": [
+            "SkillEngElectronic"
+        ],
+        "bAND": true
+    },
+    {
+        "strName": "TIsEngElectronicExpert",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "strMathCond": "StatTrainingEngElectronic",
+        "aMathOps": [
+            {"strID": "GE95", "strCond": null, "nMathOp": 4, "fMathVal": 95},
+            {"strID": "LT100", "strCond": null, "nMathOp": 5, "fMathVal": 100}
+        ],
+        "aForbids": [
+            "SkillEngElectronic"
+        ],
+        "bAND": true
+    },
+    {
+        "strName": "TIsEngElectronicMaster",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "strMathCond": "StatTrainingEngElectronic",
+        "aMathOps": [
+            {"strID": "GE100", "strCond": null, "nMathOp": 4, "fMathVal": 100}
+        ],
+        "aReqs": [
+            "SkillEngElectronic"
+        ],
+        "bAND": false
+    }
+]

@@ -1,0 +1,179 @@
+[
+    {
+        "strName": "ACTMaintenancePumpInitFromIdle",
+        "strDesc": "[us] is executing subroutine, whilst in idle mode.",
+        "aInverse": [
+            "LOGMaintenancePumpMissingNanitesTest,[us],[us]",
+            "LOGMaintenancePumpShipDamageTest,[us],[us]",
+            "LOGMaintenancePumpIdleCooldown,[us],[us]"
+        ],
+        "fDuration": 0.0000277778,
+        "nLogging": 0,
+        "bIgnoreFeelings": true,
+        "LootCondsUs": "CONDActionLock",
+        "CTTestUs": "TIsMaintenancePumpUnlockedIdle"
+    },
+    {
+        "strName": "ACTMaintenancePumpInitFromWorking",
+        "strDesc": "[us] is executing subroutine, whilst in working mode.",
+        "aInverse": [
+            "LOGMaintenancePumpShipDamageLocate,[us],[us]",
+            "LOGMaintenancePumpMissingNanitesTest,[us],[us]",
+            "MSMaintenancePumpSwitchToIdle,[us],[us]"
+        ],
+        "fDuration": 0.0000277778,
+        "nLogging": 0,
+        "bIgnoreFeelings": true,
+        "LootCondsUs": "CONDActionLock",
+        "CTTestUs": "TIsMaintenancePumpUnlockedWorking"
+    },
+    {
+        "strName": "ACTMaintenancePumpInitFromHalted",
+        "strDesc": "[us] is executing subroutine, whilst in halted mode.",
+        "aInverse": [
+            "LOGMaintenancePumpMissingNanitesWait,[us],[us]",
+            "MSMaintenancePumpSwitchToIdle,[us],[us]"
+        ],
+        "fDuration": 0.0000277778,
+        "nLogging": 0,
+        "bIgnoreFeelings": true,
+        "LootCondsUs": "CONDActionLock",
+        "CTTestUs": "TIsMaintenancePumpUnlockedHalted"
+    },
+    {
+        "strName": "MSMaintenancePumpSwitchToIdle",
+        "strDesc": "[us] switches into idle mode.",
+        "fDuration": 0.0004166667,
+        "strThemType": "Self",
+        "nLogging": 1,
+        "bIgnoreFeelings": true,
+        "LootCondsUs": "CONDMntPumpSwitch",
+        "CTTestUs": "TIsMaintenancePumpNotIdle",
+        "objLootModeSwitch": "ItmMaintenancePump01Idle"
+    },
+    {
+        "strName": "MSMaintenancePumpSwitchToWorking",
+        "strDesc": "[us] switches into working mode.",
+        "fDuration": 0.0004166667,
+        "strThemType": "Self",
+        "nLogging": 1,
+        "bIgnoreFeelings": true,
+        "LootCondsUs": "CONDMntPumpSwitch",
+        "CTTestUs": "TIsMaintenancePumpNotWorking",
+        "objLootModeSwitch": "ItmMaintenancePump01Work"
+    },
+    {
+        "strName": "MSMaintenancePumpSwitchToHalted",
+        "strDesc": "[us] switches into halted mode.",
+        "fDuration": 0.0004166667,
+        "strThemType": "Self",
+        "nLogging": 3,
+        "bIgnoreFeelings": true,
+        "LootCondsUs": "CONDMntPumpSwitch",
+        "CTTestUs": "TIsMaintenancePumpNotHalted",
+        "objLootModeSwitch": "ItmMaintenancePump01Halt"
+    },
+    {
+        "strName": "LOGMaintenancePumpMissingNanitesTest",
+        "strDesc": "[us] checks for nanite material in storage.",
+        "aInverse": [
+            "MSMaintenancePumpSwitchToHalted,[us],[us]"
+        ],
+        "fDuration": 0.0001388889,
+        "strThemType": "Self",
+        "nLogging": 1,
+        "bIgnoreFeelings": true,
+        "CTTestUs": "TIsMaintenancePumpNotHalted",
+        "aLootItms": [
+            "Lacks,CTNaniteConsumable,false"
+        ]
+    },
+    {
+        "strName": "LOGMaintenancePumpIdleCooldown",
+        "strDesc": "[us] is on the cooldown in idle mode.",
+        "fDuration": 0.0083333333,
+        "strThemType": "Self",
+        "nLogging": 1,
+        "bIgnoreFeelings": true,
+        "LootCondsUs": "CONDActionLock",
+        "CTTestUs": "TIsMaintenancePumpIdle"
+    },
+    {
+        "strName": "LOGMaintenancePumpMissingNanitesWait",
+        "strDesc": "[us] waits for nanite material resupply.",
+        "fDuration": 0.0083333333,
+        "strThemType": "Self",
+        "nLogging": 3,
+        "bIgnoreFeelings": true,
+        "LootCondsUs": "CONDActionLock",
+        "CTTestUs": "TIsMaintenancePumpHalted",
+        "aLootItms": [
+            "Lacks,CTNaniteConsumable,false"
+        ]
+    },
+    {
+        "strName": "LOGMaintenancePumpShipDamageTest",
+        "strDesc": "[us] checks for damaged parts on the ship.",
+        "aInverse": [
+            "MSMaintenancePumpSwitchToWorking,[us],[us]"
+        ],
+        "fDuration": 0.0000277778,
+        "strThemType": "Self",
+        "nLogging": 1,
+        "bIgnoreFeelings": true,
+        "CTTestUs": "TIsMaintenancePumpNotWorking",
+        "CTTest3rd": "TIsDamagedShipPart",
+        "ShipTest3rd": "TargetAtSameShipAsUs"
+    },
+    {
+        "strName": "LOGMaintenancePumpShipDamageLocate",
+        "strDesc": "[us] located damaged [3rd] on the ship.",
+        "aInverse": [
+            "LOGMaintenancePumpHandleDamage,[us],[3rd]",
+            "LOGMaintenancePumpMissingNanitesTest,[us],[us]",
+            "LOGMaintenancePumpNanitesReload,[us],[3rd]",
+            "MSMaintenancePumpSwitchToIdle,[us],[us]"
+        ],
+        "fDuration": 0.0000277778,
+        "nLogging": 1,
+        "b3rdReset": true,
+        "bIgnoreFeelings": true,
+        "CTTestUs": "TIsMaintenancePumpWorking",
+        "CTTest3rd": "TIsDamagedShipPart",
+        "ShipTest3rd": "TargetAtSameShipAsUs"
+    },
+    {
+        "strName": "LOGMaintenancePumpNanitesReload",
+        "strDesc": "[us] consumed nanite material and reloaded nanites.",
+        "aInverse": [
+            "LOGMaintenancePumpHandleDamage,[us],[them]",
+            "MSMaintenancePumpSwitchToIdle,[us],[us]"
+        ],
+        "fDuration": 0.0000277778,
+        "nLogging": 1,
+        "b3rdReset": true,
+        "bIgnoreFeelings": true,
+        "LootCondsUs": "CONDReloadNanites",
+        "CTTestUs": "TIsMaintenancePumpWorking",
+        "CTTestThem": "TIsDamagedShipPart",
+        "aLootItms": [
+            "RemoveUs,CTNaniteConsumable,true,true,false"
+        ]
+    },
+    {
+        "strName": "LOGMaintenancePumpHandleDamage",
+        "strDesc": "[us] used active nanites to restore [them].",
+        "aInverse": [
+            "LOGMaintenancePumpShipDamageLocate,[us],[us]",
+            "MSMaintenancePumpSwitchToIdle,[us],[us]"
+        ],
+        "fDuration": 0.0000277778,
+        "nLogging": 3,
+        "b3rdReset": true,
+        "bIgnoreFeelings": true,
+        "LootCondsUs": "CONDUseNanites",
+        "LootCondsThem": "CONDApplyNanites",
+        "CTTestUs": "TIsMaintenancePumpCharged",
+        "CTTestThem": "TIsDamagedShipPart"
+    }
+]

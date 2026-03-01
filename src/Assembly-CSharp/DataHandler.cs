@@ -17,9 +17,11 @@ using Ostranauts.Trading;
 using UnityEngine;
 
 // Central data bootstrap and runtime registry for the decompiled game.
-// This appears to load core StreamingAssets/data first, then optional mod folders
-// from Ostranauts_Data/Mods according to loading_order.json, with later entries
-// overriding earlier ids when the same strName is reused.
+// This build loads core StreamingAssets/data first, then layers JSON data mods
+// from the user-configured `Ostranauts_Data/Mods` path. `strModFolder` points at
+// the Mods folder or its `loading_order.json`, while BepInEx/Harmony code mods
+// live separately in `BepInEx/plugins`.
+// Later-loaded JSON entries override earlier ids when the same `strName` is reused.
 public static class DataHandler
 {
 	// Main startup entrypoint for data bootstrapping.

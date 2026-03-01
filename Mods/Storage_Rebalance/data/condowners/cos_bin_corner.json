@@ -1,0 +1,62 @@
+[
+    {
+        "strName": "ItmStorageBin2x2C01",
+        "strNameShort": "Corner Bin",
+        "strNameFriendly": "Corner Bin",
+        "strDesc": "Rakow's \"Vanilla\" series of bulkhead storage bins are not as voluminous as free-standing storage options, but they tuck away, a premium on crowded vessels. Corner variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x500.0",
+            "--DEL--",
+            "IsOversized"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 1,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmStorageBin2x2C01Loose",
+        "strNameShort": "Corner Bin",
+        "strNameFriendly": "Corner Bin (Loose)",
+        "strDesc": "Rakow's \"Vanilla\" series of bulkhead storage bins are not as voluminous as free-standing storage options, but they tuck away, a premium on crowded vessels. Corner variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x500.0",
+            "--DEL--",
+            "IsOversized"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 1,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmStorageBin2x2C01Dmg",
+        "strNameShort": "Corner Bin",
+        "strNameFriendly": "Corner Bin (Damaged)",
+        "strDesc": "Rakow's \"Vanilla\" series of bulkhead storage bins are not as voluminous as free-standing storage options, but they tuck away, a premium on crowded vessels. Corner variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x100.0",
+            "--DEL--",
+            "IsOversized"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 1,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmStorageBin2x2C01DmgLoose",
+        "strNameShort": "Corner Bin",
+        "strNameFriendly": "Corner Bin (Loose, Damaged)",
+        "strDesc": "Rakow's \"Vanilla\" series of bulkhead storage bins are not as voluminous as free-standing storage options, but they tuck away, a premium on crowded vessels. Corner variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x100.0",
+            "--DEL--",
+            "IsOversized"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 1,
+        "nContainerWidth": 6
+    }
+]

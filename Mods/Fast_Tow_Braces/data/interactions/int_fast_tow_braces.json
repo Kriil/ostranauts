@@ -1,0 +1,10 @@
+[
+    {
+        "strName": "ACTTowingSecureAllow",
+        "fDuration": 0.0011
+    },
+    {
+        "strName": "ACTTowingReleaseAllow",
+        "fDuration": 0.0011
+    }
+]

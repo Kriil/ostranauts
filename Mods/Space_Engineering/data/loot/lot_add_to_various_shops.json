@@ -1,0 +1,30 @@
+[
+    {
+        "strName": "ItmAerostatScrapKioskInv",
+        "aLoots": [
+            "--ADD--",
+            "ItmMaintenancePump01DmgLoose=0.075x1-2"
+        ]
+    },
+    {
+        "strName": "ItmFlotillaScrapKioskInv",
+        "aLoots": [
+            "--ADD--",
+            "ItmMaintenancePump01DmgLoose=0.075x1-2"
+        ]
+    },
+    {
+        "strName": "ItmVORBScrapKioskInv",
+        "aLoots": [
+            "--ADD--",
+            "ItmMaintenancePump01DmgLoose=0.075x1-2"
+        ]
+    },
+    {
+        "strName": "ItmOKLGFixer",
+        "aLoots": [
+            "--ADD--",
+            "ItmMaintenancePump01DmgLoose=0.5x1"
+        ]
+    }
+]

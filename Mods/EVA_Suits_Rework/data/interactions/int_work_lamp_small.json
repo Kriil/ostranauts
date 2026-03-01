@@ -1,0 +1,30 @@
+[
+    {
+        "strName": "SLOTEVAMountLamp01",
+        "strDesc": "[us] is mounted on [them].",
+        "aInverse": [],
+        "strThemType": "Other",
+        "nLogging": 0,
+        "bOpener": true,
+        "LootCondsUs": "CONDEVAMountedDefault",
+        "LootCondsThem": "CONDEVAMountLamp01L",
+        "CTTestUs": null,
+        "CTTestThem": "TIsHuman",
+        "aLootItms": [],
+        "aAModesAddedThem": []
+    },
+    {
+        "strName": "UNSLOTEVAMountLamp01",
+        "strDesc": "[us] is mounted on [them].",
+        "aInverse": [],
+        "strThemType": "Other",
+        "nLogging": 0,
+        "bOpener": true,
+        "LootCondsUs": "CONDEVAMountedDefaultRemove",
+        "LootCondsThem": "CONDEVAMountLamp01LRemove",
+        "CTTestUs": null,
+        "CTTestThem": null,
+        "aLootItms": [],
+        "aAModesAddedThem": []
+    }
+]

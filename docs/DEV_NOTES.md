@@ -32,7 +32,10 @@ Confirmed data path rules:
 - Base content lives under `Ostranauts_Data/StreamingAssets/`.
 - Core JSON lives under `StreamingAssets/data/`.
 - Mods are layered after core from `Ostranauts_Data/Mods/`.
-- `loading_order.json` controls mod order.
+- JSON data mods in `Ostranauts_Data/Mods/` are separate from BepInEx code mods in `BepInEx/plugins/`.
+- `loading_order.json` lives in `Ostranauts_Data/Mods/` for this build and controls mod order.
+- `JsonUserSettings.strPathMods` defaults to `.../Mods/loading_order.json`, and
+  `GUIOptions.TryOpenModFolder()` creates the file there if it is missing.
 - Later-loaded content can override earlier content by shared `strName` keys.
 
 Likely load order:
