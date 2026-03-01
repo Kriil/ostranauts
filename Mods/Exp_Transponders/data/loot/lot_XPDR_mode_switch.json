@@ -1,9 +1,0 @@
-[
-    {
-        "strName": "MSTransponder01OffUninstallSelector",
-        "aCOs": [
-            "MSTransponder01OffUninstallSelector=1.0x1"
-        ],
-        "strType": "interaction"
-    }
-]

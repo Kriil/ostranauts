@@ -1,8 +1,0 @@
-[
-    {
-        "strName": "EVASuit05",
-        "strReference": "EVASuit",
-        "strIntPowerOn": "MSEVA05SwitchOnAllow",
-        "strIntPowerOff": "MSEVA05SwitchOffAllow"
-    }
-]

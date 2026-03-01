@@ -1,8 +1,0 @@
-[
-    {
-        "strName": "TCanSleep",
-        "aTriggers": [
-            "TIsNotNotAirtightOrClosedCycle"
-        ]
-    }
-]

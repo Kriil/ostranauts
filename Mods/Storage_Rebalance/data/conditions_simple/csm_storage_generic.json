@@ -1,9 +1,0 @@
-[
-    {
-        "strName": "Simple Conditions",
-        "aValues": [
-            "IsWaste","Waste","[us] is discarded waste.","2","2","Neutral","false",
-            "IsOragnic","Organic","[us] is something organic.","2","2","Neutral","false"
-        ]
-    }
-]
