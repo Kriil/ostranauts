@@ -1,0 +1,35 @@
+{
+    "json.schemas": [
+
+        {
+            "fileMatch": [
+            "items/*.json"
+            ],
+            "url": "./data/schemas/items-schema.json"
+        },
+        {
+            "fileMatch": [
+            "plot_manager/*.json"
+            ],
+            "url": "./data/schemas/plot-schema.json"
+        },
+        {
+            "fileMatch": [
+            "condowners/*.json"
+            ],
+            "url": "./data/schemas/condowners-schema.json"
+        },
+        {
+            "fileMatch": [
+            "interactions/*.json"
+            ],
+            "url": "./data/schemas/interactions-schema.json"
+        },
+        {
+            "fileMatch": [
+            "conditions/*.json"
+            ],
+            "url": "./data/schemas/conditions-schema.json"
+        }
+    ]
+}
