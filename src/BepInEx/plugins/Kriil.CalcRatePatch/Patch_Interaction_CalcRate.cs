@@ -56,12 +56,26 @@ internal static class Patch_Interaction_CalcRate
 				continue;
 			}
 
-			// Before the original Clamp call, the stack is:
-			//   this, value, min, max
-			// Add one more `this` for the hook:
-			//   this, value, min, max, this
-			codes.Insert(i, new CodeInstruction(OpCodes.Ldarg_0));
-			codes[i + 1] = new CodeInstruction(OpCodes.Call, MI_ClampHook);
+			// Found the target Clamp. Replace it with a call to our hook method.
+			CodeInstruction originalCall = codes[i];
+
+			// The hook will need the Interaction instance to apply context-sensitive logic, so load that as well.
+			// Transfer labels and exception blocks from the original call to the new loadInstance instruction so they still apply to the hook call.
+			CodeInstruction loadInstance = new CodeInstruction(OpCodes.Ldarg_0)
+			{
+				labels = new List<Label>(originalCall.labels),
+				blocks = new List<ExceptionBlock>(originalCall.blocks)
+			};
+
+			CodeInstruction replacementCall = new CodeInstruction(OpCodes.Call, MI_ClampHook);
+
+			// Clear the labels and blocks from the original call, since it's being removed. 
+			originalCall.labels.Clear();
+			originalCall.blocks.Clear();
+
+			codes[i] = loadInstance;
+			codes.Insert(i + 1, replacementCall);
+
 			patched = true;
 			break;
 		}
@@ -74,14 +88,14 @@ internal static class Patch_Interaction_CalcRate
 		return codes;
 	}
 
-	private static float ClampHook(float value, float min, float max, Interaction instance)
+	public static float ClampHook(float value, float min, float max, Interaction instance)
 	{
 		// Example policy:
 		// keep the original min, allow raising the max cap, then use the real Clamp.
 		if (instance != null && instance.strActionGroup == "Work")
 		{
-			max = Mathf.Max(max, 25f);
-			value = 25f; // for testing, set to the new max to verify the hook is working.
+			max = Mathf.Max(max, 100f);
+			value = 100f; // for testing, set to the new max to verify the hook is working.
 		}
 
 		return Mathf.Clamp(value, min, max);

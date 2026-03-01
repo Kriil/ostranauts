@@ -1,0 +1,5 @@
+is_global = true
+build_property.RootNamespace = Kriil.Ostranauts.CalcRatePatch
+build_property.ProjectDir = C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.CalcRatePatch\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "SLpjrjrJCyxmB1YULnKXCnX3QrsZbV2Yjjk19nwtVaN5M9dMu2xzdoGWWSTDdnlx9FAl5xTtu7fKMTnIWNSHqw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kriil\\Modding\\Ostranauts\\code\\ostranauts\\src\\BepInEx\\plugins\\Kriil.CalcRatePatch\\Kriil.CalcRatePatch.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kriil\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\Kriil\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.3\\microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
