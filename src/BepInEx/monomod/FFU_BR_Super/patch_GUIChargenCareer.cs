@@ -6,11 +6,15 @@ using Ostranauts.ShipGUIs.Chargen;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 // Super-settings patch for character generation costs and limits.
 // This likely implements free skill/trait changes and the broader chargen range
 // options exposed by the FFU_BR super config.
 public class patch_GUIChargenCareer : GUIChargenCareer
 {
+	// Applies one chosen skill/trait delta to the temporary chargen character.
+	// FFU_BR's NoSkillTraitCost setting can zero out the usual age cost, while
+	// the rest of the method still mirrors vanilla condition and event bookkeeping.
 	private void AddSkillTrait(JsonCareer jc, string strChosen)
 	{
 		this.bmpDot2.color = Color.white;
@@ -51,6 +55,8 @@ public class patch_GUIChargenCareer : GUIChargenCareer
 			}
 		}
 	}
+	// Rebuilds the multi-select sidebar so FFU_BR's modified cost rules are shown
+	// correctly while the player batches several skill changes before confirming.
 	private void RebuildMultiSelectSidebar()
 	{
 		bool flag = this._selectedSkills.Count == 0;

@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using FFU_Beyond_Reach;
 using Ostranauts.Core.Models;
 using UnityEngine;
+
 // Runtime CondOwner extensions for FFU_BR_Extended.
 // This module adds inventory-wide slot effects and stable slot ordering, which
 // the README calls out as new modding parameters and strict sort helpers.
@@ -46,11 +47,15 @@ public class patch_CondOwner : CondOwner
 		return result;
 	}
 	public extern void orig_SetData(JsonCondOwner jid, bool bLoot, JsonCondOwnerSave jCOSIn);
+
+	// Runs the vanilla CondOwner setup first, then applies FFU_BR-only inventory
+	// effect parsing so the extra JSON fields become live runtime behavior.
 	public void SetData(patch_JsonCondOwner jid, bool bLoot, JsonCondOwnerSave jCOSIn)
 	{
 		this.orig_SetData(jid, bLoot, jCOSIn);
 		this.ParseInvEffects(jid);
 	}
+
 	// Reads the extended `strInvSlotEffect` field and caches the referenced slot
 	// effect on the live CondOwner so inventory contents can inherit it later.
 	public void ParseInvEffects(patch_JsonCondOwner jid)
@@ -89,6 +94,8 @@ public class patch_CondOwner : CondOwner
 		}
 		return result;
 	}
+	// Walks nested slot trees depth-first so strict inventory sorting can honor
+	// `nSlotOrder` across child containers instead of only the first slot layer.
 	[CompilerGenerated]
 	internal static void <GetSortedSlots>g__GetSlotsRecursive|0_1(ref List<Slot> srtSlots, List<Slot> refSlots, bool dLog, bool dSort = true, int sDepth = 0)
 	{

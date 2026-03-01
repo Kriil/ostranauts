@@ -7,13 +7,19 @@ using UnityEngine;
 
 namespace Ostranauts.Ships.Commands
 {
+	// Quality patch for the station-keeping autopilot command.
+	// This loosens the vanilla tow-brace restriction when the matching FFU_BR
+	// config flag is enabled, while otherwise preserving the stock command flow.
 	public class patch_HoldStationAutoPilot : HoldStationAutoPilot
 	{
 		[MonoModIgnore]
 		public patch_HoldStationAutoPilot(IAICharacter pilot) : base(pilot)
 		{
 		}
-		public CommandCode RunCommand()
+	// Runs one station-keeping tick.
+	// Likely: this is mostly vanilla math, with the main behavior change being
+	// the optional allowance for holding station while tow-braced.
+	public CommandCode RunCommand()
 		{
 			Ship shipStationKeepingTarget = base.ShipUs.shipStationKeepingTarget;
 			bool flag = shipStationKeepingTarget == null || shipStationKeepingTarget.objSS == null || base.ShipUs == null;

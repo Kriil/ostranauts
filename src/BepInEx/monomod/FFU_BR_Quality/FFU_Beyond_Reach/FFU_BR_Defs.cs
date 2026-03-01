@@ -9,6 +9,9 @@ namespace FFU_Beyond_Reach
 	// changesMap command names, and module-specific gameplay/QoL toggles.
 	public class FFU_BR_Defs
 	{
+		// Mirror-only config fields used by this partial module build.
+		// The real values are initialized by the core FFU_Beyond_Reach assembly,
+		// and these declarations let MonoMod patches compile against them.
 		public static FFU_BR_Defs.SyncLogs SyncLogging;
 		public static FFU_BR_Defs.ActLogs ActLogging;
 		public static bool JsonLogging;
@@ -36,6 +39,7 @@ namespace FFU_Beyond_Reach
 		public static bool AllowSuperChars;
 		public static float SuperCharMultiplier;
 		public static string[] SuperCharacters;
+		// Logging detail used by synchronized loading and data-layer diagnostics.
 		public enum SyncLogs
 		{
 			None,
@@ -46,6 +50,7 @@ namespace FFU_Beyond_Reach
 			ContentDump,
 			SourceDump
 		}
+		// Runtime activity logging level used by UI/inventory/interaction patches.
 		public enum ActLogs
 		{
 			None,

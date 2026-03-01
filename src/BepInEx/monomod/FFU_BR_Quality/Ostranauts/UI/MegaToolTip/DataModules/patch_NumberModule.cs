@@ -6,9 +6,14 @@ using UnityEngine.UI;
 
 namespace Ostranauts.UI.MegaToolTip.DataModules
 {
+	// Quality patch for numeric tooltip rows.
+	// This extends number rendering so gas temperature can show the optional
+	// alternate unit beside Kelvin, matching the FFU_BR quality config.
 	public class patch_NumberModule : NumberModule
 	{
-		public void SetData(CondOwner co)
+	// Builds the numeric rows for the current tooltip target.
+	// The special-case `StatGasTemp` formatting is the FFU_BR addition here.
+	public void SetData(CondOwner co)
 		{
 			bool flag = co == null || co.mapConds == null;
 			if (flag)
@@ -69,7 +74,9 @@ namespace Ostranauts.UI.MegaToolTip.DataModules
 				}
 			}
 		}
-		protected void OnUpdateUI()
+	// Refreshes existing rows after the tooltip target changes in-place.
+	// This keeps the alternate temperature display synchronized with live values.
+	protected void OnUpdateUI()
 		{
 			bool flag = this._numbList.Count == 0;
 			if (!flag)

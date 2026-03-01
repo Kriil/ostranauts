@@ -2,6 +2,7 @@
 using FFU_Beyond_Reach;
 using MonoMod;
 using UnityEngine;
+
 // QoL patch for the inventory UI layout and drag/update flow.
 // This implements the configurable organized-inventory behavior documented in
 // `OrgInventoryMode` and the related spacing offsets.
@@ -84,6 +85,8 @@ public class patch_GUIInventory : GUIInventory
 		}
 		return result;
 	}
+	// Replaces the inventory update loop so FFU_BR's layout mode can coexist with
+	// the normal drag/tooltip behavior without fighting the vanilla tab mover.
 	[MonoModReplace]
 	private void Update()
 	{

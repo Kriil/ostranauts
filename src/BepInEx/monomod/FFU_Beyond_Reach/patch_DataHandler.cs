@@ -12,15 +12,16 @@ using MonoMod;
 using Ostranauts.Core;
 using Ostranauts.Tools;
 using UnityEngine;
+
 // Core loader replacement for FFU Beyond Reach.
 // This patch reorders and extends DataHandler startup so mods can partially
 // overwrite data, clone by reference, remove ids, and sync saved/template COs.
 public static class patch_DataHandler
 {
-	[MonoModReplace]
 	// Replaces the vanilla data bootstrap with FFU_BR's synchronized load flow.
 	// This is the main entrypoint for extended JSON layering, removeIds support,
 	// and deferred save/template reconciliation via the shared changes map.
+	[MonoModReplace]
 	public static void Init()
 	{
 		DataHandler.loadLog.Length = 0;
