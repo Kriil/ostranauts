@@ -30,7 +30,7 @@ internal static class Patch_Interaction_CalcRate
 		bool patched = false;
 
 		// Target the Clamp call whose result is stored into fCTThemModifierUs.
-		// This is more resilient than matching a hardcoded max such as 10f.
+		// This allows preserving either vanilla of FF_BR_Super calc rate values, mins or maxes, while still applying the ship-wide engineering bonus in the correct spot.
 		for (int i = 0; i < codes.Count - 1; i++)
 		{
 			if (!Calls(codes[i], MI_MathfClamp) ||
@@ -95,6 +95,8 @@ internal static class Patch_Interaction_CalcRate
 		{
 			float bonus = (float)instance.objUs.ship.ShipCO.GetCondAmount("StatShipEngineeringWorkBonus");
 			value += bonus;
+			// Add the bonus to the max as well to avoid soft-capping the bonus itself.
+			// TODO: Maybe add an option not to do this to the config if it turns out to be unbalanced.
 			max += bonus;
 		}
 

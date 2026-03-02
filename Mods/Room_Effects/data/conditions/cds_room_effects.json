@@ -12,5 +12,47 @@
         "bPersists": false,
         "aNext": [],
         "fDuration": 0.0
+    },
+    {
+        "strName": "StatRoomAirPumpSpeedBonus",
+        "strNameFriendly": "Room Air Pump Speed Bonus",
+        "strColor": "Neutral",
+        "strDesc": "Bonus to air pump speed in Engineering rooms.",
+        "bResetTimer": false,
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0,
+        "bFatal": false,
+        "bRemoveAll": true,
+        "bPersists": false,
+        "aNext": [],
+        "fDuration": 0.0
+    },
+    {
+        "strName": "StatRoomHeatSpeedBonus",
+        "strNameFriendly": "Room Heat Speed Bonus",
+        "strColor": "Neutral",
+        "strDesc": "Bonus to heat speed in Engineering rooms.",
+        "bResetTimer": false,
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0,
+        "bFatal": false,
+        "bRemoveAll": true,
+        "bPersists": false,
+        "aNext": [],
+        "fDuration": 0.0
+    },
+    {
+        "strName": "StatRoomCoolSpeedBonus",
+        "strNameFriendly": "Room Cool Speed Bonus",
+        "strColor": "Neutral",
+        "strDesc": "Bonus to cool speed in Engineering rooms.",
+        "bResetTimer": false,
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0,
+        "bFatal": false,
+        "bRemoveAll": true,
+        "bPersists": false,
+        "aNext": [],
+       	"fDuration" : 0.0
     }
 ]
