@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
@@ -82,7 +83,7 @@ internal static class Patch_Interaction_CalcRate
 
 		if (!patched)
 		{
-			Debug.LogWarning("[kriil.ostranauts.roomeffects] Failed to patch Interaction.CalcRate clamp block.");
+			UnityEngine.Debug.LogWarning("[kriil.ostranauts.roomeffects] Failed to patch Interaction.CalcRate clamp block.");
 		}
 
 		return codes;
@@ -92,7 +93,9 @@ internal static class Patch_Interaction_CalcRate
 	{
 		if (instance?.objUs?.ship?.ShipCO != null)
 		{
-			value += (float)instance.objUs.ship.ShipCO.GetCondAmount("StatShipEngineeringWorkBonus");
+			float bonus = (float)instance.objUs.ship.ShipCO.GetCondAmount("StatShipEngineeringWorkBonus");
+			value += bonus;
+			max += bonus;
 		}
 
 		return Mathf.Clamp(value, min, max);

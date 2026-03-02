@@ -1,4 +1,5 @@
 using HarmonyLib;
+using UnityEngine;
 
 namespace Kriil.Ostranauts.RoomEffects;
 
@@ -31,6 +32,7 @@ internal static class Patch_Room_CreateRoomSpecs
 			}
 		}
 
-		shipCo.SetCondAmount("StatShipEngineeringWorkBonus", hasEngineering ? 0.5 : 0.0, 0.0);
+		shipCo.SetCondAmount("StatShipEngineeringWorkBonus", hasEngineering ? Plugin.EngineeringWorkBonus.Value: 0.0, 0.0);
+		return;
 	}
 }
