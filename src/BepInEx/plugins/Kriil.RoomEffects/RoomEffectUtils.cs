@@ -1,5 +1,3 @@
-using System.ComponentModel;
-using HarmonyLib;
 using UnityEngine;
 
 namespace Kriil.Ostranauts.RoomEffects;
@@ -23,10 +21,44 @@ internal static class RoomEffectUtils
 		switch (roomSpecName)
 		{
 			case "Engineering":
-				ApplyEngineeringBonuses(room);
+				BonusEngineering.ApplyBonuses(room);
 				break;
 			case "Airlock":
-				ApplyAirlockBonuses(room);
+				BonusAirlock.ApplyBonuses(room);
+				break;
+			case "Reactor":
+				BonusReactor.ApplyBonuses(room);
+				break;
+			case "BridgeRoom":
+				BonusBridge.ApplyBonuses(room);
+				break;
+			case "TowingRoom":
+				BonusTowing.ApplyBonuses(room);
+				break;
+			case "WellnessRoom":
+				BonusWellness.ApplyBonuses(room);
+				break;
+			case "Recreation":
+				BonusRecreation.ApplyBonuses(room);
+				break;
+			case "LuxuryQuarters":
+				BonusQuarters.ApplyBonuses(room, true);
+				break;
+			case "Bathroom":
+				BonusBathroom.ApplyBonuses(room);
+				break;
+			case "Galley":
+				BonusGalley.ApplyBonuses(room);
+				break;
+			case "BasicQuarters":
+				BonusQuarters.ApplyBonuses(room, false);
+				break;
+			case "Passenger2":
+				BonusPassenger.ApplyBonuses(room, false);
+				break;
+			case "Passenger1":
+				// Note: Passenger1 is the "small" passenger room
+				BonusPassenger.ApplyBonuses(room, true);
 				break;
 		}
 	}
@@ -45,38 +77,10 @@ internal static class RoomEffectUtils
 			return;
 		}
 
-		ApplyShipEngineeringWorkBonus(ship, shipCo);
+		BonusEngineering.ApplyShipBonuses(ship, shipCo);
 	}
 
-	private static void ApplyEngineeringBonuses(Room room)
-	{
-		double airPumpBonus = 0.0;
-		double heatBonus = 0.0;
-		double coolBonus = 0.0;
-
-		CondTrigger airPumpTrigger = DataHandler.GetCondTrigger("TIsAirPump02Installed");
-		CondTrigger heaterTrigger = DataHandler.GetCondTrigger("TIsHeater01Installed");
-		CondTrigger coolerTrigger = DataHandler.GetCondTrigger("TIsCooler01Installed");
-
-		if (HasInstalledDeviceInRoomByPoint(room, airPumpTrigger, "GasInput"))
-		{
-			airPumpBonus = Plugin.EngineeringAirPumpBonus.Value;
-		}
-		if (HasInstalledDeviceInRoomByPoint(room, heaterTrigger, "use"))
-		{
-			heatBonus = Plugin.EngineeringHeatBonus.Value;
-		}
-		if (HasInstalledDeviceInRoomByPoint(room, coolerTrigger, "use"))
-		{
-			coolBonus = Plugin.EngineeringCoolBonus.Value;
-		}
-
-		room.CO.SetCondAmount("StatRoomAirPumpSpeedBonus", airPumpBonus, 0.0);
-		room.CO.SetCondAmount("StatRoomHeatSpeedBonus", heatBonus, 0.0);
-		room.CO.SetCondAmount("StatRoomCoolSpeedBonus", coolBonus, 0.0);
-	}
-
-	private static bool HasInstalledDeviceInRoomByPoint(Room room, CondTrigger trigger, string pointName)
+	public static bool HasInstalledDeviceInRoomByPoint(Room room, CondTrigger trigger, string pointName)
 	{
 		if (room?.CO?.ship == null || trigger == null)
 		{
@@ -109,33 +113,6 @@ internal static class RoomEffectUtils
 		}
 
 		return co.ship.GetRoomAtWorldCoords1(pos, true);
-	}
-
-	private static void ApplyAirlockBonuses(Room room)
-	{
-		// Reserved for future airlock-specific device bonuses.
-	}
-
-	public static void ApplyShipEngineeringWorkBonus(Ship ship, CondOwner shipCo)
-	{
-		bool hasEngineering = false;
-
-		foreach (Room shipRoom in ship.aRooms)
-		{
-			if (shipRoom == null || shipRoom.Void)
-			{
-				continue;
-			}
-
-			string roomSpecName = shipRoom.GetRoomSpec()?.strName;
-			if (roomSpecName == "Engineering")
-			{
-				hasEngineering = true;
-				break;
-			}
-		}
-
-		shipCo.SetCondAmount("StatShipEngineeringWorkBonus", hasEngineering ? Plugin.EngineeringWorkBonus.Value : 0.0, 0.0);
 	}
 
 	public static bool IsPlayerShip(Ship ship)
