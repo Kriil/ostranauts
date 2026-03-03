@@ -55,26 +55,6 @@ internal static class Patch_Heater_Heat
 
 	private static Room GetHeaterTargetRoom(Heater heater, CondOwner co)
 	{
-		string addPoint = Traverse.Create(heater).Field("strAddPoint").GetValue<string>();
-		if (!string.IsNullOrEmpty(addPoint) && addPoint != "ignore")
-		{
-			Room room = RoomEffectUtils.GetRoomAtPoint(co, addPoint);
-			if (room != null)
-			{
-				return room;
-			}
-		}
-
-		string subPoint = Traverse.Create(heater).Field("strSubPoint").GetValue<string>();
-		if (!string.IsNullOrEmpty(subPoint) && subPoint != "ignore")
-		{
-			Room room = RoomEffectUtils.GetRoomAtPoint(co, subPoint);
-			if (room != null)
-			{
-				return room;
-			}
-		}
-
 		return RoomEffectUtils.GetRoomAtPoint(co, "use");
 	}
 }

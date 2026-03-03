@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using System.ComponentModel;
 using HarmonyLib;
 using UnityEngine;
 
@@ -18,39 +18,16 @@ internal static class RoomEffectUtils
 			return;
 		}
 
-		string shipName = room.CO.ship.strRegID ?? "Blank";
 		string roomSpecName = room.GetRoomSpec()?.strName ?? "Blank";
-		string roomId = room.CO.strID ?? "null";
-
-		double airPumpBonus = 0.0;
-		double heatBonus = 0.0;
-		double coolBonus = 0.0;
 
 		switch (roomSpecName)
 		{
 			case "Engineering":
-				ApplyEngineeringBonuses(room, ref airPumpBonus, ref heatBonus, ref coolBonus);
+				ApplyEngineeringBonuses(room);
 				break;
 			case "Airlock":
-				ApplyAirlockBonuses(room, ref airPumpBonus, ref heatBonus, ref coolBonus);
+				ApplyAirlockBonuses(room);
 				break;
-		}
-
-		room.CO.SetCondAmount("StatRoomAirPumpSpeedBonus", airPumpBonus, 0.0);
-		room.CO.SetCondAmount("StatRoomHeatSpeedBonus", heatBonus, 0.0);
-		room.CO.SetCondAmount("StatRoomCoolSpeedBonus", coolBonus, 0.0);
-
-		if (airPumpBonus != 0.0)
-		{
-			Debug.Log($"[kriil.ostranauts.roomeffects] Setting air pump speed bonus of {airPumpBonus * 100.0}% for room '{roomSpecName}-{roomId}' in ship '{shipName}'.");
-		}
-		if (heatBonus != 0.0)
-		{
-			Debug.Log($"[kriil.ostranauts.roomeffects] Setting heater speed bonus of {heatBonus * 100.0}% for room '{roomSpecName}-{roomId}' in ship '{shipName}'.");
-		}
-		if (coolBonus != 0.0)
-		{
-			Debug.Log($"[kriil.ostranauts.roomeffects] Setting cooler speed bonus of {coolBonus * 100.0}% for room '{roomSpecName}-{roomId}' in ship '{shipName}'.");
 		}
 	}
 
@@ -68,11 +45,15 @@ internal static class RoomEffectUtils
 			return;
 		}
 
-		ApplyShipEngineeringWorkBonus(ship);
+		ApplyShipEngineeringWorkBonus(ship, shipCo);
 	}
 
-	private static void ApplyEngineeringBonuses(Room room, ref double airPumpBonus, ref double heatBonus, ref double coolBonus)
+	private static void ApplyEngineeringBonuses(Room room)
 	{
+		double airPumpBonus = 0.0;
+		double heatBonus = 0.0;
+		double coolBonus = 0.0;
+
 		CondTrigger airPumpTrigger = DataHandler.GetCondTrigger("TIsAirPump02Installed");
 		CondTrigger heaterTrigger = DataHandler.GetCondTrigger("TIsHeater01Installed");
 		CondTrigger coolerTrigger = DataHandler.GetCondTrigger("TIsCooler01Installed");
@@ -89,6 +70,10 @@ internal static class RoomEffectUtils
 		{
 			coolBonus = Plugin.EngineeringCoolBonus.Value;
 		}
+
+		room.CO.SetCondAmount("StatRoomAirPumpSpeedBonus", airPumpBonus, 0.0);
+		room.CO.SetCondAmount("StatRoomHeatSpeedBonus", heatBonus, 0.0);
+		room.CO.SetCondAmount("StatRoomCoolSpeedBonus", coolBonus, 0.0);
 	}
 
 	private static bool HasInstalledDeviceInRoomByPoint(Room room, CondTrigger trigger, string pointName)
@@ -126,12 +111,12 @@ internal static class RoomEffectUtils
 		return co.ship.GetRoomAtWorldCoords1(pos, true);
 	}
 
-	private static void ApplyAirlockBonuses(Room room, ref double airPumpBonus, ref double heatBonus, ref double coolBonus)
+	private static void ApplyAirlockBonuses(Room room)
 	{
 		// Reserved for future airlock-specific device bonuses.
 	}
 
-	public static void ApplyShipEngineeringWorkBonus(Ship ship)
+	public static void ApplyShipEngineeringWorkBonus(Ship ship, CondOwner shipCo)
 	{
 		bool hasEngineering = false;
 
@@ -142,8 +127,8 @@ internal static class RoomEffectUtils
 				continue;
 			}
 
-			RoomSpec spec = shipRoom.GetRoomSpec();
-			if (spec != null && spec.strName == "Engineering")
+			string roomSpecName = shipRoom.GetRoomSpec()?.strName;
+			if (roomSpecName == "Engineering")
 			{
 				hasEngineering = true;
 				break;
@@ -155,7 +140,6 @@ internal static class RoomEffectUtils
 
 	public static bool IsPlayerShip(Ship ship)
 	{
-		Debug.Log($"[kriil.ostranauts.roomeffects] Checking if ship '{ship?.strRegID ?? "null"}' is the player's ship: {(CrewSim.coPlayer?.ship?.strRegID ?? "null")}");
 		return ship != null && CrewSim.coPlayer != null && CrewSim.coPlayer.ship == ship;
 	}
 }
