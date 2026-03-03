@@ -1,4 +1,5 @@
 using HarmonyLib;
+using UnityEngine;
 
 namespace Kriil.Ostranauts.RoomEffects;
 
@@ -7,26 +8,41 @@ internal static class Patch_Heater_Heat
 {
 	public static void Prefix(Heater __instance, ref double fTimePassed)
 	{
-		if (__instance == null)
-		{
-			return;
-		}
-
 		CondOwner co = __instance.GetComponent<CondOwner>();
-		if (co?.currentRoom?.CO == null)
+		if (co?.ship == null || !RoomEffectUtils.IsPlayerShip(co.ship))
 		{
 			return;
 		}
 
 		double bonus = 0.0;
+		Room targetRoom = null;
 
-		if (co.HasCond("IsHeater"))
+		CondTrigger heaterInstalled = DataHandler.GetCondTrigger("TIsHeater01Installed");
+		CondTrigger coolerInstalled = DataHandler.GetCondTrigger("TIsCooler01Installed");
+		bool isHeaterInstalled = heaterInstalled != null && heaterInstalled.Triggered(co, null, true);
+		bool isCoolerInstalled = coolerInstalled != null && coolerInstalled.Triggered(co, null, true);
+
+		if (isHeaterInstalled)
 		{
-			bonus = co.currentRoom.CO.GetCondAmount("StatRoomHeatSpeedBonus");
+			targetRoom = GetHeaterTargetRoom(__instance, co);
+			if (targetRoom?.CO == null)
+			{
+				return;
+			}
+			bonus = targetRoom.CO.GetCondAmount("StatRoomHeatSpeedBonus");
 		}
-		else if (co.HasCond("IsCooler"))
+		else if (isCoolerInstalled)
 		{
-			bonus = co.currentRoom.CO.GetCondAmount("StatRoomCoolSpeedBonus");
+			targetRoom = GetHeaterTargetRoom(__instance, co);
+			if (targetRoom?.CO == null)
+			{
+				return;
+			}
+			bonus = targetRoom.CO.GetCondAmount("StatRoomCoolSpeedBonus");
+		}
+		else
+		{
+			return;
 		}
 
 		if (bonus == 0.0)
@@ -34,8 +50,31 @@ internal static class Patch_Heater_Heat
 			return;
 		}
 
-		// Interpret room stat as additive multiplier:
-		// 0.25 => 1.25x
 		fTimePassed *= 1.0 + bonus;
+	}
+
+	private static Room GetHeaterTargetRoom(Heater heater, CondOwner co)
+	{
+		string addPoint = Traverse.Create(heater).Field("strAddPoint").GetValue<string>();
+		if (!string.IsNullOrEmpty(addPoint) && addPoint != "ignore")
+		{
+			Room room = RoomEffectUtils.GetRoomAtPoint(co, addPoint);
+			if (room != null)
+			{
+				return room;
+			}
+		}
+
+		string subPoint = Traverse.Create(heater).Field("strSubPoint").GetValue<string>();
+		if (!string.IsNullOrEmpty(subPoint) && subPoint != "ignore")
+		{
+			Room room = RoomEffectUtils.GetRoomAtPoint(co, subPoint);
+			if (room != null)
+			{
+				return room;
+			}
+		}
+
+		return RoomEffectUtils.GetRoomAtPoint(co, "use");
 	}
 }
