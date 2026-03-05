@@ -1,5 +1,4 @@
 using HarmonyLib;
-using UnityEngine;
 
 namespace Kriil.Ostranauts.RoomEffects;
 
