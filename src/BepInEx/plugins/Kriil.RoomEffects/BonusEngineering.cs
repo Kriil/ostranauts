@@ -13,10 +13,16 @@ internal static class BonusEngineering
 		if (RoomEffectUtils.HasInstalledDeviceInRoomByPoint(room, heaterTrigger, "use"))
 		{
 			heatBonus = Plugin.EngineeringHeatBonus.Value;
+			RoomEffectUtils.LogRoomEffect($"Applied Engineering Heat Bonus of {heatBonus * 100f}% due to heater device.", "Engineering", room);
+		} else {
+			RoomEffectUtils.LogRoomEffect($"No heater device installed in room, setting bonus to 0%.", "Engineering", room);
 		}
 		if (RoomEffectUtils.HasInstalledDeviceInRoomByPoint(room, coolerTrigger, "use"))
 		{
 			coolBonus = Plugin.EngineeringCoolBonus.Value;
+			RoomEffectUtils.LogRoomEffect($"Applied Engineering Cool Bonus of {coolBonus * 100f}% due to cooler device.", "Engineering", room);
+		} else {
+			RoomEffectUtils.LogRoomEffect($"No cooler device installed in room, setting bonus to 0%.", "Engineering", room);
 		}
 
 
@@ -43,6 +49,12 @@ internal static class BonusEngineering
 			}
 		}
 
+		if (hasEngineering)
+		{
+			RoomEffectUtils.LogRoomEffect($"Applying ship-wide engineering work bonus of {Plugin.EngineeringWorkBonus.Value * 100f}% due to presence of engineering room on ship.", "Engineering", null);
+		} else {
+			RoomEffectUtils.LogRoomEffect($"No engineering room found on ship, setting ship-wide engineering work bonus to 0%.", "Engineering", null);
+		}
 		shipCo.SetCondAmount("StatShipEngineeringWorkBonus", hasEngineering ? Plugin.EngineeringWorkBonus.Value : 0.0, 0.0);
 	}
 }

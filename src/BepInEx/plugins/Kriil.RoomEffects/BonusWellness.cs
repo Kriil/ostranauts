@@ -7,6 +7,7 @@ internal static class BonusWellness
 
 	public static void ApplyBonuses(Room room)
 	{
+		 RoomEffectUtils.LogRoomEffect($"Applied Wellness Fitness Bonus of {Plugin.WellnessFitnessBonus.Value * 100f}% and Strength Bonus of {Plugin.WellnessStrengthBonus.Value * 100f}%.", "Wellness", room);
 		room.CO.SetCondAmount(CondRoomWellnessFitnessBonus, Plugin.WellnessFitnessBonus.Value, 0.0);
 		room.CO.SetCondAmount(CondRoomWellnessStrengthBonus, Plugin.WellnessStrengthBonus.Value, 0.0);
 	}
@@ -19,6 +20,7 @@ internal static class BonusWellness
 			if (bonus > 0.0 &&
 				(trigger.strCondName == "StatAtrophy" || trigger.strCondName == "StatTrainingFit" || trigger.strCondName == "StatTrainingUnfit"))
 			{
+				RoomEffectUtils.LogRoomEffect($"Modified trigger amount for '{trigger.strCondName}' with wellness fitness bonus of {bonus * 100f}%.", "Wellness", RoomEffectUtils.GetCondOwnerRoom(coUs, "Power"));
 				return amount * (1f + (float)bonus);
 			}
 		}
@@ -32,6 +34,7 @@ internal static class BonusWellness
 				trigger.strCondName == "StatTrainingStrongAtrophy" ||
 				trigger.strCondName == "StatTrainingFeeble"))
 			{
+				RoomEffectUtils.LogRoomEffect($"Modified trigger amount for '{trigger.strCondName}' with wellness strength bonus of {bonus * 100f}%.", "Wellness", RoomEffectUtils.GetCondOwnerRoom(coUs, "Power"));
 				return amount * (1f + (float)bonus);
 			}
 		}
@@ -41,6 +44,7 @@ internal static class BonusWellness
 
 	public static double ModifyCondAmount(Interaction interaction, string condName, CondOwner coUs, double amount)
 	{
+		// Is there nothing to modify? Why call it then?
 		return amount;
 	}
 }

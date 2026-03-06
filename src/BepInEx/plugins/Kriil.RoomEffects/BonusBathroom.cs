@@ -6,7 +6,9 @@ internal static class BonusBathroom
 
 	public static void ApplyBonuses(Room room)
 	{
-		room.CO.SetCondAmount(CondRoomBathroomSpeedBonus, Plugin.BathroomSpeedBonus.Value, 0.0);
+		float bonus = Plugin.BathroomSpeedBonus.Value;
+		RoomEffectUtils.LogRoomEffect($"Applied Bathroom Speed Bonus of {bonus * 100f}%.", "Bathroom", room);
+		room.CO.SetCondAmount(CondRoomBathroomSpeedBonus, bonus, 0.0);
 	}
 
 	public static float ModifyInteractionDuration(Interaction interaction, float durationHours)

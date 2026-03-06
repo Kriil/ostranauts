@@ -6,7 +6,9 @@ internal static class BonusPassenger
 
 	public static void ApplyBonuses(Room room, bool isSmall)
 	{
-		room.CO.SetCondAmount(CondRoomPassengerRelaxBonus, isSmall ? Plugin.PassengerSmallRelaxBonus.Value : Plugin.PassengerMediumRelaxBonus.Value, 0.0);
+		float bonus = isSmall ? Plugin.PassengerSmallRelaxBonus.Value : Plugin.PassengerMediumRelaxBonus.Value;
+		RoomEffectUtils.LogRoomEffect($"Applied {(isSmall ? "Small" : "Medium")} Passenger Relax Bonus of {bonus * 100f}%.", "Passenger", room);
+		room.CO.SetCondAmount(CondRoomPassengerRelaxBonus, bonus, 0.0);
 	}
 
 	public static float ModifyTriggerAmount(Interaction interaction, CondTrigger trigger, CondOwner coUs, float amount)
@@ -24,6 +26,7 @@ internal static class BonusPassenger
 
 		if (trigger.strCondName == "StatSecurity" && amount < 0f)
 		{
+			RoomEffectUtils.LogRoomEffect($"Applying passenger relax trigger '{trigger.strCondName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Passenger", RoomEffectUtils.GetCondOwnerRoom(coUs));
 			return amount * (1f + (float)bonus);
 		}
 
@@ -45,6 +48,7 @@ internal static class BonusPassenger
 
 		if (condName == "StatSecurity" && amount < 0.0)
 		{
+			RoomEffectUtils.LogRoomEffect($"Applying passenger relax condition '{condName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Passenger", RoomEffectUtils.GetCondOwnerRoom(coUs));
 			return amount * (1.0 + bonus);
 		}
 

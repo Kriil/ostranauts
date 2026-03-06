@@ -6,7 +6,9 @@ internal static class BonusGalley
 
 	public static void ApplyBonuses(Room room)
 	{
-		room.CO.SetCondAmount(CondRoomGalleySatietyBonus, Plugin.GalleySatiationBonus.Value, 0.0);
+		float bonus = Plugin.GalleySatiationBonus.Value;
+		RoomEffectUtils.LogRoomEffect($"Applied Galley Satiety Bonus of {bonus * 100f}%.", "Galley", room);
+		room.CO.SetCondAmount(CondRoomGalleySatietyBonus, bonus, 0.0);
 	}
 
 	public static float ModifyTriggerAmount(Interaction interaction, CondTrigger trigger, CondOwner coUs, float amount)
@@ -24,6 +26,7 @@ internal static class BonusGalley
 
 		if (trigger.strCondName == "StatSatiety" || trigger.strCondName == "StatFood")
 		{
+			RoomEffectUtils.LogRoomEffect($"Applying galley satiety trigger '{trigger.strCondName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Galley", RoomEffectUtils.GetCondOwnerRoom(coUs));
 			return amount * (1f + (float)bonus);
 		}
 
@@ -45,6 +48,7 @@ internal static class BonusGalley
 
 		if ((condName == "StatSatiety" || condName == "StatFood") && amount > 0.0)
 		{
+			RoomEffectUtils.LogRoomEffect($"Applying galley satiety condition '{condName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Galley", RoomEffectUtils.GetCondOwnerRoom(coUs));
 			return amount * (1.0 + bonus);
 		}
 

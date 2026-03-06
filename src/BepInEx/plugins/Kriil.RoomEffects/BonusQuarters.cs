@@ -7,8 +7,8 @@ internal static class BonusQuarters
 	public static void ApplyBonuses(Room room, bool isLuxury)
 	{
 		float bonus = isLuxury ? Plugin.LuxurySleepBonus.Value : Plugin.BasicSleepBonus.Value;
-		room.CO.SetCondAmount(CondRoomSleepBonus, bonus, 0.0);
 		RoomEffectUtils.LogRoomEffect($"Applied {(isLuxury ? "Luxury" : "Basic")} Sleep Bonus of {bonus * 100f}%", isLuxury ? "LuxuryQuarters" : "BasicQuarters", room);
+		room.CO.SetCondAmount(CondRoomSleepBonus, bonus, 0.0);
 	}
 
 	public static float ModifyTriggerAmount(Interaction interaction, CondTrigger trigger, CondOwner coUs, float amount)

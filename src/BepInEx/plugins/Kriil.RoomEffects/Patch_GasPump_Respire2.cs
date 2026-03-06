@@ -25,6 +25,7 @@ internal static class Patch_GasPump_Respire2
 			return;
 		}
 
+		RoomEffectUtils.LogRoomEffect($"Applying airlock scrubber speed bonus of {bonus * 100f}% to scrubber pump.", "Airlock", targetRoom);
 		fCoeff *= 1f + (float)bonus;
 	}
 }

@@ -93,11 +93,19 @@ internal static class Patch_Interaction_CalcRate
 	{
 		if (instance?.objUs?.ship?.ShipCO != null)
 		{
+			// TODO: Is this our ship or just the ship we are on?
 			float bonus = (float)instance.objUs.ship.ShipCO.GetCondAmount("StatShipEngineeringWorkBonus");
-			value += bonus;
-			// Add the bonus to the max as well to avoid soft-capping the bonus itself.
-			// TODO: Maybe add an option not to do this to the config if it turns out to be unbalanced.
-			max += bonus;
+			if (bonus == 0f)
+			{
+				RoomEffectUtils.LogRoomEffect($"Applying engineering bonus of 0% to '{instance.objUs.ship.ShipCO.strID}'.", "Engineering", null);
+			} else
+			{
+				RoomEffectUtils.LogRoomEffect($"Applying engineering bonus of {bonus * 100f}% to '{instance.objUs.ship.ShipCO.strID}'.", "Engineering", null);
+				value += bonus;
+				// Add the bonus to the max as well to avoid soft-capping the bonus itself.
+				// TODO: Maybe add an option not to do this to the config if it turns out to be unbalanced.
+				max += bonus;
+			}
 		}
 
 		return Mathf.Clamp(value, min, max);

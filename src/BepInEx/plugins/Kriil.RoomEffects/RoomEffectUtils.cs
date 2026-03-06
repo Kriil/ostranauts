@@ -247,11 +247,13 @@ internal static class RoomEffectUtils
 		double negativeReduction = room.CO.GetCondAmount(CondRoomRecreationNegativeReduction);
 		if (amount > 0f && positiveBonus > 0.0)
 		{
+			LogRoomEffect($"Applying recreation positive bonus of {positiveBonus * 100f}%", "Recreation", room);
 			return amount * (1f + (float)positiveBonus);
 		}
 
 		if (amount < 0f && negativeReduction > 0.0)
 		{
+			LogRoomEffect($"Applying recreation negative reduction of {negativeReduction * 100f}%", "Recreation", room);
 			return amount * Mathf.Max(0f, 1f - (float)negativeReduction);
 		}
 

@@ -7,8 +7,11 @@ internal static class BonusRecreation
 
 	public static void ApplyBonuses(Room room)
 	{
-		room.CO.SetCondAmount(CondRoomRecreationPositiveBonus, Plugin.RecreationPositiveBonus.Value, 0.0);
-		room.CO.SetCondAmount(CondRoomRecreationNegativeReduction, Plugin.RecreationNegativeReduction.Value, 0.0);
+		float positiveBonus = Plugin.RecreationPositiveBonus.Value;
+		float negativeReduction = Plugin.RecreationNegativeReduction.Value;
+		RoomEffectUtils.LogRoomEffect($"Applied Recreation Positive Bonus of {positiveBonus * 100f}% and Negative Reduction of {negativeReduction * 100f}%.", "Recreation", room);
+		room.CO.SetCondAmount(CondRoomRecreationPositiveBonus, positiveBonus, 0.0);
+		room.CO.SetCondAmount(CondRoomRecreationNegativeReduction, negativeReduction, 0.0);
 	}
 
 	public static float ModifyTriggerAmount(Interaction interaction, CondTrigger trigger, CondOwner coUs, float amount)

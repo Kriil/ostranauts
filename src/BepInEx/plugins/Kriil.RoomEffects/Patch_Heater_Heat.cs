@@ -49,6 +49,7 @@ internal static class Patch_Heater_Heat
 			return;
 		}
 
+		RoomEffectUtils.LogRoomEffect($"Applying {(isHeaterInstalled ? "heat" : "cool") } bonus of {bonus * 100f}% to heater.", "Engineering", targetRoom);
 		fTimePassed *= 1.0 + bonus;
 	}
 
