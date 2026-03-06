@@ -4,18 +4,12 @@ internal static class BonusEngineering
 {
 	public static void ApplyBonuses(Room room)
 	{
-		double airPumpBonus = 0.0;
 		double heatBonus = 0.0;
 		double coolBonus = 0.0;
 
-		CondTrigger airPumpTrigger = DataHandler.GetCondTrigger("TIsAirPump02Installed");
 		CondTrigger heaterTrigger = DataHandler.GetCondTrigger("TIsHeater01Installed");
 		CondTrigger coolerTrigger = DataHandler.GetCondTrigger("TIsCooler01Installed");
 
-		if (RoomEffectUtils.HasInstalledDeviceInRoomByPoint(room, airPumpTrigger, "GasInput"))
-		{
-			airPumpBonus = Plugin.EngineeringAirPumpBonus.Value;
-		}
 		if (RoomEffectUtils.HasInstalledDeviceInRoomByPoint(room, heaterTrigger, "use"))
 		{
 			heatBonus = Plugin.EngineeringHeatBonus.Value;
@@ -25,7 +19,7 @@ internal static class BonusEngineering
 			coolBonus = Plugin.EngineeringCoolBonus.Value;
 		}
 
-		room.CO.SetCondAmount("StatRoomAirPumpSpeedBonus", airPumpBonus, 0.0);
+
 		room.CO.SetCondAmount("StatRoomHeatSpeedBonus", heatBonus, 0.0);
 		room.CO.SetCondAmount("StatRoomCoolSpeedBonus", coolBonus, 0.0);
 	}
