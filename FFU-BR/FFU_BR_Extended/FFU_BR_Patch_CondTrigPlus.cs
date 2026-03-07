@@ -601,17 +601,17 @@ public partial class patch_CondTrigger : CondTrigger {
     public static string FormatTwoDecimals(double dVal) {
         double absVal = Math.Abs(dVal);
 
-        // Default >1 Approach
+        // For absolute values >= 1, keep up to two decimals.
         if (absVal >= 1.0) return dVal.ToString("0.##");
         if (dVal == 0.0) return "0";
 
-        // Implemented <0 Approach
+        // For tiny values, preserve enough decimals to show first non-zero digit.
         int nonZeroCount = 0;
         int decimalPlaces = 0;
         double temp = absVal;
         bool hasHitLimit = false;
 
-        // Find Fraction (+ Limit)
+        // Walk fractional digits until first non-zero, with a hard safety limit.
         while (nonZeroCount < 1 && temp > 0 && !hasHitLimit) {
             temp *= 10.0;
             decimalPlaces++;
@@ -624,7 +624,7 @@ public partial class patch_CondTrigger : CondTrigger {
             }
         }
 
-        // Return Processed Value
+        // If precision search exceeded the limit, treat as effectively zero.
         if (hasHitLimit) return "0";
         string format = "0." + new string('#', decimalPlaces);
         return dVal.ToString(format);

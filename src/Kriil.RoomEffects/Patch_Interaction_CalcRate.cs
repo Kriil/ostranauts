@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Reflection;
 using System.Reflection.Emit;
 using HarmonyLib;
@@ -29,8 +28,8 @@ internal static class Patch_Interaction_CalcRate
 		List<CodeInstruction> codes = new List<CodeInstruction>(instructions);
 		bool patched = false;
 
-		// Target the Clamp call whose result is stored into fCTThemModifierUs.
-		// This allows preserving either vanilla of FF_BR_Super calc rate values, mins or maxes, while still applying the ship-wide engineering bonus in the correct spot.
+		// Replace only the actor work-multiplier clamp writeback.
+		// This preserves vanilla/FFU math and inserts the room bonus at the same point.
 		for (int i = 0; i < codes.Count - 1; i++)
 		{
 			if (!Calls(codes[i], MI_MathfClamp) ||
@@ -39,8 +38,7 @@ internal static class Patch_Interaction_CalcRate
 				continue;
 			}
 
-			// Sanity check: this Clamp should be using the current fCTThemModifierUs
-			// value as input somewhere shortly before the call.
+			// Sanity check: the clamp should read fCTThemModifierUs shortly before call.
 			bool foundSourceLoad = false;
 			int searchStart = Mathf.Max(0, i - 8);
 			for (int j = searchStart; j < i; j++)
@@ -57,11 +55,11 @@ internal static class Patch_Interaction_CalcRate
 				continue;
 			}
 
-			// Found the target Clamp. Replace it with a call to our hook method.
+			// Found the target clamp. Replace it with a call to our hook method.
 			CodeInstruction originalCall = codes[i];
 
-			// The hook will need the Interaction instance to apply context-sensitive logic, so load that as well.
-			// Transfer labels and exception blocks from the original call to the new loadInstance instruction so they still apply to the hook call.
+			// The hook needs the current Interaction instance for ship/context checks.
+			// Move labels/exception blocks so control flow metadata stays attached.
 			CodeInstruction loadInstance = new CodeInstruction(OpCodes.Ldarg_0)
 			{
 				labels = new List<Label>(originalCall.labels),
@@ -70,7 +68,7 @@ internal static class Patch_Interaction_CalcRate
 
 			CodeInstruction replacementCall = new CodeInstruction(OpCodes.Call, MI_ClampHook);
 
-			// Clear the labels and blocks from the original call, since it's being removed. 
+			// Clear metadata on the removed instruction to avoid duplicate label ownership.
 			originalCall.labels.Clear();
 			originalCall.blocks.Clear();
 
@@ -93,7 +91,8 @@ internal static class Patch_Interaction_CalcRate
 	{
 		if (instance?.objUs?.ship?.ShipCO != null)
 		{
-			// TODO: Is this our ship or just the ship we are on?
+			// Use the actor's current ship CondOwner as the ship-wide engineering source.
+			// TODO: Is this our ship or just the ship we are on? May need to edit a different cond.
 			float bonus = (float)instance.objUs.ship.ShipCO.GetCondAmount("StatShipEngineeringWorkBonus");
 			if (bonus == 0f)
 			{

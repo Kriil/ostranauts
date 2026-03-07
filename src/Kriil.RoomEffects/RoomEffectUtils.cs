@@ -1,8 +1,3 @@
-using System.Collections.Specialized;
-using System.ComponentModel;
-using System.Diagnostics.Contracts;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using UnityEngine;
 
 namespace Kriil.Ostranauts.RoomEffects;

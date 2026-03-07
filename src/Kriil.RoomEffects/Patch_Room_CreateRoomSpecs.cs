@@ -2,7 +2,7 @@ using HarmonyLib;
 
 namespace Kriil.Ostranauts.RoomEffects;
 
-// Sets various room bonuses when room specs are created
+// Recompute both ship-wide and per-room bonuses whenever room classification updates.
 [HarmonyPatch(typeof(Room), nameof(Room.CreateRoomSpecs))]
 internal static class Patch_Room_CreateRoomSpecs
 {

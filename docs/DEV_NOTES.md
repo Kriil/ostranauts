@@ -240,12 +240,3 @@ These pairings are useful when tracing decompiled code:
 
 - Unclear: some decompiled methods still contain suspicious logic that may be decompiler damage rather than original intent.
   Examples already noted in comments include parts of `MathUtils` and some always-constant UI helpers.
-- Unclear: not every `data/` folder name was re-verified directly against loader call sites in this phase.
-- Update: the repo-wide metadata cleanup pass has now removed the decompiler metadata comments from the remaining C# files in `src/Assembly-CSharp`, including third-party support code. Targeted intent comments were added across the remaining high-signal gameplay/runtime files as a final pass.
-
-## Recommended Next Passes
-
-1. Deepen method-level comments in already-covered complex systems rather than broad cleanup:
-   `Tile`, `GUIInventoryWindow`, `Room`, `GasContainer`, `GUITrade`, `FlyToPath`, and `JumpPointSearch` still have room for denser method-by-method annotation if deeper modding work is planned.
-2. Expand this file with a stricter registry-by-registry source table once every `JsonToData` callsite is traced.
-3. If desired, do a purely polish-focused pass on comment consistency (indentation, phrasing, uncertainty markers) now that the decompiler metadata has been removed repo-wide.

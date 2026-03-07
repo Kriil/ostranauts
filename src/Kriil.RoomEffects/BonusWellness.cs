@@ -44,7 +44,7 @@ internal static class BonusWellness
 
 	public static double ModifyCondAmount(Interaction interaction, string condName, CondOwner coUs, double amount)
 	{
-		// Is there nothing to modify? Why call it then?
+		// Wellness currently modifies CT-driven training deltas, not direct condition loot values.
 		return amount;
 	}
 }
