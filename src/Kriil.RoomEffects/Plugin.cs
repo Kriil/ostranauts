@@ -14,12 +14,9 @@ public sealed class Plugin : BaseUnityPlugin
 	public const string PluginVersion = "0.1.0";
 
 	public static ConfigEntry<float> EngineeringWorkBonus;
-	public static ConfigEntry<float> EngineeringHeatBonus;
-	public static ConfigEntry<float> EngineeringCoolBonus;
 	public static ConfigEntry<float> ReactorThrusterBonus;
 	public static ConfigEntry<float> ReactorIntakeEfficiencyBonus;
 	public static ConfigEntry<float> TowingSecureSpeedBonus;
-	public static ConfigEntry<float> AirlockScrubberSpeedBonus;
 	public static ConfigEntry<float> WellnessFitnessBonus;
 	public static ConfigEntry<float> WellnessStrengthBonus;
 	public static ConfigEntry<float> RecreationPositiveBonus;
@@ -41,18 +38,6 @@ public sealed class Plugin : BaseUnityPlugin
 			1.0f,
 			"Ship-wide work-rate bonus added when the ship has at least one Engineering room."
 		);
-		EngineeringHeatBonus = Config.Bind(
-			"Room Effects",
-			"EngineeringHeatBonus",
-			1.0f,
-			"Heat bonus added when a heater is installed in an Engineering room."
-		);
-		EngineeringCoolBonus = Config.Bind(
-			"Room Effects",
-			"EngineeringCoolBonus",
-			1.0f,
-			"Cool bonus added when a cooler is installed in an Engineering room."
-		);
 		ReactorThrusterBonus = Config.Bind(
 			"Room Effects",
 			"ReactorThrusterBonus",
@@ -70,12 +55,6 @@ public sealed class Plugin : BaseUnityPlugin
 			"TowingSecureSpeedBonus",
 			0.5f,
 			"Speed bonus applied while securing a tow brace in a Towing room."
-		);
-		AirlockScrubberSpeedBonus = Config.Bind(
-			"Room Effects",
-			"AirlockScrubberSpeedBonus",
-			0.35f,
-			"Speed bonus applied to atmo scrubbers installed in an Airlock."
 		);
 		WellnessFitnessBonus = Config.Bind(
 			"Room Effects",

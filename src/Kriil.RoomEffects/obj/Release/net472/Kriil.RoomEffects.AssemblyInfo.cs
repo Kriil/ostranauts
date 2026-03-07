@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Kriil.RoomEffects")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61e0ac55a4e767bd38ece0f2a7203152090cf174")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23fdcc53c8c7bbcead919ac9c2f1ee4e4ed622ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("Kriil.RoomEffects")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Kriil.RoomEffects")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

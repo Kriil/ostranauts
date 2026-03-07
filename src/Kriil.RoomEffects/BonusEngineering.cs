@@ -4,30 +4,7 @@ internal static class BonusEngineering
 {
 	public static void ApplyBonuses(Room room)
 	{
-		double heatBonus = 0.0;
-		double coolBonus = 0.0;
-
-		CondTrigger heaterTrigger = DataHandler.GetCondTrigger("TIsHeater01Installed");
-		CondTrigger coolerTrigger = DataHandler.GetCondTrigger("TIsCooler01Installed");
-
-		if (RoomEffectUtils.HasInstalledDeviceInRoomByPoint(room, heaterTrigger, "use"))
-		{
-			heatBonus = Plugin.EngineeringHeatBonus.Value;
-			RoomEffectUtils.LogRoomEffect($"Setting Engineering Heat Bonus of {heatBonus * 100f}%.", "Engineering", room);
-		} else {
-			RoomEffectUtils.LogRoomEffect($"No heater device installed in room, setting bonus to 0%.", "Engineering", room);
-		}
-		if (RoomEffectUtils.HasInstalledDeviceInRoomByPoint(room, coolerTrigger, "use"))
-		{
-			coolBonus = Plugin.EngineeringCoolBonus.Value;
-			RoomEffectUtils.LogRoomEffect($"Setting Engineering Cool Bonus of {coolBonus * 100f}%.", "Engineering", room);
-		} else {
-			RoomEffectUtils.LogRoomEffect($"No cooler device installed in room, setting bonus to 0%.", "Engineering", room);
-		}
-
-
-		room.CO.SetCondAmount("StatRoomHeatSpeedBonus", heatBonus, 0.0);
-		room.CO.SetCondAmount("StatRoomCoolSpeedBonus", coolBonus, 0.0);
+		// Intentionally left empty for now. The heat and cool bonuses are being affected by FFU, and the work bonus is being applied ship-wide instead of per-room, so no room-specific bonuses to apply.
 	}
 
 	public static void ApplyShipBonuses(Ship ship, CondOwner shipCo)

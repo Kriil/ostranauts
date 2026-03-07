@@ -24,6 +24,7 @@ internal static class BonusGalley
 			return amount;
 		}
 
+		// TODO: Eating any amount seems to fully statiate the character so maybe check if their are other stats that can be affected instead
 		if (trigger.strCondName == "StatSatiety" || trigger.strCondName == "StatFood")
 		{
 			RoomEffectUtils.LogRoomEffect($"Applying galley satiety trigger '{trigger.strCondName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Galley", RoomEffectUtils.GetCondOwnerRoom(coUs));
@@ -46,6 +47,7 @@ internal static class BonusGalley
 			return amount;
 		}
 
+		// TODO: Eating any amount seems to fully statiate the character so maybe check if their are other stats that can be affected instead
 		if ((condName == "StatSatiety" || condName == "StatFood") && amount > 0.0)
 		{
 			RoomEffectUtils.LogRoomEffect($"Applying galley satiety condition '{condName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Galley", RoomEffectUtils.GetCondOwnerRoom(coUs));
