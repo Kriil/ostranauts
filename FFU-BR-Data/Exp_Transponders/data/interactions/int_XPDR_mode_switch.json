@@ -1,0 +1,81 @@
+[
+    {
+        "strName": "MSTransponder01OffUninstallSelector",
+        "strDesc": "[us] is selecting uninstall skill level.",
+        "aInverse": [
+            "MSTransponder01OffUninstallMaster,[us],[us]",
+            "MSTransponder01OffUninstallExpert,[us],[us]",
+            "MSTransponder01OffUninstallSeasoned,[us],[us]",
+            "MSTransponder01OffUninstallProficient,[us],[us]",
+            "MSTransponder01OffUninstallSkilled,[us],[us]",
+            "MSTransponder01OffUninstallBeginner,[us],[us]",
+            "MSTransponder01OffUninstallNovice,[us],[us]",
+            "MSTransponder01OffUninstallEnd,[us],[us]"
+        ],
+        "strThemType": "Other",
+        "bIgnoreFeelings": true
+    },
+    {
+        "strName": "MSTransponder01OffUninstallEnd",
+        "strDesc": "[us] is just uninstalled.",
+        "strThemType": "Self",
+        "bIgnoreFeelings": true,
+        "objLootModeSwitch": "ItmTransponder01LooseChance"
+    },
+    {
+        "strName": "MSTransponder01OffUninstallNovice",
+        "strDesc": "[us] is uninstalled by a Novice Engineer.",
+        "strThemType": "Self",
+        "bIgnoreFeelings": true,
+        "CTTestUs": "TIsHandledByNovice",
+        "objLootModeSwitch": "ItmTransponder01LooseChanceNovice"
+    },
+    {
+        "strName": "MSTransponder01OffUninstallBeginner",
+        "strDesc": "[us] is uninstalled by a Beginner Engineer.",
+        "strThemType": "Self",
+        "bIgnoreFeelings": true,
+        "CTTestUs": "TIsHandledByBeginner",
+        "objLootModeSwitch": "ItmTransponder01LooseChanceBeginner"
+    },
+    {
+        "strName": "MSTransponder01OffUninstallSkilled",
+        "strDesc": "[us] is uninstalled by a Skilled Engineer.",
+        "strThemType": "Self",
+        "bIgnoreFeelings": true,
+        "CTTestUs": "TIsHandledBySkilled",
+        "objLootModeSwitch": "ItmTransponder01LooseChanceSkilled"
+    },
+    {
+        "strName": "MSTransponder01OffUninstallProficient",
+        "strDesc": "[us] is uninstalled by a Proficient Engineer.",
+        "strThemType": "Self",
+        "bIgnoreFeelings": true,
+        "CTTestUs": "TIsHandledByProficient",
+        "objLootModeSwitch": "ItmTransponder01LooseChanceProficient"
+    },
+    {
+        "strName": "MSTransponder01OffUninstallSeasoned",
+        "strDesc": "[us] is uninstalled by a Seasoned Engineer.",
+        "strThemType": "Self",
+        "bIgnoreFeelings": true,
+        "CTTestUs": "TIsHandledBySeasoned",
+        "objLootModeSwitch": "ItmTransponder01LooseChanceSeasoned"
+    },
+    {
+        "strName": "MSTransponder01OffUninstallExpert",
+        "strDesc": "[us] is uninstalled by an Expert Engineer.",
+        "strThemType": "Self",
+        "bIgnoreFeelings": true,
+        "CTTestUs": "TIsHandledByExpert",
+        "objLootModeSwitch": "ItmTransponder01LooseChanceExpert"
+    },
+    {
+        "strName": "MSTransponder01OffUninstallMaster",
+        "strDesc": "[us] is uninstalled by a Master Engineer.",
+        "strThemType": "Self",
+        "bIgnoreFeelings": true,
+        "CTTestUs": "TIsHandledByMaster",
+        "objLootModeSwitch": "ItmTransponder01LooseChanceMaster"
+    }
+]

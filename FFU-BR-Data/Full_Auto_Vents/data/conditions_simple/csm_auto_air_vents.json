@@ -1,0 +1,9 @@
+[
+    {
+        "strName": "Simple Conditions",
+        "aValues": [
+            "IsReadyPressureSenseA","ReadyPressureSenseA","[us] is ready to sense 'Room A' point pressure.","0","0","Neutral","false",
+            "IsReadyPressureSenseB","ReadyPressureSenseB","[us] is ready to sense 'Room B' point pressure.","0","0","Neutral","false"
+        ]
+    }
+]

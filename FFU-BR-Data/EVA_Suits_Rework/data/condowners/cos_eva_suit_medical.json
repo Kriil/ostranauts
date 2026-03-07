@@ -1,0 +1,181 @@
+[
+    {
+        "strName": "OutfitHelmet08",
+        "strReference": "OutfitHelmet03",
+        "strNameFriendly": "Bingham-12 Medical EVA Helmet",
+        "strDesc" : "A variant of famous Bingham-12 EVA helmet for medical specialists and humanitarian operations. Has mediocre defense properties and quite decent durability.",
+        "strItemDef": "OutfitHelmet08",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x15000.0",
+            "StatMass=1.0x2.0",
+            "StatDamageMax=1.0x28",
+            "StatDismantleProgressMax=1.0x70",
+            "StatArmorCut=1.0x1.0",
+            "StatArmorBlunt=1.0x1.6"
+        ],
+        "aUpdateCommands": [
+            "Destructable,StatDamage,ACTHelmet08Damage,StatDamageMax,1.0"
+        ],
+        "strPortraitImg": "CrewHelmet08",
+        "mapSlotEffects": [
+            "head_out","HelmetEVA08",
+            "heldL","HeldItmDefaultL",
+            "heldR","HeldItmDefaultR"
+        ]
+    },
+    {
+        "strName": "OutfitHelmet08Dmg",
+        "strReference": "OutfitHelmet03Dmg",
+        "strNameFriendly": "Bingham-12 Medical EVA Helmet (Damaged)",
+        "strDesc" : "A variant of famous Bingham-12 EVA helmet for medical specialists and humanitarian operations. Has mediocre defense properties and quite decent durability.",
+        "strItemDef": "OutfitHelmet08Dmg",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x3000.0",
+            "StatMass=1.0x2.0",
+            "StatDamageMax=1.0x42",
+            "StatRepairProgressMax=1.0x1050",
+            "StatArmorCut=1.0x0.2",
+            "StatArmorBlunt=1.0x0.3"
+        ],
+        "strPortraitImg": "CrewHelmet08Dmg02",
+        "mapSlotEffects": [
+            "head_out","HelmetEVA08Dmg",
+            "heldL","HeldItmDefaultL",
+            "heldR","HeldItmDefaultR"
+        ]
+    },
+    {
+        "strName": "OutfitEVA08",
+        "strReference": "OutfitEVA01",
+        "strNameFriendly": "Bingham-12 Medical EVA Suit",
+        "strDesc" : "A variant of Bingham-12 EVA suit for medical specialists. Lacks shoulder lamp mount, but has large backpack with medpack and small rations storage. Provides mediocre protection. Has good support servos and decent exoskeleton.",
+        "strItemDef": "OutfitEVA08",
+        "strLoot": "ItmPocketsEVA08",
+        "aSlotsWeHave": [
+            "pocket_EVABackpack",
+            "pocket_EVAClipPoint",
+            "pocket_EVAMiscPouch",
+            "pocket_EVAMedPouch",
+            "pocket_EVAFoodPouch",
+            "pocket_EVABatt",
+            "pocket_EVAO2",
+            "pocket_EVACO2"
+        ],
+        "dictSlotsLayout": {
+            "pocket_EVAClipPoint": {"x": 0.0, "y": 0.0, "z": 0.0},
+            "pocket_EVAMiscPouch": {"x": 0.0, "y": -36.0, "z": 0.0},
+            "pocket_EVABatt": {"x": 0.0, "y": -56.0, "z": 0.0},
+            "pocket_EVAO2": {"x": 0.0, "y": -76.0, "z": 0.0},
+            "pocket_EVACO2": {"x": 0.0, "y": -96.0, "z": 0.0}
+        },
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x37500.0",
+            "StatMass=1.0x90.0",
+            "StatDamageMax=1.0x24",
+            "StatDismantleProgressMax=1.0x350",
+            "StatArmorCut=1.0x1.0",
+            "StatArmorBlunt=1.0x1.6"
+        ],
+        "aUpdateCommands": [
+            "GasRespire2,HelmetCO2,null",
+            "GasPump,HelmetO2,null",
+            "Destructable,StatDamage,ACTEVASuit08Destroy,StatDamageMax,1.0"
+        ],
+        "strPortraitImg": "CrewSuit08",
+        "mapSlotEffects": [
+            "shirt_out","BodyEVA08",
+            "heldL","HeldItmDefaultSoftL",
+            "heldR","HeldItmDefaultSoftR"
+        ],
+        "jsonPI": "EVASuit08"
+    },
+    {
+        "strName": "OutfitEVA08Off",
+        "strReference": "OutfitEVA01Off",
+        "strNameFriendly": "Bingham-12 Medical EVA Suit (Off)",
+        "strDesc" : "A variant of Bingham-12 EVA suit for medical specialists. Lacks shoulder lamp mount, but has large backpack with medpack and small rations storage. Provides mediocre protection. Has good support servos and decent exoskeleton.",
+        "strItemDef": "OutfitEVA08",
+        "strLoot": "ItmPocketsEVA08",
+        "aSlotsWeHave": [
+            "pocket_EVABackpack",
+            "pocket_EVAClipPoint",
+            "pocket_EVAMiscPouch",
+            "pocket_EVAMedPouch",
+            "pocket_EVAFoodPouch",
+            "pocket_EVABatt",
+            "pocket_EVAO2",
+            "pocket_EVACO2"
+        ],
+        "dictSlotsLayout": {
+            "pocket_EVAClipPoint": {"x": 0.0, "y": 0.0, "z": 0.0},
+            "pocket_EVAMiscPouch": {"x": 0.0, "y": -36.0, "z": 0.0},
+            "pocket_EVABatt": {"x": 0.0, "y": -56.0, "z": 0.0},
+            "pocket_EVAO2": {"x": 0.0, "y": -76.0, "z": 0.0},
+            "pocket_EVACO2": {"x": 0.0, "y": -96.0, "z": 0.0}
+        },
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x37500.0",
+            "StatMass=1.0x90.0",
+            "StatDamageMax=1.0x24",
+            "StatDismantleProgressMax=1.0x350",
+            "StatArmorCut=1.0x1.0",
+            "StatArmorBlunt=1.0x1.6"
+        ],
+        "aUpdateCommands": [
+            "GasRespire2,HelmetCO2,null",
+            "GasPump,HelmetO2,null",
+            "Destructable,StatDamage,ACTEVASuit08Destroy,StatDamageMax,1.0"
+        ],
+        "strPortraitImg": "CrewSuit08",
+        "mapSlotEffects": [
+            "shirt_out","BodyEVA08Off",
+            "heldL","HeldItmDefaultSoftL",
+            "heldR","HeldItmDefaultSoftR"
+        ],
+        "jsonPI": "EVASuit08"
+    },
+    {
+        "strName": "OutfitEVA08Dmg",
+        "strReference": "OutfitEVA01Dmg",
+        "strNameFriendly": "Bingham-12 Medical EVA Suit (Damaged)",
+        "strDesc" : "A variant of Bingham-12 EVA suit for medical specialists. Lacks shoulder lamp mount, but has large backpack with medpack and small rations storage. Provides mediocre protection. Has good support servos and decent exoskeleton.",
+        "strItemDef": "OutfitEVA08Dmg",
+        "strLoot": "ItmPocketsEVA08",
+        "aSlotsWeHave": [
+            "pocket_EVABackpack",
+            "pocket_EVAClipPoint",
+            "pocket_EVAMiscPouch",
+            "pocket_EVAMedPouch",
+            "pocket_EVAFoodPouch",
+            "pocket_EVABatt",
+            "pocket_EVAO2",
+            "pocket_EVACO2"
+        ],
+        "dictSlotsLayout": {
+            "pocket_EVAClipPoint": {"x": 0.0, "y": 0.0, "z": 0.0},
+            "pocket_EVAMiscPouch": {"x": 0.0, "y": -36.0, "z": 0.0},
+            "pocket_EVABatt": {"x": 0.0, "y": -56.0, "z": 0.0},
+            "pocket_EVAO2": {"x": 0.0, "y": -76.0, "z": 0.0},
+            "pocket_EVACO2": {"x": 0.0, "y": -96.0, "z": 0.0}
+        },
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x7500.0",
+            "StatMass=1.0x90.0",
+            "StatDamageMax=1.0x36",
+            "StatRepairProgressMax=1.0x3150",
+            "StatArmorCut=1.0x0.2",
+            "StatArmorBlunt=1.0x0.3"
+        ],
+        "strPortraitImg": "CrewSuit08Dmg02",
+        "mapSlotEffects": [
+            "shirt_out","BodyEVA08Dmg",
+            "heldL","HeldItmDefaultSoftL",
+            "heldR","HeldItmDefaultSoftR"
+        ]
+    }
+]

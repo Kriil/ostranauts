@@ -1,0 +1,42 @@
+[
+    {
+        "strName": "Robot",
+        "mapIAHist2": {
+            "~StatSecurity": {},
+            "*StatSelfRespect": {
+                "strCondName": "StatSelfRespect",
+                "mapInteractions": {
+                    "SeekKOAllow": {
+                        "strName": "SeekKOAllow",
+                        "nIterations": 41,
+                        "fTotalValue": 2461.0
+                    }
+                }
+            },
+            "StatSolidTemp": {
+                "mapInteractions": {
+                    "ACTExcerciseTreadmillDo": {
+                        "strName": "ACTExcerciseTreadmillDo",
+                        "nIterations": 276,
+                        "fTotalValue": 20.42594
+                    },
+                    "ACTExcerciseTreadmillDoHot": {
+                        "strName": "ACTExcerciseTreadmillDoHot",
+                        "nIterations": 242,
+                        "fTotalValue": 9.623437
+                    },
+                    "~ACTExcerciseStrengthTrainerDo": {},
+                    "*ACTExcerciseStrengthTrainerDoHot": {
+                        "strName": "ACTExcerciseStrengthTrainerDoHot",
+                        "nIterations": 555
+                    },
+                    "ACTSomethingUnexpected": {
+                        "strName": "ACTSomethingUnexpected",
+                        "nIterations": 777,
+                        "fTotalValue": 77
+                    }
+                }
+            }
+        }
+    }
+]

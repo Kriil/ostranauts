@@ -1,0 +1,18 @@
+[
+    {
+        "strName": "CONDEVAMountLamp01L",
+        "aCOs": [
+            "IsCrewHandLLamp=1.0x9"
+        ],
+        "aLoots": [],
+        "strType": "condition"
+    },
+    {
+        "strName": "CONDEVAMountLamp01LRemove",
+        "aCOs": [
+            "-IsCrewHandLLamp=1.0x9"
+        ],
+        "aLoots": [],
+        "strType": "condition"
+    }
+]

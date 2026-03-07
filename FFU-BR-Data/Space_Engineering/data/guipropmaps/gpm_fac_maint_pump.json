@@ -1,0 +1,23 @@
+[
+    {
+        "strName": "MaintenancePumpUI",
+        "dictGUIPropMap": [
+            "strGUIPrefab","GUIOnOff",
+            "strFriendlyName","MaintenancePump",
+            "strGUIPrefabRight",null,
+            "strGUIPrefabLeft",null,
+            "strGUIPrefabUp",null,
+            "strGUIPrefabDown",null,
+            "strTitle","Maintenance Pump Control"
+        ]
+    },
+    {
+        "strName": "MaintenancePumpRoutine",
+        "dictGUIPropMap": [
+            "strPoint",null,
+            "strFriendlyName","Maintenance Pump Routine",
+            "dfUpdateInterval","10.0",
+            "mapTests","TIsMaintenancePumpUnlockedIdle,ACTMaintenancePumpInitFromIdle,TIsMaintenancePumpUnlockedWorking,ACTMaintenancePumpInitFromWorking,TIsMaintenancePumpUnlockedHalted,ACTMaintenancePumpInitFromHalted"
+        ]
+    }
+]

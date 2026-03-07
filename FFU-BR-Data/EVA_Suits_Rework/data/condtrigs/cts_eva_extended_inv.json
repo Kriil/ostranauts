@@ -1,0 +1,86 @@
+[
+    {
+        "strName": "TIsFitContainerEVAProvisions",
+        "strCondName": "",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [],
+        "aForbids": [],
+        "aTriggers": [
+            "TIsDrinkLiquid",
+            "TIsNotRawFood"
+        ],
+        "bAND": false
+    },
+    {
+        "strName": "TIsFitContainerEVAMedical",
+        "strCondName": "",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [
+            "IsHygieneItem",
+            "IsDrug"
+        ],
+        "aForbids": [],
+        "aTriggers": [
+            "TIsMedicalSplint",
+            "TIsCleanBandage"
+        ],
+        "bAND": false
+    },
+    {
+        "strName": "TIsFitContainerEVAAmmo",
+        "strCondName": "",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [
+            "IsAmmo"
+        ],
+        "aForbids": [],
+        "aTriggers": [],
+        "bAND": true
+    },
+    {
+        "strName": "TIsFitContainerEVAWeapons",
+        "strCondName": "",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [
+            "IsWeapon"
+        ],
+        "aForbids": [],
+        "aTriggers": [],
+        "bAND": true
+    },
+    {
+        "strName": "TIsFitContainerEVAMisc",
+        "strCondName": "",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [],
+        "aForbids": [],
+        "aTriggers": [
+            "TIsPocketComputer",
+            "TIsPocketDocument",
+            "TIsPDACartridge"
+        ],
+        "bAND": false
+    },
+    {
+        "strName": "TIsFitContainerEVABackpack",
+        "strCondName": "",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [
+            "IsSolid"
+        ],
+        "aForbids": [
+            "IsInstalled",
+            "IsOversized",
+            "IsCrate",
+            "IsBackpack"
+        ],
+        "aTriggers": [],
+        "bAND": true
+    }
+]

@@ -1,0 +1,100 @@
+[
+    {
+        "strName": "TUpDoneByNovice",
+        "strCondName": "IsHandledByNovice",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TDnDoneByNovice",
+        "strCondName": "IsHandledByNovice",
+        "fChance": 1.0,
+        "fCount": -1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TUpDoneByBeginner",
+        "strCondName": "IsHandledByBeginner",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TDnDoneByBeginner",
+        "strCondName": "IsHandledByBeginner",
+        "fChance": 1.0,
+        "fCount": -1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TUpDoneBySkilled",
+        "strCondName": "IsHandledBySkilled",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TDnDoneBySkilled",
+        "strCondName": "IsHandledBySkilled",
+        "fChance": 1.0,
+        "fCount": -1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TUpDoneByProficient",
+        "strCondName": "IsHandledByProficient",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TDnDoneByProficient",
+        "strCondName": "IsHandledByProficient",
+        "fChance": 1.0,
+        "fCount": -1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TUpDoneBySeasoned",
+        "strCondName": "IsHandledBySeasoned",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TDnDoneBySeasoned",
+        "strCondName": "IsHandledBySeasoned",
+        "fChance": 1.0,
+        "fCount": -1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TUpDoneByExpert",
+        "strCondName": "IsHandledByExpert",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TDnDoneByExpert",
+        "strCondName": "IsHandledByExpert",
+        "fChance": 1.0,
+        "fCount": -1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TUpDoneByMaster",
+        "strCondName": "IsHandledByMaster",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "bAND": true
+    },
+    {
+        "strName": "TDnDoneByMaster",
+        "strCondName": "IsHandledByMaster",
+        "fChance": 1.0,
+        "fCount": -1.0,
+        "bAND": true
+    }
+]

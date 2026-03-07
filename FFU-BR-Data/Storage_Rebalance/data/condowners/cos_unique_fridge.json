@@ -1,0 +1,42 @@
+[
+    {
+        "strName": "ItmFridge01",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x1500.0"
+        ],
+        "strContainerCT": "TIsFitContainerFridge",
+        "nContainerHeight": 12,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmFridge01Loose",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x1500.0"
+        ],
+        "strContainerCT": "TIsFitContainerFridge",
+        "nContainerHeight": 12,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmFridge01Dmg",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x300.0"
+        ],
+        "strContainerCT": "TIsFitContainerFridge",
+        "nContainerHeight": 12,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmFridge01DmgLoose",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x300.0"
+        ],
+        "strContainerCT": "TIsFitContainerFridge",
+        "nContainerHeight": 12,
+        "nContainerWidth": 6
+    }
+]

@@ -1,0 +1,104 @@
+[
+    {
+        "strName": "Transponder01OffUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPNovice",
+        "CTUs": "TIsEngElectronicNovice",
+        "strFinishInteraction": "MSTransponder01OffUninstallSelector",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Novice",
+        "strLootOut": null,
+        "aLootCOs": []
+    },
+    {
+        "strName": "Transponder01OnRUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPNovice",
+        "CTUs": "TIsEngElectronicNovice",
+        "strFinishInteraction": "MSTransponder01OffUninstallSelector",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Novice",
+        "strLootOut": null,
+        "aLootCOs": []
+    },
+    {
+        "strName": "Transponder01OffUninstallBeginner",
+        "strReference": "Transponder01OffUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPBeginner",
+        "CTUs": "TIsEngElectronicBeginner",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Beginner"
+    },
+    {
+        "strName": "Transponder01OnRUninstallBeginner",
+        "strReference": "Transponder01OnRUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPBeginner",
+        "CTUs": "TIsEngElectronicBeginner",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Beginner"
+    },
+    {
+        "strName": "Transponder01OffUninstallSkilled",
+        "strReference": "Transponder01OffUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPSkilled",
+        "CTUs": "TIsEngElectronicSkilled",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Skilled"
+    },
+    {
+        "strName": "Transponder01OnRUninstallSkilled",
+        "strReference": "Transponder01OnRUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPSkilled",
+        "CTUs": "TIsEngElectronicSkilled",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Skilled"
+    },
+    {
+        "strName": "Transponder01OffUninstallProficient",
+        "strReference": "Transponder01OffUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPProficient",
+        "CTUs": "TIsEngElectronicProficient",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Proficient"
+    },
+    {
+        "strName": "Transponder01OnRUninstallProficient",
+        "strReference": "Transponder01OnRUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPProficient",
+        "CTUs": "TIsEngElectronicProficient",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Proficient"
+    },
+    {
+        "strName": "Transponder01OffUninstallSeasoned",
+        "strReference": "Transponder01OffUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPSeasoned",
+        "CTUs": "TIsEngElectronicSeasoned",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Seasoned"
+    },
+    {
+        "strName": "Transponder01OnRUninstallSeasoned",
+        "strReference": "Transponder01OnRUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPSeasoned",
+        "CTUs": "TIsEngElectronicSeasoned",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Seasoned"
+    },
+    {
+        "strName": "Transponder01OffUninstallExpert",
+        "strReference": "Transponder01OffUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPExpert",
+        "CTUs": "TIsEngElectronicExpert",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Expert"
+    },
+    {
+        "strName": "Transponder01OnRUninstallExpert",
+        "strReference": "Transponder01OnRUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPExpert",
+        "CTUs": "TIsEngElectronicExpert",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Expert"
+    },
+    {
+        "strName": "Transponder01OffUninstallMaster",
+        "strReference": "Transponder01OffUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPMaster",
+        "CTUs": "TIsEngElectronicMaster",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Master"
+    },
+    {
+        "strName": "Transponder01OnRUninstallMaster",
+        "strReference": "Transponder01OnRUninstall",
+        "strInteractionTemplate": "ACTUninstallTEMPMaster",
+        "CTUs": "TIsEngElectronicMaster",
+        "strAllowLootCTsThem": "CONDUninstallProgressx5Master"
+    }
+]

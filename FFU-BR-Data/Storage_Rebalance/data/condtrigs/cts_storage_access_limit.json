@@ -1,0 +1,68 @@
+[
+    {
+        "strName": "TIsOpenInInv",
+        "aForbids": [],
+        "aTriggers": [
+            "TIsNotHiddenOrLocked",
+            "TIsInstalledFurniture",
+            "TIsInstalledIndustrial",
+            "TIsInstalledElectronics",
+            "TIsInstalledHVAC"
+        ],
+        "bAND": false
+    },
+    {
+        "strName": "TIsNotHiddenOrLocked",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aForbids": [
+            "IsCategoryFurniture",
+            "IsCategoryIndustrialProducts",
+            "IsCategoryElectronics",
+            "IsCategoryHVAC",
+            "IsHiddenInv",
+            "IsLocked"
+        ],
+        "bAND": true
+    },
+    {
+        "strName": "TIsInstalledFurniture",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [
+            "IsCategoryFurniture",
+            "IsInstalled"
+        ],
+        "bAND": true
+    },
+    {
+        "strName": "TIsInstalledIndustrial",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [
+            "IsCategoryIndustrialProducts",
+            "IsInstalled"
+        ],
+        "bAND": true
+    },
+    {
+        "strName": "TIsInstalledElectronics",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [
+            "IsCategoryElectronics",
+            "IsInstalled"
+        ],
+        "bAND": true
+    },
+    {
+        "strName": "TIsInstalledHVAC",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [
+            "IsCategoryHVAC",
+            "IsInstalled"
+        ],
+        "bAND": true
+    }
+]

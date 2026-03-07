@@ -1,0 +1,10 @@
+[
+    {
+        "strName": "Expertise: Tow Braces",
+        "strAuthor": "WarStalkeR",
+        "strModURL": "https://discord.com/channels/302515943945273347/1312016085243007027/1312016085243007027",
+        "strGameVersion": "0.14.3.13",
+        "strModVersion": "1.0",
+        "strNotes": "Speed of securing and releasing vessels with tow braces now depends on Mechanical Engineering Skills of the character."
+    }
+]

@@ -1,0 +1,16 @@
+[
+    {
+        "strName": "ItmToolLaserTorch01",
+        "aStartingConds": [
+            "--INS--11",
+            "IsToolBuffing=1.0x2.0"
+        ]
+    },
+    {
+        "strName": "ItmToolLaserTorch01Dmg",
+        "aStartingConds": [
+            "--INS--12",
+            "IsToolBuffing=1.0x2.0"
+        ]
+    }
+]

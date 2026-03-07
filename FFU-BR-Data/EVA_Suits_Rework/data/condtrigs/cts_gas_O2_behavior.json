@@ -1,0 +1,33 @@
+[
+    {
+        "strName": "TIsGasValidO2Any",
+        "strCondName": "",
+        "fChance": 1.0,
+        "fCount": 1.0,
+        "aReqs": [
+            "DcGasPpO2",
+            "DcGasPpO2Part",
+            "DcGasPpO2Safe",
+            "DcGasPpO2Abundant"
+        ],
+        "aForbids": [],
+        "aTriggers": [],
+        "bAND": false
+    },
+    {
+        "strName": "TIsGasPressureSafeO2",
+        "aReqs": [
+            "IsRoom"
+        ],
+        "aTriggers": [
+            "TIsGasValidO2Any"
+        ]
+    },
+    {
+        "strName": "TIsO2PPLow",
+        "aForbids": [
+            "DcGasPpO2Safe",
+            "DcGasPpO2Abundant"
+        ]
+    }
+]

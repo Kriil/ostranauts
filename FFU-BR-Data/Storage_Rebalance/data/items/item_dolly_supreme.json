@@ -1,0 +1,24 @@
+[
+    {
+        "strName": "ItmDolly02Empty",
+        "strImg": "ItmDolly02EmptyImg",
+        "strImgNorm": "ItmDolly02EmptyNorm",
+        "strImgDamaged": "ItmDolly02EmptyDmgImg"
+    },
+    {
+        "strName": "ItmDolly02Full",
+        "strImg": "ItmDolly02FilledImg",
+        "strImgNorm": "ItmDolly02FilledNorm",
+        "strImgDamaged": "ItmDolly02FilledDmgImg"
+    },
+    {
+        "strName": "ItmDolly02EmptyDmg",
+        "strImg": "ItmDolly02EmptyDmgImg",
+        "strImgNorm": "ItmDolly02EmptyDmgNorm"
+    },
+    {
+        "strName": "ItmDolly02FullDmg",
+        "strImg": "ItmDolly02FilledDmgImg",
+        "strImgNorm": "ItmDolly02FilledDmgNorm"
+    }
+]
