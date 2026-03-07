@@ -1,9 +1,0 @@
-[
-    {
-        "strName": "ItmRandomEngineeringLoot",
-        "aLoots": [
-            "--ADD--",
-            "ItmMaintenancePump01DmgLoose=0.005x1"
-        ]
-    }
-]

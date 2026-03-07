@@ -1,9 +1,0 @@
-[
-    {
-        "strName": "CTNaniteConsumable",
-        "aCOs": [
-            "TIsNaniteConsumable=1.0x1"
-        ],
-        "strType": "trigger"
-    }
-]
