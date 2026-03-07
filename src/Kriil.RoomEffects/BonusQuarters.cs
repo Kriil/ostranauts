@@ -1,5 +1,6 @@
 namespace Kriil.Ostranauts.RoomEffects;
 
+// TODO: Game doesn't seem to distinguish between basic and luxury quarters like it supposed to.  Game bug? Ship rater ias not showing luxury quarters even though conditions are met.
 internal static class BonusQuarters
 {
 	private const string CondRoomSleepBonus = "StatRoomSleepEfficiencyBonus";
