@@ -1,0 +1,54 @@
+[
+    {
+        "strName": "ItmStorageBinFloor1x101",
+        "strNameShort": "Cargo Cellar",
+        "strNameFriendly": "Subfloor Cellar",
+        "strDesc": "Rakow's \"Vanilla\" series of subfloor storage bins extend storage below the floor. Can't store cumbersome and oversized items.\n\nWARNING: Subfloor bins act as sealed flooring, so uninstalling exposes ship interior to vacuum.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x3000.0"
+        ],
+        "strContainerCT": "TIsFitContainerCrate",
+        "nContainerHeight": 4,
+        "nContainerWidth": 4
+    },
+    {
+        "strName": "ItmStorageBinFloor1x101Loose",
+        "strNameShort": "Cargo Cellar",
+        "strNameFriendly": "Subfloor Cellar (Loose)",
+        "strDesc": "Rakow's \"Vanilla\" series of  subfloor storage bins extend storage below the floor. Can't store cumbersome and oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x3000.0"
+        ],
+        "strContainerCT": "TIsFitContainerCrate",
+        "nContainerHeight": 4,
+        "nContainerWidth": 4
+    },
+    {
+        "strName": "ItmStorageBinFloor1x101Dmg",
+        "strNameShort": "Cargo Cellar",
+        "strNameFriendly": "Subfloor Cellar (Damaged)",
+        "strDesc": "Rakow's \"Vanilla\" series of  subfloor storage bins extend storage below the floor. Can't store cumbersome and oversized items.\n\nWARNING: Subfloor bins act as sealed flooring, so damaged bins expose ship interior to vacuum.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x600.0"
+        ],
+        "strContainerCT": "TIsFitContainerCrate",
+        "nContainerHeight": 4,
+        "nContainerWidth": 4
+    },
+    {
+        "strName": "ItmStorageBinFloor1x101Patch",
+        "strNameShort": "Cargo Cellar",
+        "strNameFriendly": "Subfloor Cellar (Patched)",
+        "strDesc": "Rakow's \"Vanilla\" series of  subfloor storage bins extend storage below the floor. Can't store cumbersome and oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x600.0"
+        ],
+        "strContainerCT": "TIsFitContainerCrate",
+        "nContainerHeight": 4,
+        "nContainerWidth": 4
+    }
+]

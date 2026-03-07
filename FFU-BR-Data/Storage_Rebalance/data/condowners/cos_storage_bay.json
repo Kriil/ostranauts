@@ -1,0 +1,54 @@
+[
+    {
+        "strName": "ItmRackUnder01",
+        "strNameShort": "Storage Bay",
+        "strNameFriendly": "Storage Bay",
+        "strDesc": "Rakow's \"Silo\" storage bay lets fastidious spacers secure their valuables out of sight underfoot. Can store even oversized items.\n\nWARNING: Bay acts as sealed flooring, so uninstalling exposes ship interior to vacuum.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x20000.0"
+        ],
+        "strContainerCT": "TIsFitContainerStorage",
+        "nContainerHeight": 12,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmRackUnder01Loose",
+        "strNameShort": "Storage Bay",
+        "strNameFriendly": "Storage Bay (Loose)",
+        "strDesc": "Rakow's \"Silo\" storage bay lets fastidious spacers secure their valuables out of sight underfoot. Can store even oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x20000.0"
+        ],
+        "strContainerCT": "TIsFitContainerStorage",
+        "nContainerHeight": 12,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmRackUnder01Dmg",
+        "strNameShort": "Storage Bay",
+        "strNameFriendly": "Storage Bay (Damaged)",
+        "strDesc": "Rakow's \"Silo\" storage bay lets fastidious spacers secure their valuables out of sight underfoot. Can store even oversized items.\n\nWARNING: Bay acts as sealed flooring, so damage exposes ship interior to vacuum.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x4000.0"
+        ],
+        "strContainerCT": "TIsFitContainerStorage",
+        "nContainerHeight": 12,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmRackUnder01DmgLoose",
+        "strNameShort": "Storage Bay",
+        "strNameFriendly": "Storage Bay (Loose, Damaged)",
+        "strDesc": "Rakow's \"Silo\" storage bay lets fastidious spacers secure their valuables out of sight underfoot. Can store even oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x4000.0"
+        ],
+        "strContainerCT": "TIsFitContainerStorage",
+        "nContainerHeight": 12,
+        "nContainerWidth": 6
+    }
+]

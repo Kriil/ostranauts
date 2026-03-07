@@ -1,0 +1,27 @@
+[
+    {
+        "strName": "GUITradeBuyOKLGLicense",
+        "strTitle": "Buy Daily License ($5,000)",
+        "strTooltip": "Purchases a 24-hour \"Yellow\" official salvage license."
+    },
+    {
+        "strName": "GUITradeBuyOKLGLicenseB",
+        "strTitle": "Buy Weekly License ($32,000)",
+        "strTooltip": "Purchases a 7-day \"Red\" official salvage license."
+    },
+    {
+        "strName": "GUITradeBuyOKLGLicenseC",
+        "strTitle": "Buy Monthly License ($120,000)",
+        "strTooltip": "Purchases a 30-day \"Blue\" official salvage license."
+    },
+    {
+        "strName": "GUITradeBuyOKLGLicenseD",
+        "strTitle": "Buy Seasonal License ($300,000)",
+        "strTooltip": "Purchases a 3-month \"Silver\" official salvage license."
+    },
+    {
+        "strName": "GUITradeBuyOKLGLicenseE",
+        "strTitle": "Buy Annual License ($1,000,000)",
+        "strTooltip": "Purchases a 12-month \"Black\" official salvage license."
+    }
+]

@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"name": "Mods",
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.readonlyInclude": {
+			"D:\\**\\Steam\\steamapps\\common\\Ostranauts\\Ostranauts_Data\\Mods\\Zero_Ref\\**\\*.*": true,
+			"D:\\**\\Steam\\steamapps\\common\\Ostranauts\\Ostranauts_Data\\Mods\\Zero_Ref\\**\\**\\*.*": true,
+			"D:\\**\\Steam\\steamapps\\common\\Ostranauts\\Ostranauts_Data\\Mods\\Zero_Ref\\**\\**\\**\\*.*": true
+		},
+		"files.exclude": {
+			"**/Update_References.bat": true,
+			"**/LICENSE": true,
+			"**/.vscode": true,
+			"**/.gitignore": true,
+			"**/.gitattributes": true,
+			"**/*.code-workspace": true
+		},
+		"[JSON]": {
+			"editor.insertSpaces": true,
+			"editor.tabSize": 4
+		}
+	}
+}

@@ -1,0 +1,54 @@
+[
+    {
+        "strName": "ItmStorageBin2x101",
+        "strNameShort": "Medium Bin",
+        "strNameFriendly": "Medium Bin",
+        "strDesc": "Rakow's \"Vanilla\" series of bulkhead storage bins are not as voluminous as free-standing storage options, but they tuck away, a premium on crowded vessels. Medium variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x1250.0"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 2,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmStorageBin2x101Loose",
+        "strNameShort": "Medium Bin",
+        "strNameFriendly": "Medium Bin (Loose)",
+        "strDesc": "Rakow's \"Vanilla\" series of bulkhead storage bins are not as voluminous as free-standing storage options, but they tuck away, a premium on crowded vessels. Medium variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x1250.0"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 2,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmStorageBin2x101Dmg",
+        "strNameShort": "Medium Bin",
+        "strNameFriendly": "Medium Bin (Damaged)",
+        "strDesc": "Rakow's \"Vanilla\" series of bulkhead storage bins are not as voluminous as free-standing storage options, but they tuck away, a premium on crowded vessels. Medium variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x250.0"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 2,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmStorageBin2x101DmgLoose",
+        "strNameShort": "Medium Bin",
+        "strNameFriendly": "Medium Bin (Loose, Damaged)",
+        "strDesc": "Rakow's \"Vanilla\" series of bulkhead storage bins are not as voluminous as free-standing storage options, but they tuck away, a premium on crowded vessels. Medium variant. Can only store small items and ammo.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x250.0"
+        ],
+        "strContainerCT": "TIsFitContainerBin",
+        "nContainerHeight": 2,
+        "nContainerWidth": 6
+    }
+]

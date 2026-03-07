@@ -1,0 +1,14 @@
+[
+    {
+        "strName": "Sharp Laser Torch Patch",
+        "strAuthor": "WarStalkeR",
+        "strModURL": "https://discord.com/channels/302515943945273347/1312016085243007027/1312016085243007027",
+        "strGameVersion": "0.14.3.8",
+        "strModVersion": "1.0",
+        "strNotes": "Save patcher for Sharp Laser Torch mod. Use once when loading old save game with old laser torches, then disable.",
+        "changesMap": {
+            "ItmToolLaserTorch01": {"Sync_Conditions": []},
+            "ItmToolLaserTorch01Dmg": {"Sync_Conditions": []}
+        }
+    }
+]

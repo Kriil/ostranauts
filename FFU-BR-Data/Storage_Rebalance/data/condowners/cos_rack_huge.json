@@ -1,0 +1,54 @@
+[
+    {
+        "strName": "ItmRack2x2C01",
+        "strNameShort": "Huge Rack",
+        "strNameFriendly": "Huge Rack",
+        "strDesc": "Rakow's \"Replete\"-series of vertical aluminum shelving: a utilitarian staple in semi-secure micro-g stowage and lading. Huge variant. Can't store oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x8500.0"
+        ],
+        "strContainerCT": "TIsFitContainerRack",
+        "nContainerHeight": 6,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmRack2x2C01Loose",
+        "strNameShort": "Huge Rack",
+        "strNameFriendly": "Huge Rack (Loose)",
+        "strDesc": "Rakow's \"Replete\"-series of vertical aluminum shelving: a utilitarian staple in semi-secure micro-g stowage and lading. Huge variant. Can't store oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x8500.0"
+        ],
+        "strContainerCT": "TIsFitContainerRack",
+        "nContainerHeight": 6,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmRack2x2C01Dmg",
+        "strNameShort": "Huge Rack",
+        "strNameFriendly": "Huge Rack (Damaged)",
+        "strDesc": "Rakow's \"Replete\"-series of vertical aluminum shelving: a utilitarian staple in semi-secure micro-g stowage and lading. Huge variant. Can't store oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x1700.0"
+        ],
+        "strContainerCT": "TIsFitContainerRack",
+        "nContainerHeight": 6,
+        "nContainerWidth": 6
+    },
+    {
+        "strName": "ItmRack2x2C01DmgLoose",
+        "strNameShort": "Huge Rack",
+        "strNameFriendly": "Huge Rack (Loose, Damaged)",
+        "strDesc": "Rakow's \"Replete\"-series of vertical aluminum shelving: a utilitarian staple in semi-secure micro-g stowage and lading. Huge variant. Can't store oversized items.",
+        "aStartingConds": [
+            "--MOD--",
+            "StatBasePrice=1.0x1700.0"
+        ],
+        "strContainerCT": "TIsFitContainerRack",
+        "nContainerHeight": 6,
+        "nContainerWidth": 6
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "strName": "Storage Rebalance",
+        "strAuthor": "WarStalkeR",
+        "strModURL": "https://discord.com/channels/302515943945273347/1312016085243007027/1312016085243007027",
+        "strGameVersion": "0.14.3.8",
+        "strModVersion": "1.0",
+        "strNotes": "Rebalances all installable (and some portable) storage compartments and by expanding their capacity and enforcing specific type-based specialization.",
+        "removeIds": {
+            "cooverlays": [
+                "ItmStorageBin2x2C04",
+                "ItmStorageBin2x2C04Loose",
+                "ItmStorageBin2x2C04Dmg",
+                "ItmStorageBin2x2C04DmgLoose",
+                "ItmStorageBin2x104",
+                "ItmStorageBin2x104Loose",
+                "ItmStorageBin2x104Dmg",
+                "ItmStorageBin2x104DmgLoose"
+            ]
+        }
+    }
+]

@@ -1,0 +1,49 @@
+[
+    {
+        "strName": "CONDActionLock",
+        "aCOs": [
+            "StatWorkLock=1.0x1000"
+        ],
+        "strType": "condition"
+    },
+    {
+        "strName": "CONDMntPumpSwitch",
+        "aCOs": [
+            "IsModeSwitching=1.0x1",
+            "-StatWorkLock=1.0x1000"
+        ],
+        "aLoots": [],
+        "strType": "condition"
+    },
+    {
+        "strName": "CONDReloadNanites",
+        "aCOs": [
+            "StatReadyNanites=1.0x25",
+            "StatWorkLock=1.0x1000"
+        ],
+        "strType": "condition"
+    },
+    {
+        "strName": "CONDUseNanites",
+        "aCOs": [
+            "-StatReadyNanites=1.0x1",
+            "StatWorkLock=1.0x1000"
+        ],
+        "strType": "condition"
+    },
+    {
+        "strName": "CONDApplyNanites",
+        "aCOs": [
+            "-StatDamage=1.0x100"
+        ],
+        "strType": "condition"
+    },
+    {
+        "strName": "CONDSoftUnlock",
+        "aCOs": [
+            "-StatWorkLock=1.0x1"
+        ],
+        "aLoots": [],
+        "strType": "condition"
+    }
+]

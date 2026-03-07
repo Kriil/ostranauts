@@ -1,0 +1,30 @@
+[
+    {
+        "strName": "IsSafeRoomA",
+        "strNameFriendly": "Room A Safe",
+        "strColor": "Neutral",
+        "strDesc": "[us] shows that 'Room A' point is safe.",
+        "bResetTimer": false,
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0,
+        "bFatal": false,
+        "bRemoveAll": true,
+        "bPersists": false,
+        "aNext": [],
+        "fDuration": 0.0
+    },
+    {
+        "strName": "IsSafeRoomB",
+        "strNameFriendly": "Room B Safe",
+        "strColor": "Neutral",
+        "strDesc": "[us] shows that 'Room B' point is safe.",
+        "bResetTimer": false,
+        "nDisplaySelf": 0,
+        "nDisplayOther": 0,
+        "bFatal": false,
+        "bRemoveAll": true,
+        "bPersists": false,
+        "aNext": [],
+        "fDuration": 0.0
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "strName": "MSAlarmTempSwitchBlueAllow",
+        "fDuration": 0.00005
+    },
+    {
+        "strName": "MSAlarmTempSwitchRedAllow",
+        "fDuration": 0.00005
+    },
+    {
+        "strName": "MSAlarmTempSwitchWhiteAllow",
+        "fDuration": 0.005
+    }
+]

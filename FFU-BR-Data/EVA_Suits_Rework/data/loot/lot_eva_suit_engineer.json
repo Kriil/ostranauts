@@ -1,0 +1,127 @@
+[
+    {
+        "strName": "ItmPocketsEVA07",
+        "strReference": "ItmPocketsEVA01",
+        "aCOs": [
+            "PocketEVABackpack04=1x1",
+            "PocketEVAClipPoint04=1x1",
+            "PocketEVAMiscPouch=1x1",
+            "PocketEVAFoodPouch01=1x1",
+            "PocketEVABatt04=1x1",
+            "PocketEVAO204=1x1",
+            "PocketEVACO204=1x1"
+        ]
+    },
+    {
+        "strName": "OutfitEVA07Empty",
+        "strReference": "OutfitEVAEmpty",
+        "aCOs": [
+            "OutfitEVA07=1.0x1"
+        ]
+    },
+    {
+        "strName": "OutfitEVA07OffEmpty",
+        "strReference": "OutfitEVAOffEmpty",
+        "aCOs": [
+            "OutfitEVA07Off=1.0x1"
+        ]
+    },
+    {
+        "strName": "CONDHelmet07",
+        "strReference": "CONDHelmet01",
+        "aCOs": [
+            "--MOD--",
+            "StatBodyInsulation=1.0x0.13",
+            "StatVolume=1.0x0.145"
+        ]
+    },
+    {
+        "strName": "CONDHelmet07Remove",
+        "strReference": "CONDHelmet01Remove",
+        "aCOs": [
+            "--MOD--",
+            "-StatBodyInsulation=1.0x0.13",
+            "-StatVolume=1.0x0.145"
+        ]
+    },
+    {
+        "strName": "CONDHelmet07Dmg",
+        "strReference": "CONDHelmet01Dmg"
+    },
+    {
+        "strName": "CONDHelmet07DmgRemove",
+        "strReference": "CONDHelmet01DmgRemove"
+    },
+    {
+        "strName": "CONDEVASuit07",
+        "strReference": "CONDEVASuit01",
+        "aCOs": [
+            "--ADD--",
+            "StatFatigueHealRate=1.0x1.0",
+            "ThreshStatEncumbrance=1.0x5.0",
+            "--MOD--",
+            "StatPassiveRewarmTemp=1.0x10",
+            "StatBodyInsulation=1.0x0.82",
+            "StatFatigueCoeff=1.0x0.4"
+        ]
+    },
+    {
+        "strName": "CONDEVASuit07Remove",
+        "strReference": "CONDEVASuit01Remove",
+        "aCOs": [
+            "--ADD--",
+            "-StatFatigueHealRate=1.0x1.0",
+            "-ThreshStatEncumbrance=1.0x5.0",
+            "--MOD--",
+            "-StatPassiveRewarmTemp=1.0x10",
+            "-StatBodyInsulation=1.0x0.82",
+            "-StatFatigueCoeff=1.0x0.4"
+        ]
+    },
+    {
+        "strName": "CONDEVASuit07Off",
+        "strReference": "CONDEVASuit01Off",
+        "aCOs": [
+            "--MOD--",
+            "StatBodyInsulation=1.0x0.82",
+            "StatFatigueCoeff=1.0x0.4"
+        ]
+    },
+    {
+        "strName": "CONDEVASuit07OffRemove",
+        "strReference": "CONDEVASuit01OffRemove",
+        "aCOs": [
+            "--MOD--",
+            "-StatBodyInsulation=1.0x0.82",
+            "-StatFatigueCoeff=1.0x0.4"
+        ]
+    },
+    {
+        "strName": "ACTHelmet07Damage",
+        "strReference": "ACTHelmet03Damage",
+        "aCOs": [
+            "MSHelmet07Dmg=1.0x1"
+        ]
+    },
+    {
+        "strName": "ItmEVAHelmet07Dmg",
+        "strReference": "ItmEVAHelmetDmg",
+        "aCOs": [
+            "OutfitHelmet07Dmg=1.0x1"
+        ]
+    },
+    {
+        "strName": "ACTEVASuit07Destroy",
+        "strReference": "ACTEVASuitDestroy",
+        "aCOs": [
+            "MSDestroyEVASuit07=1.0x1"
+        ]
+    },
+    {
+        "strName": "ItmEVASuit07ComponentsAndSelf",
+        "strReference": "ItmEVASuitComponentsAndSelf",
+        "aCOs": [
+            "OutfitEVA07Dmg=1.0x1"
+        ]
+    }
+]
