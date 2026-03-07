@@ -36,8 +36,9 @@ internal static class Patch_Interaction_ApplyLootCT
 				float triggerCoeff = fCoeff;
 				if (condTrigger.fCount != 0f)
 				{
-					RoomEffectUtils.LogRoomEffect($"Trigger coefficient for interaction '{__instance.strName}' and trigger '{condTrigger.strCondName}' between '{coUs.strName}' and '{coThem?.strName ?? "<null>"}': {fCoeff} -> {triggerCoeff}.", "ApplyLootCT", null);
+
 					triggerCoeff = modifiedAmount / condTrigger.fCount;
+					RoomEffectUtils.LogRoomEffect($"Trigger coefficient for interaction '{__instance.strName}' and trigger '{condTrigger.strCondName}' between '{coUs.strName}' and '{coThem?.strName ?? "<null>"}': {fCoeff} -> {triggerCoeff}.", "ApplyLootCT", null);
 				}
 
 				condTrigger.ApplyChanceID(true, coUs, triggerCoeff, 0f);

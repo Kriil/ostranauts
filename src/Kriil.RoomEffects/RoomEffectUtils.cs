@@ -240,16 +240,20 @@ internal static class RoomEffectUtils
 
 		double positiveBonus = room.CO.GetCondAmount(CondRoomRecreationPositiveBonus);
 		double negativeReduction = room.CO.GetCondAmount(CondRoomRecreationNegativeReduction);
-		if (amount > 0f && positiveBonus > 0.0)
+		if (amount < 0f && positiveBonus > 0.0)
 		{
-			LogRoomEffect($"Applying recreation positive bonus of {positiveBonus * 100f}%", "Recreation", room);
-			return amount * (1f + (float)positiveBonus);
+			LogRoomEffect($"Applying recreation positive trigger bonus of {positiveBonus * 100f}%", "Recreation", room);
+			float bonus = amount * (1f + (float)positiveBonus);
+			LogRoomEffect($"Modified trigger amount after applying recreation positive bonus: {bonus}.", "Recreation", room);
+			return bonus;
 		}
 
-		if (amount < 0f && negativeReduction > 0.0)
+		if (amount > 0f && negativeReduction > 0.0)
 		{
-			LogRoomEffect($"Applying recreation negative reduction of {negativeReduction * 100f}%", "Recreation", room);
-			return amount * Mathf.Max(0f, 1f - (float)negativeReduction);
+			LogRoomEffect($"Applying recreation negative trigger reduction of {negativeReduction * 100f}%", "Recreation", room);
+			float bonus = amount * Mathf.Max(0f, 1f - (float)negativeReduction);
+			LogRoomEffect($"Modified trigger amount after applying recreation negative reduction: {bonus}.", "Recreation", room);
+			return bonus;
 		}
 
 		return amount;
@@ -265,14 +269,20 @@ internal static class RoomEffectUtils
 
 		double positiveBonus = room.CO.GetCondAmount(CondRoomRecreationPositiveBonus);
 		double negativeReduction = room.CO.GetCondAmount(CondRoomRecreationNegativeReduction);
-		if (amount > 0.0 && positiveBonus > 0.0)
+		if (amount < 0.0 && positiveBonus > 0.0)
 		{
-			return amount * (1.0 + positiveBonus);
+			LogRoomEffect($"Applying recreation positive condition bonus of {positiveBonus * 100f}%", "Recreation", room);
+			float bonus = (float)(amount * (1.0 + positiveBonus));
+			LogRoomEffect($"Modified condition amount after applying recreation positive bonus: {bonus}.", "Recreation", room);
+			return bonus;
 		}
 
-		if (amount < 0.0 && negativeReduction > 0.0)
+		if (amount > 0.0 && negativeReduction > 0.0)
 		{
-			return amount * Mathf.Max(0f, 1f - (float)negativeReduction);
+			LogRoomEffect($"Applying recreation negative condition reduction of {negativeReduction * 100f}%", "Recreation", room);
+			float bonus = (float)(amount * Mathf.Max(0f, 1f - (float)negativeReduction));
+			LogRoomEffect($"Modified condition amount after applying recreation negative reduction: {bonus}.", "Recreation", room);
+			return bonus;
 		}
 
 		return amount;

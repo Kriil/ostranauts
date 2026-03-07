@@ -1,6 +1,5 @@
 namespace Kriil.Ostranauts.RoomEffects;
 
-// TODO: Ship rater is not showing recreation room exists even though conditions are met.  Game bug?
 internal static class BonusRecreation
 {
 	private const string CondRoomRecreationPositiveBonus = "StatRoomRecreationPositiveBonus";
