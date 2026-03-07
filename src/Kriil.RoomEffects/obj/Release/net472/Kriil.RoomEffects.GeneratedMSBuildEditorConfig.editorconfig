@@ -1,0 +1,5 @@
+is_global = true
+build_property.RootNamespace = Kriil.Ostranauts.RoomEffects
+build_property.ProjectDir = C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

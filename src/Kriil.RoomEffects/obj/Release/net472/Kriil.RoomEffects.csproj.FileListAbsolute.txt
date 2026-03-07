@@ -1,0 +1,10 @@
+C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\bin\Release\net472\Kriil.RoomEffects.dll
+C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\bin\Release\net472\Kriil.RoomEffects.pdb
+C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\obj\Release\net472\Kriil.RoomEffects.csproj.AssemblyReference.cache
+C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\obj\Release\net472\Kriil.RoomEffects.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\obj\Release\net472\Kriil.RoomEffects.AssemblyInfoInputs.cache
+C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\obj\Release\net472\Kriil.RoomEffects.AssemblyInfo.cs
+C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\obj\Release\net472\Kriil.RoomEffects.csproj.CoreCompileInputs.cache
+C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\obj\Release\net472\Kriil.RoomEffects.sourcelink.json
+C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\obj\Release\net472\Kriil.RoomEffects.dll
+C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\Kriil.RoomEffects\obj\Release\net472\Kriil.RoomEffects.pdb
