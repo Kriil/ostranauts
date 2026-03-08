@@ -24,9 +24,6 @@ internal static class Patch_CondOwner_QueueInteraction
 
 		if (__instance.aQueue.Count > 0 && __instance.aQueue[0] == objInteraction)
 		{
-			Room room = RoomEffectUtils.GetCondOwnerRoom(objInteraction.objUs);
-			string roomSpecName = room.GetRoomSpec()?.strName ?? "NoSpec";
-			RoomEffectUtils.LogRoomEffect($"Modified interaction '{objInteraction.strName}' duration from {oldDuration} hours to {newDuration} hours.", $"{roomSpecName}", room);
 			__instance.SetTicker(objInteraction.strName, newDuration);
 		}
 	}

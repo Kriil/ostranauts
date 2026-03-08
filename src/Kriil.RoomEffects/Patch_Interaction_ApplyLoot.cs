@@ -30,15 +30,11 @@ internal static class Patch_Interaction_ApplyLootCT
 				}
 
 				float baseAmount = condTrigger.fCount * fCoeff;
-				RoomEffectUtils.LogRoomEffect($"Base trigger amount for interaction '{__instance.strName}' and trigger '{condTrigger.strCondName}' between '{coUs.strName}' and '{coThem?.strName ?? "<null>"}': {baseAmount}.", "ApplyLootCT", null);
 				float modifiedAmount = RoomEffectUtils.ModifyInteractionTriggerAmount(__instance, condTrigger, coUs, coThem, baseAmount);
-				RoomEffectUtils.LogRoomEffect($"Modified trigger amount for interaction '{__instance.strName}' and trigger '{condTrigger.strCondName}' between '{coUs.strName}' and '{coThem?.strName ?? "<null>"}': {modifiedAmount}.", "ApplyLootCT", null);
 				float triggerCoeff = fCoeff;
 				if (condTrigger.fCount != 0f)
 				{
-
 					triggerCoeff = modifiedAmount / condTrigger.fCount;
-					RoomEffectUtils.LogRoomEffect($"Trigger coefficient for interaction '{__instance.strName}' and trigger '{condTrigger.strCondName}' between '{coUs.strName}' and '{coThem?.strName ?? "<null>"}': {fCoeff} -> {triggerCoeff}.", "ApplyLootCT", null);
 				}
 
 				condTrigger.ApplyChanceID(true, coUs, triggerCoeff, 0f);
@@ -102,9 +98,7 @@ internal static class Patch_Interaction_ApplyLootConds
 			foreach (KeyValuePair<string, double> kvp in condLoot)
 			{
 				double baseAmount = kvp.Value * fCoeff;
-				RoomEffectUtils.LogRoomEffect($"Base condition amount for interaction '{__instance.strName}' and condition '{kvp.Key}' between '{coUs.strName}' and '{coThem?.strName ?? "<null>"}': {baseAmount}.", "ApplyLootCond", null);
 				double modifiedAmount = RoomEffectUtils.ModifyInteractionCondAmount(__instance, kvp.Key, coUs, coThem, baseAmount);
-				RoomEffectUtils.LogRoomEffect($"Modified condition amount for interaction '{__instance.strName}' and condition '{kvp.Key}' between '{coUs.strName}' and '{coThem?.strName ?? "<null>"}': {modifiedAmount}.", "ApplyLootCond", null);
 				coUs.AddCondAmount(kvp.Key, modifiedAmount, 0.0, 0f);
 				coUs.AddRememberScore(kvp.Key, modifiedAmount);
 

@@ -33,6 +33,7 @@ internal static class BonusTowing
 
 		Room targetRoom = RoomEffectUtils.GetCondOwnerRoom(interaction.objThem, "Power");
 		double bonus = RoomEffectUtils.GetRoomCondAmount(targetRoom, CondRoomTowingSpeedBonus);
+		RoomEffectUtils.LogRoomEffect($"Applying towing speed bonus of {bonus * 100f}% to interaction '{interaction.strName}' with base duration of {durationHours} hours.", "Towing", targetRoom);
 		return RoomEffectUtils.ApplySpeedBonus(durationHours, bonus);
 	}
 }

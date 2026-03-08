@@ -29,7 +29,9 @@ internal static class BonusBathroom
 			return durationHours;
 		}
 
-		double bonus = RoomEffectUtils.GetCondOwnerRoomBonus(interaction.objUs, CondRoomBathroomSpeedBonus);
+		Room room = RoomEffectUtils.GetCondOwnerRoom(interaction.objUs);
+		double bonus = RoomEffectUtils.GetCondOwnerRoomBonus(room, CondRoomBathroomSpeedBonus);
+		RoomEffectUtils.LogRoomEffect($"Applying bathroom speed bonus of {bonus * 100f}% to interaction '{interaction.strName}' with base duration of {durationHours} hours.", "Bathroom", room);
 		return RoomEffectUtils.ApplySpeedBonus(durationHours, bonus);
 	}
 }

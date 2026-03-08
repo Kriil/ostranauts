@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Kriil.Ostranauts.RoomEffects;
 
 internal static class BonusRecreation
@@ -22,13 +24,29 @@ internal static class BonusRecreation
 		}
 
 		Room room = RoomEffectUtils.GetCondOwnerRoom(coUs);
-		if (RoomEffectUtils.GetRoomCondAmount(room, CondRoomRecreationPositiveBonus) <= 0.0 &&
-			RoomEffectUtils.GetRoomCondAmount(room, CondRoomRecreationNegativeReduction) <= 0.0)
+		double positiveBonus = RoomEffectUtils.GetRoomCondAmount(room, CondRoomRecreationPositiveBonus);
+		double negativeReduction = RoomEffectUtils.GetRoomCondAmount(room, CondRoomRecreationNegativeReduction);
+
+		if (positiveBonus <= 0.0 && negativeReduction <= 0.0)
 		{
 			return amount;
 		}
 
-		return RoomEffectUtils.ApplyRecreationTriggerModifier(coUs, amount);
+		if (amount < 0f && positiveBonus > 0.0)
+		{
+			float bonusAmount = amount * (1f + (float)positiveBonus);
+			RoomEffectUtils.LogRoomEffect($"Modified trigger amount after applying {positiveBonus * 100f}% recreation positive bonus: {bonusAmount}.", "Recreation", room);
+			return bonusAmount;
+		}
+
+		if (amount > 0f && negativeReduction > 0.0)
+		{
+			float bonusAmount = amount * Mathf.Max(0f, 1f - (float)negativeReduction);
+			RoomEffectUtils.LogRoomEffect($"Modified trigger amount after applying {negativeReduction * 100f}% recreation negative reduction: {bonusAmount}.", "Recreation", room);
+			return bonusAmount;
+		}
+
+		return amount;
 	}
 
 	public static double ModifyCondAmount(Interaction interaction, string condName, CondOwner coUs, double amount)
@@ -39,12 +57,27 @@ internal static class BonusRecreation
 		}
 
 		Room room = RoomEffectUtils.GetCondOwnerRoom(coUs);
-		if (RoomEffectUtils.GetRoomCondAmount(room, CondRoomRecreationPositiveBonus) <= 0.0 &&
-			RoomEffectUtils.GetRoomCondAmount(room, CondRoomRecreationNegativeReduction) <= 0.0)
+		double positiveBonus = RoomEffectUtils.GetRoomCondAmount(room, CondRoomRecreationPositiveBonus);
+		double negativeReduction = RoomEffectUtils.GetRoomCondAmount(room, CondRoomRecreationNegativeReduction);
+		if (positiveBonus <= 0.0 && negativeReduction <= 0.0)
 		{
 			return amount;
 		}
 
-		return RoomEffectUtils.ApplyRecreationCondModifier(coUs, amount);
+		if (amount < 0.0 && positiveBonus > 0.0)
+		{
+			float bonusAmount = (float)(amount * (1.0 + positiveBonus));
+			RoomEffectUtils.LogRoomEffect($"Modified condition amount after applying {positiveBonus * 100f}% recreation positive bonus: {bonusAmount}.", "Recreation", room);
+			return bonusAmount;
+		}
+
+		if (amount > 0.0 && negativeReduction > 0.0)
+		{
+			float bonusAmount = (float)(amount * Mathf.Max(0f, 1f - (float)negativeReduction));
+			RoomEffectUtils.LogRoomEffect($"Modified condition amount after applying {negativeReduction * 100f}% recreation negative reduction: {bonusAmount}.", "Recreation", room);
+			return bonusAmount;
+		}
+
+		return amount;
 	}
 }

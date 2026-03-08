@@ -26,12 +26,14 @@ internal static class BonusEngineering
 			}
 		}
 
+		float bonus = 0f;
 		if (hasEngineering)
 		{
-			RoomEffectUtils.LogRoomEffect($"Setting ship-wide engineering work bonus of {Plugin.EngineeringWorkBonus.Value * 100f}% due to presence of engineering room on ship.", "Engineering", null);
+			bonus = Plugin.EngineeringWorkBonus.Value;
+			RoomEffectUtils.LogRoomEffect($"Setting ship-wide engineering work bonus of {bonus * 100f}% due to presence of engineering room on ship.", "Engineering", null);
 		} else {
 			RoomEffectUtils.LogRoomEffect($"No engineering room found on ship, setting ship-wide engineering work bonus to 0%.", "Engineering", null);
 		}
-		shipCo.SetCondAmount("StatShipEngineeringWorkBonus", hasEngineering ? Plugin.EngineeringWorkBonus.Value : 0.0, 0.0);
+		shipCo.SetCondAmount("StatShipEngineeringWorkBonus", bonus, 0.0);
 	}
 }

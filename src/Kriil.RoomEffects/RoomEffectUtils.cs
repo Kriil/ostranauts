@@ -188,6 +188,11 @@ internal static class RoomEffectUtils
 		return GetRoomCondAmount(GetCondOwnerRoom(co), condName);
 	}
 
+	public static double GetCondOwnerRoomBonus(Room room, string condName)
+	{
+		return GetRoomCondAmount(room, condName);
+	}
+
 	public static bool IsPlayerInteraction(Interaction interaction)
 	{
 		return interaction?.objUs != null && interaction.objUs == CrewSim.coPlayer;
@@ -230,63 +235,7 @@ internal static class RoomEffectUtils
 		return amount;
 	}
 
-	public static float ApplyRecreationTriggerModifier(CondOwner coUs, float amount)
-	{
-		Room room = GetCondOwnerRoom(coUs);
-		if (room?.CO == null)
-		{
-			return amount;
-		}
 
-		double positiveBonus = room.CO.GetCondAmount(CondRoomRecreationPositiveBonus);
-		double negativeReduction = room.CO.GetCondAmount(CondRoomRecreationNegativeReduction);
-		if (amount < 0f && positiveBonus > 0.0)
-		{
-			LogRoomEffect($"Applying recreation positive trigger bonus of {positiveBonus * 100f}%", "Recreation", room);
-			float bonus = amount * (1f + (float)positiveBonus);
-			LogRoomEffect($"Modified trigger amount after applying recreation positive bonus: {bonus}.", "Recreation", room);
-			return bonus;
-		}
-
-		if (amount > 0f && negativeReduction > 0.0)
-		{
-			LogRoomEffect($"Applying recreation negative trigger reduction of {negativeReduction * 100f}%", "Recreation", room);
-			float bonus = amount * Mathf.Max(0f, 1f - (float)negativeReduction);
-			LogRoomEffect($"Modified trigger amount after applying recreation negative reduction: {bonus}.", "Recreation", room);
-			return bonus;
-		}
-
-		return amount;
-	}
-
-	public static double ApplyRecreationCondModifier(CondOwner coUs, double amount)
-	{
-		Room room = GetCondOwnerRoom(coUs);
-		if (room?.CO == null)
-		{
-			return amount;
-		}
-
-		double positiveBonus = room.CO.GetCondAmount(CondRoomRecreationPositiveBonus);
-		double negativeReduction = room.CO.GetCondAmount(CondRoomRecreationNegativeReduction);
-		if (amount < 0.0 && positiveBonus > 0.0)
-		{
-			LogRoomEffect($"Applying recreation positive condition bonus of {positiveBonus * 100f}%", "Recreation", room);
-			float bonus = (float)(amount * (1.0 + positiveBonus));
-			LogRoomEffect($"Modified condition amount after applying recreation positive bonus: {bonus}.", "Recreation", room);
-			return bonus;
-		}
-
-		if (amount > 0.0 && negativeReduction > 0.0)
-		{
-			LogRoomEffect($"Applying recreation negative condition reduction of {negativeReduction * 100f}%", "Recreation", room);
-			float bonus = (float)(amount * Mathf.Max(0f, 1f - (float)negativeReduction));
-			LogRoomEffect($"Modified condition amount after applying recreation negative reduction: {bonus}.", "Recreation", room);
-			return bonus;
-		}
-
-		return amount;
-	}
 
 	public static bool IsPlayerShip(Ship ship)
 	{
@@ -302,7 +251,7 @@ internal static class RoomEffectUtils
 
 		string roomId = room.CO.strID ?? "NoId";
 		string roomSpecName = room.GetRoomSpec()?.strName ?? "NoSpec";
-		return $"'{roomSpecName}-{roomId}'";
+		return $"{roomSpecName}-{roomId}";
 	}
 
 	public static void LogRoomEffect(string message, string roomSpecName, Room room)
