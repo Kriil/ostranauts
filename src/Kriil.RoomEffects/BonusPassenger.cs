@@ -17,16 +17,16 @@ internal static class BonusPassenger
 		{
 			return amount;
 		}
-
-		double bonus = RoomEffectUtils.GetCondOwnerRoomBonus(coUs, CondRoomPassengerRelaxBonus);
+		Room room = RoomEffectUtils.GetCondOwnerRoom(coUs);	
+		double bonus = RoomEffectUtils.GetCondOwnerRoomBonus(room, CondRoomPassengerRelaxBonus);
 		if (bonus <= 0.0)
 		{
 			return amount;
 		}
-
+		
 		if (trigger.strCondName == "StatSecurity" && amount < 0f)
 		{
-			RoomEffectUtils.LogRoomEffect($"Applying passenger relax trigger '{trigger.strCondName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Passenger", RoomEffectUtils.GetCondOwnerRoom(coUs));
+			RoomEffectUtils.LogRoomEffect($"Applying passenger relax trigger '{trigger.strCondName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Passenger", room);
 			return amount * (1f + (float)bonus);
 		}
 
