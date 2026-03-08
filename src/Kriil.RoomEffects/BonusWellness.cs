@@ -7,34 +7,36 @@ internal static class BonusWellness
 
 	public static void ApplyBonuses(Room room)
 	{
-		 RoomEffectUtils.LogRoomEffect($"Setting Wellness Fitness Bonus of {Plugin.WellnessFitnessBonus.Value * 100f}% and Strength Bonus of {Plugin.WellnessStrengthBonus.Value * 100f}%.", "Wellness", room);
-		room.CO.SetCondAmount(CondRoomWellnessFitnessBonus, Plugin.WellnessFitnessBonus.Value, 0.0);
-		room.CO.SetCondAmount(CondRoomWellnessStrengthBonus, Plugin.WellnessStrengthBonus.Value, 0.0);
+		float bonusFitness = Plugin.WellnessFitnessBonus.Value;
+		float bonusStrength = Plugin.WellnessStrengthBonus.Value;
+		RoomEffectUtils.LogRoomEffect($"Setting Wellness Fitness Bonus of {bonusFitness * 100f}% and Strength Bonus of {bonusStrength * 100f}%.", "Wellness", room);
+		room.CO.SetCondAmount(CondRoomWellnessFitnessBonus, bonusFitness, 0.0);
+		room.CO.SetCondAmount(CondRoomWellnessStrengthBonus, bonusStrength, 0.0);
 	}
 
 	public static float ModifyTriggerAmount(Interaction interaction, CondTrigger trigger, CondOwner coUs, float amount)
 	{
-		if (interaction?.strName == "Tick1HourExerciseTreadmill")
+
+		if (interaction?.strName == "Tick1HourExerciseTreadmill" || interaction?.strName == "ACTExcerciseTreadmillDo")
 		{
-			double bonus = RoomEffectUtils.GetCondOwnerRoomBonus(coUs, CondRoomWellnessFitnessBonus);
+			Room room = RoomEffectUtils.GetCondOwnerRoom(coUs, "Power");
+			double bonus = RoomEffectUtils.GetCondOwnerRoomBonus(room, CondRoomWellnessFitnessBonus);
 			if (bonus > 0.0 &&
-				(trigger.strCondName == "StatAtrophy" || trigger.strCondName == "StatTrainingFit" || trigger.strCondName == "StatTrainingUnfit"))
+				(trigger.strCondName == "StatTrainingFit" || trigger.strCondName == "StatTrainingUnfit"))
 			{
-				RoomEffectUtils.LogRoomEffect($"Modified trigger amount for '{trigger.strCondName}' with wellness fitness bonus of {bonus * 100f}%.", "Wellness", RoomEffectUtils.GetCondOwnerRoom(coUs, "Power"));
+				RoomEffectUtils.LogRoomEffect($"Modified trigger amount for '{trigger.strCondName}' with wellness fitness bonus of {bonus * 100f}%.", "Wellness", room);
 				return amount * (1f + (float)bonus);
 			}
 		}
 
-		if (interaction?.strName == "Tick1HourExerciseStrengthTrainer")
+		if (interaction?.strName == "Tick1HourExerciseStrengthTrainer" || interaction?.strName == "ACTExcerciseStrengthTrainerDo")
 		{
-			double bonus = RoomEffectUtils.GetCondOwnerRoomBonus(coUs, CondRoomWellnessStrengthBonus);
+			Room room = RoomEffectUtils.GetCondOwnerRoom(coUs, "Power");
+			double bonus = RoomEffectUtils.GetCondOwnerRoomBonus(room, CondRoomWellnessStrengthBonus);
 			if (bonus > 0.0 &&
-				(trigger.strCondName == "StatAtrophy" ||
-				trigger.strCondName == "StatTrainingStrong" ||
-				trigger.strCondName == "StatTrainingStrongAtrophy" ||
-				trigger.strCondName == "StatTrainingFeeble"))
+				(trigger.strCondName == "StatTrainingStrong" ||	trigger.strCondName == "StatTrainingFeeble"))
 			{
-				RoomEffectUtils.LogRoomEffect($"Modified trigger amount for '{trigger.strCondName}' with wellness strength bonus of {bonus * 100f}%.", "Wellness", RoomEffectUtils.GetCondOwnerRoom(coUs, "Power"));
+				RoomEffectUtils.LogRoomEffect($"Modified trigger amount for '{trigger.strCondName}' with wellness strength bonus of {bonus * 100f}%.", "Wellness", room);
 				return amount * (1f + (float)bonus);
 			}
 		}
