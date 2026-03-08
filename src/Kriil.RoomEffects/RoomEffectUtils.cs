@@ -217,7 +217,7 @@ internal static class RoomEffectUtils
 		amount = BonusWellness.ModifyTriggerAmount(interaction, trigger, coUs, amount);
 		amount = BonusRecreation.ModifyTriggerAmount(interaction, trigger, coUs, amount);
 		amount = BonusQuarters.ModifyTriggerAmount(interaction, trigger, coUs, amount);
-		amount = BonusGalley.ModifyTriggerAmount(interaction, trigger, coUs, amount);
+		amount = BonusGalley.ModifyTriggerAmount(interaction, trigger, coUs, coThem, amount);
 		amount = BonusPassenger.ModifyTriggerAmount(interaction, trigger, coUs, amount);
 		return amount;
 	}

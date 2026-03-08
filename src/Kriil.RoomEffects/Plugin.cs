@@ -23,7 +23,10 @@ public sealed class Plugin : BaseUnityPlugin
 	public static ConfigEntry<float> RecreationNegativeReduction;
 	public static ConfigEntry<float> LuxurySleepBonus;
 	public static ConfigEntry<float> BathroomSpeedBonus;
-	public static ConfigEntry<float> GalleySatiationBonus;
+	public static ConfigEntry<float> GalleyFoodRateReduction;
+	public static ConfigEntry<float> GalleyFoodRateDurationHours;
+	public static ConfigEntry<float> GalleyHydrationRateReduction;
+	public static ConfigEntry<float> GalleyHydrationRateDurationHours;
 	public static ConfigEntry<float> BasicSleepBonus;
 	public static ConfigEntry<float> PassengerSmallRelaxBonus;
 	public static ConfigEntry<float> PassengerMediumRelaxBonus;
@@ -92,11 +95,29 @@ public sealed class Plugin : BaseUnityPlugin
 			0.4f,
 			"Speed bonus applied to defecation and cleansing actions in a Bathroom."
 		);
-		GalleySatiationBonus = Config.Bind(
+		GalleyFoodRateReduction = Config.Bind(
 			"Room Effects",
-			"GalleySatiationBonus",
+			"GalleyFoodRateReduction",
 			0.25f,
-			"Bonus applied to food satiation gained while eating in a Galley."
+			"Reduction applied to StatFoodRate after eating in a Galley."
+		);
+		GalleyFoodRateDurationHours = Config.Bind(
+			"Room Effects",
+			"GalleyFoodRateDurationHours",
+			2.0f,
+			"Duration in hours of the temporary StatFoodRate reduction after eating in a Galley."
+		);
+		GalleyHydrationRateReduction = Config.Bind(
+			"Room Effects",
+			"GalleyHydrationRateReduction",
+			0.25f,
+			"Reduction applied to StatHydrationRate after drinking water in a Galley."
+		);
+		GalleyHydrationRateDurationHours = Config.Bind(
+			"Room Effects",
+			"GalleyHydrationRateDurationHours",
+			2.0f,
+			"Duration in hours of the temporary StatHydrationRate reduction after drinking water in a Galley."
 		);
 		BasicSleepBonus = Config.Bind(
 			"Room Effects",

@@ -140,18 +140,38 @@
         "fDuration": 0.0
     },
     {
-        "strName": "StatRoomGalleySatietyBonus",
-        "strNameFriendly": "Room Galley Satiety Bonus",
-        "strColor": "Neutral",
-        "strDesc": "Satiety gain bonus in galley rooms.",
-        "bResetTimer": false,
-        "nDisplaySelf": 0,
+        "strName": "HasHadGalleyFoodRateBuff",
+        "strNameFriendly": "Recently Ate in Galley",
+        "strColor": "Good",
+        "strDesc": "[us] [has] recently eaten in a galley.",
+        "bResetTimer": true,
+        "nDisplaySelf": 2,
         "nDisplayOther": 0,
         "bFatal": false,
         "bRemoveAll": true,
         "bPersists": false,
+        "aPer": [
+            "CONDGalleyFoodRatePer"
+        ],
         "aNext": [],
-        "fDuration": 0.0
+        "fDuration": 2.0
+    },
+    {
+        "strName": "HasHadGalleyHydrationRateBuff",
+        "strNameFriendly": "Recently Drank in Galley",
+        "strColor": "Good",
+        "strDesc": "[us] [has] recently had water in a galley.",
+        "bResetTimer": true,
+        "nDisplaySelf": 2,
+        "nDisplayOther": 0,
+        "bFatal": false,
+        "bRemoveAll": true,
+        "bPersists": false,
+        "aPer": [
+            "CONDGalleyHydrationRatePer"
+        ],
+        "aNext": [],
+        "fDuration": 2.0
     },
     {
         "strName": "StatRoomPassengerRelaxBonus",
