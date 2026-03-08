@@ -1,4 +1,4 @@
-namespace Kriil.Ostranauts.RoomEffects;
+namespace Ostranauts.RoomEffects;
 
 internal static class BonusBathroom
 {

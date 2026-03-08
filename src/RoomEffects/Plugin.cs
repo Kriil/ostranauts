@@ -2,12 +2,12 @@ using BepInEx;
 using HarmonyLib;
 using BepInEx.Configuration;
 
-namespace Kriil.Ostranauts.RoomEffects;
+namespace Ostranauts.RoomEffects;
 
 [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
 public sealed class Plugin : BaseUnityPlugin
 {
-	public const string PluginGuid = "kriil.ostranauts.roomeffects";
+	public const string PluginGuid = "ostranauts.roomeffects";
 
 	public const string PluginName = "Room Effects";
 

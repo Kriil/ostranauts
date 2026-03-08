@@ -4,7 +4,7 @@ using System.Reflection.Emit;
 using HarmonyLib;
 using UnityEngine;
 
-namespace Kriil.Ostranauts.RoomEffects;
+namespace Ostranauts.RoomEffects;
 
 [HarmonyPatch(typeof(Interaction), "CalcRate")]
 internal static class Patch_Interaction_CalcRate

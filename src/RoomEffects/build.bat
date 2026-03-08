@@ -1,0 +1,3 @@
+dotnet build .\RoomEffects.csproj -c Release
+Copy-Item "C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\src\BepInEx\plugins\RoomEffects\bin\Release\net472\RoomEffects.dll" "C:\Steam\steamapps\common\Ostranauts\BepInEx\plugins\RoomEffects.dll" -Force
+Copy-Item -Path "C:\Users\Kriil\Modding\Ostranauts\code\ostranauts\Mods\Room_Effects\*" -Destination "C:\Steam\steamapps\common\Ostranauts\Ostranauts_Data\Mods\Room_Effects" -Recurse -Force

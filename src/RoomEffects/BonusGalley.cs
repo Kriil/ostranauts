@@ -1,7 +1,7 @@
 using System.Globalization;
 using UnityEngine;
 
-namespace Kriil.Ostranauts.RoomEffects;
+namespace Ostranauts.RoomEffects;
 
 internal static class BonusGalley
 {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using HarmonyLib;
 
-namespace Kriil.Ostranauts.RoomEffects;
+namespace Ostranauts.RoomEffects;
 
 [HarmonyPatch(typeof(Interaction), "ApplyLootCT")]
 internal static class Patch_Interaction_ApplyLootCT

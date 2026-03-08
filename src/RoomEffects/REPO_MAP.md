@@ -1,7 +1,7 @@
 # REPO_MAP
 
 ## Overview
-`src/Kriil.RoomEffects` is a BepInEx + Harmony hybrid mod with a small companion data pack (`mod_data`) that defines custom conditions used by the plugin.
+`src/RoomEffects` is a BepInEx + Harmony hybrid mod with a small companion data pack (`mod_data`) that defines custom conditions used by the plugin.
 
 ## Structure
 - `Plugin.cs`
@@ -38,7 +38,7 @@
   - `Patch_Ship_RemoveGasMass.cs`
     - reduces RCS gas consumption via reactor intake bonus.
 - Build and metadata
-  - `Kriil.RoomEffects.csproj`, `build.bat`, `README.md`.
+  - `RoomEffects.csproj`, `build.bat`, `README.md`.
 - Data package
   - `mod_data/mod_info.json`
   - `mod_data/data/conditions/cds_room_effects.json` (custom condition defs used by plugin logic).

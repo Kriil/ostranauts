@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace Kriil.Ostranauts.RoomEffects;
+namespace Ostranauts.RoomEffects;
 
 [HarmonyPatch(typeof(Room), nameof(Room.AddToRoom))]
 internal static class Patch_Room_AddToRoom

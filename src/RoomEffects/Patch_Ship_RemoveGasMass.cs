@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace Kriil.Ostranauts.RoomEffects;
+namespace Ostranauts.RoomEffects;
 
 [HarmonyPatch(typeof(Ship), nameof(Ship.RemoveGasMass))]
 internal static class Patch_Ship_RemoveGasMass

@@ -1,6 +1,6 @@
 using HarmonyLib;
 
-namespace Kriil.Ostranauts.RoomEffects;
+namespace Ostranauts.RoomEffects;
 
 [HarmonyPatch(typeof(CondOwner), nameof(CondOwner.QueueInteraction))]
 internal static class Patch_CondOwner_QueueInteraction

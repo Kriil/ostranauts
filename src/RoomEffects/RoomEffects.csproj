@@ -2,8 +2,8 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <AssemblyName>Kriil.RoomEffects</AssemblyName>
-    <RootNamespace>Kriil.Ostranauts.RoomEffects</RootNamespace>
+    <AssemblyName>RoomEffects</AssemblyName>
+    <RootNamespace>Ostranauts.RoomEffects</RootNamespace>
     <Nullable>disable</Nullable>
     <GameDir>C:\Steam\steamapps\common\Ostranauts</GameDir>
   </PropertyGroup>
