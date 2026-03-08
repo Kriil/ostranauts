@@ -35,14 +35,14 @@ internal static class BonusRecreation
 		if (amount < 0f && positiveBonus > 0.0)
 		{
 			float bonusAmount = amount * (1f + (float)positiveBonus);
-			RoomEffectUtils.LogRoomEffect($"Modified trigger amount after applying {positiveBonus * 100f}% recreation positive bonus: {bonusAmount}.", "Recreation", room);
+			RoomEffectUtils.LogRoomEffect($"Modified trigger amount after applying {positiveBonus * 100f}% recreation positive bonus for interaction {interaction?.strName}: {bonusAmount}.", "Recreation", room);
 			return bonusAmount;
 		}
 
 		if (amount > 0f && negativeReduction > 0.0)
 		{
 			float bonusAmount = amount * Mathf.Max(0f, 1f - (float)negativeReduction);
-			RoomEffectUtils.LogRoomEffect($"Modified trigger amount after applying {negativeReduction * 100f}% recreation negative reduction: {bonusAmount}.", "Recreation", room);
+			RoomEffectUtils.LogRoomEffect($"Modified trigger amount after applying {negativeReduction * 100f}% recreation negative reduction for interaction {interaction?.strName}: {bonusAmount}.", "Recreation", room);
 			return bonusAmount;
 		}
 
