@@ -4,9 +4,6 @@ namespace Kriil.Ostranauts.RoomEffects;
 
 internal static class RoomEffectUtils
 {
-	private const string CondRoomRecreationPositiveBonus = "StatRoomRecreationPositiveBonus";
-	private const string CondRoomRecreationNegativeReduction = "StatRoomRecreationNegativeReduction";
-
 	public static void RefreshRoomBonuses(Room room)
 	{
 		if (room?.CO?.ship == null)
