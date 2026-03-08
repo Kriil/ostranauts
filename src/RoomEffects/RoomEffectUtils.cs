@@ -236,7 +236,17 @@ internal static class RoomEffectUtils
 
 	public static bool IsPlayerShip(Ship ship)
 	{
-		return ship != null && CrewSim.coPlayer != null && CrewSim.coPlayer.ship == ship;
+		if (ship == null || CrewSim.coPlayer == null)
+		{
+			return false;
+		}
+
+		if (CrewSim.coPlayer.OwnsShip(ship.strRegID))
+		{
+			return true;
+		}
+
+		return CrewSim.system != null && CrewSim.system.GetShipOwner(ship.strRegID) == CrewSim.coPlayer.strID;
 	}
 
 	public static string GetRoomIdentifier(Room room)
