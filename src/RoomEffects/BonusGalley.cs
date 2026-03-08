@@ -36,6 +36,7 @@ internal static class BonusGalley
 		{
 			ApplyPreparedMealBonusSideEffects(coUs);
 			RoomEffectUtils.LogRoomEffect("Applying hot-meal equivalent bonuses to Trencher food in Galley.", "Galley", room);
+			ApplyGalleyFoodRateBuff(coUs, room);
 			return amount * (7f / 5f);
 		}
 
