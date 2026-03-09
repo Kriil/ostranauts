@@ -18,8 +18,6 @@
 6. `Patch_Interaction_ApplyLoot.cs` -> `Interaction.ApplyLootCT` / `Interaction.ApplyLootConds` (Prefix replacements)
 7. `Patch_Heater_Heat.cs` -> `Heater.Heat` (Prefix)
 8. `Patch_GasPump_Respire2.cs` -> `GasPump.Respire2` (Prefix)
-9. `Patch_Ship_Maneuver.cs` -> `Ship.Maneuver` (Prefix)
-10. `Patch_Ship_RemoveGasMass.cs` -> `Ship.RemoveGasMass` (Prefix)
 
 ## Data Entry Points
 1. `mod_data/mod_info.json`

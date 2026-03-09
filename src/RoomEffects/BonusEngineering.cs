@@ -4,7 +4,7 @@ internal static class BonusEngineering
 {
 	public static void ApplyBonuses(Room room)
 	{
-		// Intentionally left empty for now. The heat and cool bonuses are being affected by FFU, and the work bonus is being applied ship-wide instead of per-room, so no room-specific bonuses to apply.
+		// Placeholder for future engineering bonuses, currently no ship or room bonuses to apply
 	}
 
 	public static void ApplyShipBonuses(Ship ship, CondOwner shipCo)

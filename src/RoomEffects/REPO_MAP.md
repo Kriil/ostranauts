@@ -9,14 +9,14 @@
 - `RoomEffectUtils.cs`
   - shared helpers for room lookup, bonus application, and interaction amount modifiers.
 - Bonus handlers
-  - `BonusAirlock.cs`: atmo scrubber speed bonus in Airlock rooms.
+  - `BonusAirlock.cs`: placeholder/no active bonus logic yet.
   - `BonusBathroom.cs`: bathroom interaction speed bonuses.
   - `BonusBridge.cs`: placeholder/no active bonus logic yet.
-  - `BonusEngineering.cs`: engineering room detection and ship-wide work bonus + heat/cool room bonuses.
-  - `BonusGalley.cs`: satiety/food gains in Galley interactions.
+  - `BonusEngineering.cs`: engineering room detection and ship-wide work bonus
+  - `BonusGalley.cs`: food and hydration rate gains in Galley interactions.
   - `BonusPassenger.cs`: relax/security-chair effects in Passenger rooms.
   - `BonusQuarters.cs`: sleep recovery bonuses for Basic/Luxury quarters.
-  - `BonusReactor.cs`: reactor-room thruster and intake efficiency bonuses.
+  - `BonusReactor.cs`: placeholder/no active bonus logic yet.
   - `BonusRecreation.cs`: positive/negative interaction effect shaping in Recreation rooms.
   - `BonusTowing.cs`: tow brace secure speed bonuses.
   - `BonusWellness.cs`: exercise training bonuses.
@@ -29,14 +29,6 @@
     - transpiler around `Interaction.CalcRate()` clamp for work-rate bonus integration.
   - `Patch_Interaction_ApplyLoot.cs`
     - prefixes replacing `ApplyLootCT` and `ApplyLootConds` to adjust trigger/cond amounts by room effects.
-  - `Patch_Heater_Heat.cs`
-    - scales heater/cooler processing time with engineering room bonuses.
-  - `Patch_GasPump_Respire2.cs`
-    - scales scrubber flow by airlock bonus.
-  - `Patch_Ship_Maneuver.cs`
-    - scales thrust by reactor room bonus.
-  - `Patch_Ship_RemoveGasMass.cs`
-    - reduces RCS gas consumption via reactor intake bonus.
 - Build and metadata
   - `RoomEffects.csproj`, `build.bat`, `README.md`.
 - Data package

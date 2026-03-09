@@ -2,10 +2,8 @@ namespace Ostranauts.RoomEffects;
 
 internal static class BonusAirlock
 {
-	private const string CondRoomScrubberSpeedBonus = "StatRoomAirlockScrubberSpeedBonus";
-
 	public static void ApplyBonuses(Room room)
 	{
-		// Intentionally left empty for now. The gas scrubber airlock possibly being affected by FFU.
+		// Placeholder for future airlock bonuses, currently no ship or room bonuses to apply
 	}
 }

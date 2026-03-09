@@ -8,12 +8,10 @@
 
 ## Custom Conditions Introduced
 - `StatShipEngineeringWorkBonus`
-- `StatShipReactorThrusterBonus`
 - `StatRoomHeatSpeedBonus`
 - `StatRoomCoolSpeedBonus`
 - `StatRoomSleepEfficiencyBonus`
 - `StatRoomBathroomSpeedBonus`
-- `StatRoomReactorIntakeBonus`
 - `StatRoomTowingSecureSpeedBonus`
 - `StatRoomAirlockScrubberSpeedBonus`
 - `StatRoomWellnessFitnessBonus`
@@ -27,6 +25,4 @@
 - Work-rate modifiers (`Interaction.CalcRate` hook).
 - Interaction outcome magnitudes (`ApplyLootCT`, `ApplyLootConds` hooks).
 - Interaction duration for specific action families (bathroom/towing path).
-- Heater/cooler and gas scrubber throughput.
-- Ship thrust and RCS intake usage.
 - Sleep, recreation, wellness, and dining outcome tuning.

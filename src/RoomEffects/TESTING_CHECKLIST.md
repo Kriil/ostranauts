@@ -1,7 +1,7 @@
 # TESTING_CHECKLIST
 
 ## Build/Install Safety
-1. Build `Kriil.RoomEffects` against the same game install used for playtesting.
+1. Build `RoomEffects` against the same game install used for playtesting.
 2. Place DLL in `BepInEx/plugins` and keep `mod_data` in game `Mods` path.
 3. Back up saves before first run.
 
@@ -16,14 +16,9 @@
    - Verify bonus state changes when room type changes.
 2. Engineering
    - Verify work interactions on player ship get expected speed change.
-   - Verify heater/cooler rates change only in engineering context.
-3. Reactor
-   - Verify thrust increase and gas-consumption reduction when reactor-room conditions are met.
-4. Airlock
-   - Verify scrubber processing speed bonus.
-5. Towing/Bathroom
+3. Towing/Bathroom
    - Queue relevant interactions and verify duration reductions.
-6. Wellness/Recreation/Quarters/Galley/Passenger
+4. Wellness/Recreation/Quarters/Galley/Passenger
    - Verify affected interaction outcomes are scaled as expected.
 
 ## Regression Checks
