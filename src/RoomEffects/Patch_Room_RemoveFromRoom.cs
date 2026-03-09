@@ -7,6 +7,7 @@ internal static class Patch_Room_RemoveFromRoom
 {
 	public static void Postfix(Room __instance)
 	{
+		RoomEffectUtils.RefreshShipWideBonuses(__instance);
 		RoomEffectUtils.RefreshRoomBonuses(__instance);
 	}
 }

@@ -18,7 +18,6 @@ internal static class Patch_Ship_Maneuver
 			return;
 		}
 
-		RoomEffectUtils.LogRoomEffect($"Applying thruster bonus of {bonus * 100f}% to ship maneuvering.", "Engineering", null);
 		float multiplier = 1f + (float)bonus;
 		fX *= multiplier;
 		fY *= multiplier;

@@ -18,7 +18,6 @@ internal static class Patch_Ship_RemoveGasMass
 			return;
 		}
 
-		RoomEffectUtils.LogRoomEffect($"Applying intake bonus of {bonus * 100f}% to ship gas intake.", "Engineering", null);
 		fMassNeeded /= 1f + (float)bonus;
 	}
 }

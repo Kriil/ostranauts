@@ -77,6 +77,7 @@ internal static class RoomEffectUtils
 		}
 
 		BonusEngineering.ApplyShipBonuses(ship, shipCo);
+		BonusReactor.ApplyShipBonuses(ship, shipCo);
 	}
 
 	public static bool HasInstalledDeviceInRoomByPoint(Room room, CondTrigger trigger, string pointName)
@@ -86,10 +87,10 @@ internal static class RoomEffectUtils
 			return false;
 		}
 
-		foreach (CondOwner co in room.CO.ship.GetCOs(trigger, false, false, false))
+		foreach (CondOwner co in room.CO.ship.GetCOs(trigger, true, false, false))
 		{
-			Room pointRoom = GetRoomAtPoint(co, pointName);
-			if (pointRoom == room)
+			Room deviceRoom = GetRoomAtPoint(co, pointName) ?? GetCondOwnerRoom(co);
+			if (deviceRoom == room)
 			{
 				return true;
 			}
@@ -106,10 +107,10 @@ internal static class RoomEffectUtils
 		}
 
 		int count = 0;
-		foreach (CondOwner co in room.CO.ship.GetCOs(trigger, false, false, false))
+		foreach (CondOwner co in room.CO.ship.GetCOs(trigger, true, false, false))
 		{
-			Room pointRoom = GetRoomAtPoint(co, pointName);
-			if (pointRoom == room)
+			Room deviceRoom = GetRoomAtPoint(co, pointName) ?? GetCondOwnerRoom(co);
+			if (deviceRoom == room)
 			{
 				count++;
 			}

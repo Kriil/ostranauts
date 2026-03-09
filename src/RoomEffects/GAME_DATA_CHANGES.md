@@ -8,11 +8,11 @@
 
 ## Custom Conditions Introduced
 - `StatShipEngineeringWorkBonus`
+- `StatShipReactorThrusterBonus`
 - `StatRoomHeatSpeedBonus`
 - `StatRoomCoolSpeedBonus`
 - `StatRoomSleepEfficiencyBonus`
 - `StatRoomBathroomSpeedBonus`
-- `StatRoomReactorThrusterBonus`
 - `StatRoomReactorIntakeBonus`
 - `StatRoomTowingSecureSpeedBonus`
 - `StatRoomAirlockScrubberSpeedBonus`
