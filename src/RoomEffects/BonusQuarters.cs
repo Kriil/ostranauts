@@ -2,13 +2,12 @@ namespace Ostranauts.RoomEffects;
 
 internal static class BonusQuarters
 {
+	private const string RoomSpecName = "Quarters";
 	private const string CondRoomSleepBonus = "StatRoomSleepEfficiencyBonus";
 
 	public static void ApplyBonuses(Room room, bool isLuxury)
 	{
-		float bonus = isLuxury ? Plugin.LuxurySleepBonus.Value : Plugin.BasicSleepBonus.Value;
-		RoomEffectUtils.LogRoomEffect($"Setting {(isLuxury ? "Luxury" : "Basic")} Sleep Bonus of {bonus * 100f}%", isLuxury ? "LuxuryQuarters" : "BasicQuarters", room);
-		room.CO.SetCondAmount(CondRoomSleepBonus, bonus, 0.0);
+		room.CO.SetCondAmount(CondRoomSleepBonus, isLuxury ? Plugin.LuxurySleepBonus.Value : Plugin.BasicSleepBonus.Value, 0.0);
 	}
 
 	public static float ModifyTriggerAmount(Interaction interaction, CondTrigger trigger, CondOwner coUs, float amount)
@@ -18,8 +17,14 @@ internal static class BonusQuarters
 			return amount;
 		}
 
+		Room room = RoomEffectUtils.GetCondOwnerRoom(coUs);
+		if (!RoomEffectUtils.IsRoomSpec(room, RoomSpecName))
+		{
+			return amount;
+		}
+
 		double bonus = GetSleepRoomBonus(interaction, coUs);
-		RoomEffectUtils.LogRoomEffect($"Calculated sleep tick trigger for interaction '{interaction.strName}' and trigger '{trigger.strCondName}' with bonus of {bonus * 100.0}%.", "Quarters", RoomEffectUtils.GetCondOwnerRoom(coUs));
+		RoomEffectUtils.LogRoomEffect($"Calculated sleep tick trigger for interaction '{interaction.strName}' and trigger '{trigger.strCondName}' with bonus of {bonus * 100.0}%.", "Quarters", room);
 		if (bonus <= 0.0)
 		{
 			return amount;
@@ -34,7 +39,7 @@ internal static class BonusQuarters
 			trigger.strCondName == "FFWDRefreshed3" ||
 			trigger.strCondName == "FFWDRefreshed4")
 		{
-			RoomEffectUtils.LogRoomEffect($"Applying sleep tick trigger '{trigger.strCondName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Quarters", RoomEffectUtils.GetCondOwnerRoom(coUs));
+			RoomEffectUtils.LogRoomEffect($"Applied sleep refresh buildup '{trigger.strCondName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Quarters", room);
 			return amount * (1f + (float)bonus);
 		}
 
@@ -43,6 +48,12 @@ internal static class BonusQuarters
 
 	public static double ModifyCondAmount(Interaction interaction, string condName, CondOwner coUs, double amount)
 	{
+		Room room = RoomEffectUtils.GetCondOwnerRoom(coUs);
+		if (!RoomEffectUtils.IsRoomSpec(room, RoomSpecName))
+		{
+			return amount;
+		}
+
 		if (!IsSleepTickInteraction(interaction) || coUs == null)
 		{
 			return amount;
@@ -57,7 +68,7 @@ internal static class BonusQuarters
 
 		if (condName == "StatSleep")
 		{
-			RoomEffectUtils.LogRoomEffect($"Applying sleep tick condition '{condName}' with base amount {amount}, using bonus {bonus * 100.0}%.", "Quarters", RoomEffectUtils.GetCondOwnerRoom(coUs));
+			RoomEffectUtils.LogRoomEffect($"Applied sleep bonus with base amount {amount}, using bonus {bonus * 100.0}%.", "Quarters", room);
 			return amount * (1.0 + bonus);
 		}
 

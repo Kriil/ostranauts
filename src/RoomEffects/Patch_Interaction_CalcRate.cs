@@ -93,10 +93,13 @@ internal static class Patch_Interaction_CalcRate
 		{
 			// Use the player's current ship CondOwner as the ship-wide engineering source.
 			float bonus = (float)instance.objUs.ship.ShipCO.GetCondAmount("StatShipEngineeringWorkBonus");
-			RoomEffectUtils.LogRoomEffect($"Applying engineering bonus of {bonus * 100f}% to '{instance.objUs.ship.ShipCO.strID}'.", "Engineering", null);
-			value += bonus;
-			// Add the bonus to the max as well to avoid capping the bonus itself.
-			max += bonus;
+			if (bonus > 0f)
+			{
+				RoomEffectUtils.LogRoomEffect($"Applied engineering bonus of {bonus * 100f}% to '{instance.objUs.ship.ShipCO.strID}'.", "Engineering", null);
+				value += bonus;
+				// Add the bonus to the max as well to avoid capping the bonus.
+				max += bonus;
+			}
 		}
 
 		return Mathf.Clamp(value, min, max);

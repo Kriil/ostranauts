@@ -5,7 +5,7 @@ namespace Ostranauts.RoomEffects;
 
 internal static class BonusGalley
 {
-	private const string GalleyRoomSpec = "Galley";
+	private const string RoomSpecName = "Galley";
 	private const string CondGalleyFoodRateBuff = "HasHadGalleyFoodRateBuff";
 	private const string CondGalleyHydrationRateBuff = "HasHadGalleyHydrationRateBuff";
 	private const string LootGalleyFoodRatePer = "CONDGalleyFoodRatePer";
@@ -14,7 +14,6 @@ internal static class BonusGalley
 	public static void ApplyBonuses(Room room)
 	{
 		UpdateDynamicBuffDefinitions();
-		RoomEffectUtils.LogRoomEffect("Galley bonus definitions refreshed.", "Galley", room);
 	}
 
 	public static float ModifyTriggerAmount(Interaction interaction, CondTrigger trigger, CondOwner coUs, CondOwner coThem, float amount)
@@ -25,7 +24,7 @@ internal static class BonusGalley
 		}
 
 		Room room = RoomEffectUtils.GetCondOwnerRoom(coUs);
-		if (!RoomEffectUtils.IsRoomSpec(room, GalleyRoomSpec))
+		if (!RoomEffectUtils.IsRoomSpec(room, RoomSpecName))
 		{
 			return amount;
 		}
@@ -35,7 +34,7 @@ internal static class BonusGalley
 		if (interaction.strName == "SeekFoodAllowDirect" && IsTrencherItem(coThem) && trigger.strCondName == "StatFood" && amount < 0f)
 		{
 			ApplyPreparedMealBonusSideEffects(coUs);
-			RoomEffectUtils.LogRoomEffect("Applying hot-meal equivalent bonuses to Trencher food in Galley.", "Galley", room);
+			RoomEffectUtils.LogRoomEffect("Applied hot-meal equivalent bonuses to Trencher food in Galley.", "Galley", room);
 			ApplyGalleyFoodRateBuff(coUs, room);
 			return amount * (7f / 5f);
 		}

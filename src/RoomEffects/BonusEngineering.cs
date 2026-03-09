@@ -2,6 +2,7 @@ namespace Ostranauts.RoomEffects;
 
 internal static class BonusEngineering
 {
+	private const string roomSpecName = "Engineering";
 	public static void ApplyBonuses(Room room)
 	{
 		// Placeholder for future engineering bonuses, currently no ship or room bonuses to apply
@@ -30,10 +31,7 @@ internal static class BonusEngineering
 		if (hasEngineering)
 		{
 			bonus = Plugin.EngineeringWorkBonus.Value;
-			RoomEffectUtils.LogRoomEffect($"Setting ship-wide engineering work bonus of {bonus * 100f}% due to presence of engineering room on ship.", "Engineering", null);
-		} else {
-			RoomEffectUtils.LogRoomEffect($"No engineering room found on ship, setting ship-wide engineering work bonus to 0%.", "Engineering", null);
-		}
+		} 
 		shipCo.SetCondAmount("StatShipEngineeringWorkBonus", bonus, 0.0);
 	}
 }
