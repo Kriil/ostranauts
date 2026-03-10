@@ -64,7 +64,8 @@ The majority of the values are given as decimal fractions which represent the pe
 - Lower intimacy and family drain rate while on your ship - assumes the extra privacy of the closed bridge lets you pop in to the bridge and use the comms panel to talk to your friends and family. This update might add ability of player and/or crew to select chat with friends/family from NAV Console to actually simulate this in-game. Maybe even getting a large debuff if the conversation is interrupted - "William, GET OFF THE CONSOLE! Pirates are closing in!"
 
 ### Engineering
-- Requirements for engineering room (Canister installed or Weber battery charger installed or ship battery installed or RCS Intake Installed) are too low considering how pwerful the bonus is. Maybe combine some of these or add other requirements
+- Requirements for engineering room (Canister installed or Weber battery charger installed or ship battery installed or RCS Intake Installed) are too low considering how pwerful the bonus is. Maybe combine some of these or add other requirements. Add a config to turn this off and use vanilla requirements.
+- Bonus ignores normal cap for installation progress. Add a config to allow the game to honor the vanilla cap.
 
 ### AI Behavior
 - Crew prefer to use the appropriate room to get the bonuses. They'll happen upon the bonuses automatically of course but manual interaction is currently required to maximise bonuses. 

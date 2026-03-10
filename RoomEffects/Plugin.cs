@@ -28,6 +28,7 @@ public sealed class Plugin : BaseUnityPlugin
 	public static ConfigEntry<float> GalleyHydrationRateDurationHours;
 	public static ConfigEntry<float> PassengerSmallRelaxBonus;
 	public static ConfigEntry<float> PassengerMediumRelaxBonus;
+	public static ConfigEntry<float> DebugLoggingToggle;
 
 	private Harmony _harmony;
 
@@ -122,6 +123,12 @@ public sealed class Plugin : BaseUnityPlugin
 			"PassengerMediumRelaxBonus",
 			0.4f,
 			"Relaxation bonus (as decimal fraction) applied while relaxing in chairs in a Medium Passenger Room."
+		);
+		DebugLoggingToggle = Config.Bind(
+			"Debug",
+			"DebugLoggingToggle",
+			false,
+			"Set to true to enable debug logging for Room Effects. Warning: may produce a large amount of log output."
 		);
 
 		_harmony = new Harmony(PluginGuid);

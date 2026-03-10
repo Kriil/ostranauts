@@ -243,6 +243,9 @@ internal static class RoomEffectUtils
 
 	public static void LogRoomEffect(string message, string roomSpecName, Room room)
 	{
-		UnityEngine.Debug.Log($"[RoomEffects-{roomSpecName}] {message} (Room: {GetRoomIdentifier(room)})");
+		if (Plugin.DebugLoggingToggle.Value)
+		{
+			Debug.Log($"[RoomEffects-{roomSpecName}] {message} (Room: {GetRoomIdentifier(room)})");
+		}
 	}
 }
