@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "2l9B1xYa8VRJUWDfmtYBvmCST5xxendoxwXe6+83fvJ/5YwyfMJzFWlY0UUTuCk7KswbWSjTBASoCp1CGORl1w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kriil\\Modding\\Ostranauts\\mods_source\\src\\RoomEffects\\RoomEffects.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kriil\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\Kriil\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.3\\microsoft.netframework.referenceassemblies.net472.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
