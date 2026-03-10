@@ -28,7 +28,7 @@ public sealed class Plugin : BaseUnityPlugin
 	public static ConfigEntry<float> GalleyHydrationRateDurationHours;
 	public static ConfigEntry<float> PassengerSmallRelaxBonus;
 	public static ConfigEntry<float> PassengerMediumRelaxBonus;
-	public static ConfigEntry<float> DebugLoggingToggle;
+	public static ConfigEntry<bool> DebugLoggingToggle;
 
 	private Harmony _harmony;
 
