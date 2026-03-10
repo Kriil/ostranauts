@@ -1,9 +1,0 @@
-[
-    { 
-        "strName" : "TIsRoomRecreationOptionals", 
-        "aTriggers" : [ 
-            "--ADD--",
-            "TIsArcadeGame01Installed"
-        ]
-    }
-    ]
