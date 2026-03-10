@@ -65,6 +65,34 @@ These are added/extended by FFU console patches.
 - Names with spaces should be passed with underscores when required by command parsing.
 - For FFU builds, `getcond` behavior is replaced by the FFU implementation.
 
+## Useful Spawn Examples
+
+These examples use IDs confirmed in the local data files for this workspace.
+
+| Command | Result |
+|---|---|
+| `spawn ItmAICargo01` | Spawns an A.I. Cargo module. |
+| `spawn ItmCargoLift01` | Spawns a Cargo Lift. |
+| `spawn ItmBattery02` | Spawns a ship battery. |
+| `spawn ItmRCSCluster01` | Spawns an RCS thruster cluster. |
+| `spawn ItmStationNav` | Spawns a Nav Console. |
+| `spawn ItmTowingBrace01` | Spawns a Tow Brace. |
+| `spawn ItmTowingBrace01Loose` | Spawns a Tow Brace (Loose). |
+| `spawn ItmCanisterLH02Loose` | Spawns a D2O Canister (Loose). |
+| `spawn ItmCanisterLHe02Loose` | Spawns a Liq. He3 Canister (Loose). |
+| `addcrew 3` | Adds 3 random crew to the current ship. |
+| `addnpc 3` | Adds 3 random NPCs to the current ship. |
+| `lookup ships` | Lists loaded ships as `<regID> : <public name>`. |
+| `lookup ships aero` | Filters loaded ships whose public name contains `aero`. |
+| `ship Volatile Aero` | Spawns the `Volatile Aero` ship template and teleports you to it. |
+| `skywalk OKLG` | Teleports you to the loaded ship with registry ID `OKLG` (example: K-LEG). |
+| `shipvis true OKLG` | Forces a loaded ship visible by registry ID. |
+
+Quick usage notes:
+- Use `lookup ships` first if you need a registry ID for `skywalk` or `shipvis`.
+- Use `ship <public name>` to spawn a ship template by name, not by registry ID.
+- If an item has multiple state variants, prefer the base item first, then try variants like `Loose`, `Off`, or `Dmg`.
+
 ## Source References
 
 - `game_source/ConsoleResolver.cs`
