@@ -42,10 +42,12 @@ Adds bonus effects to rooms on the player's ships.  Unless stated, bonuses requi
 
 1. Follow the instructions on Discord to install BepInEx and FFU-BR: https://discord.com/channels/302515943945273347/1298265273266212906/1298265273266212906
 2. Make sure FFU-BR mod Minor Fixes Plus is installed: https://discord.com/channels/302515943945273347/1312016085243007027/1312016085243007027
-3. Download the latest RoomEffects release from GitHub: https://github.com/Kriil/ostranauts
-4. Unzip the archive into the main game folder (`..\Steam\steamapps\common\Ostranauts`). `Ostranauts\BepInEx\plugins` should now contain `RoomEffects.dll` and `Ostranauts\Ostranauts_Data\Mods` should now contain the `Room_Effects` folder.
-5. The archive contains `Ostranauts\Ostranauts_Data\Mods\loading_order.json`. DO NOT overwrite this file if you already have mods installed. Instead follow the Mod Loading Order Instructions below to add `Room_Effects` to the `aLoadOrder` array.
-6. Launch the game. After the main menu loads, exit the game. This will create `Ostranauts\BepInEx\config\Room_Effects.cfg` which controls the bonuses.
+
+### Install Room Effects
+1. Download the latest RoomEffects release from GitHub: https://github.com/Kriil/ostranauts
+2. Unzip the archive into the main game folder (`..\Steam\steamapps\common\Ostranauts`). `Ostranauts\BepInEx\plugins` should now contain `RoomEffects.dll` and `Ostranauts\Ostranauts_Data\Mods` should now contain the `Room_Effects` folder.
+3. The archive contains `Ostranauts\Ostranauts_Data\Mods\loading_order.json`. DO NOT overwrite this file if you already have mods installed. Instead follow the Mod Loading Order Instructions below to add `Room_Effects` to the `aLoadOrder` array.
+4. Launch the game. After the main menu loads, exit the game. This will create `Ostranauts\BepInEx\config\Room_Effects.cfg` which controls the bonuses.
 
 ### Mod Loading Order Instructions
 1. First in the list should be core, then any non-FFU mods (i.e. all mods that don't rely on FFU modding API).
