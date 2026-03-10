@@ -23,14 +23,8 @@ internal static class BonusTowing
 			return durationHours;
 		}
 
-		Room room = RoomEffectUtils.GetCondOwnerRoom(interaction.objUs);
-		if (!RoomEffectUtils.IsRoomSpec(room, RoomSpecName))
-		{
-			return durationHours;
-		}
-
 		string name = interaction?.strName;
-		if (name == null || !name.StartsWith("ACTTowingSecure"))
+		if (name == null || (name != "ACTTowingSecureAllow" && name != "ACTTowingReleaseAllow"))
 		{
 			return durationHours;
 		}
