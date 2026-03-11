@@ -36,24 +36,6 @@ Adds bonus effects to rooms on the player's ships.  Unless stated, bonuses requi
 - Eating any food in the galley decreases how fast your hunger ticks up for a short time → Just thinking about eating Trenchers makes you less hungry!
 - Drinking water in the galley decreases your thirst rate for a short time → Why does my water taste like Trenchers?
 
-## Installation Instructions
-
-### Install BepInEx and FFU-BR
-
-1. Follow the instructions on Discord to install BepInEx and FFU-BR: https://discord.com/channels/302515943945273347/1298265273266212906/1298265273266212906
-2. Make sure FFU-BR mod Minor Fixes Plus is installed: https://discord.com/channels/302515943945273347/1312016085243007027/1312016085243007027
-
-### Install Room Effects
-1. Download the latest RoomEffects release from GitHub: https://github.com/Kriil/ostranauts
-2. Unzip the archive into the main game folder (`..\Steam\steamapps\common\Ostranauts`). `Ostranauts\BepInEx\plugins` should now contain `RoomEffects.dll` and `Ostranauts\Ostranauts_Data\Mods` should now contain the `Room_Effects` folder.
-3. The archive contains `Ostranauts\Ostranauts_Data\Mods\loading_order.json`. DO NOT overwrite this file if you already have mods installed. Instead follow the Mod Loading Order Instructions below to add `Room_Effects` to the `aLoadOrder` array.
-4. Launch the game. After the main menu loads, exit the game. This will create `Ostranauts\BepInEx\config\Room_Effects.cfg` which controls the bonuses.
-
-### Mod Loading Order Instructions
-1. First in the list should be core, then any non-FFU mods (i.e. all mods that don't rely on FFU modding API).
-2. Right after them goes Minor Fixes Plus mod (to ensure that nothing overwrites and disrupts it).
-3. Add Room_Effects after Minor Fixes Plus mod
-
 ## Configuration
 
 `Ostranauts\BepInEx\config\Room_Effects.cfg` can be modified to change the default bonuses.  Descriptions of the bonus effects are given in the file. 
