@@ -1,0 +1,10 @@
+[
+  {
+    "strName": "CTTILPlaceholderWallAdds",
+    "aCOs": [
+      "TIsPlaceholderWall1x1=1.0x1"
+    ],
+    "aLoots": [],
+    "strType": "condition"
+  }
+]

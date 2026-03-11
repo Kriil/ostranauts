@@ -1,0 +1,8 @@
+[
+    {
+        "strName": "Simple Conditions",
+        "aValues": [
+            "TIsPlaceholderWall1x1","Placeholder Wall Socket","Marks a wall placeholder tile as valid support for wall-mounted installs without acting as a real wall.","0","0","Neutral","false"
+        ]
+    }
+]

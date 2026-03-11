@@ -12,7 +12,9 @@ public sealed class Plugin : BaseUnityPlugin
 {
 	public const string PluginGuid = "Construction_Tweaks";
 	public const string PluginName = "Construction Tweaks";
-	public const string PluginVersion = "0.1.1";
+	public const string PluginVersion = "0.1.2";
+	public const string PlaceholderWallConditionName = "TIsPlaceholderWall1x1";
+	public const string PlaceholderWallAddLootName = "CTTILPlaceholderWallAdds";
 	public static ConfigEntry<bool> KeepInventoryOpenOnInstall;
 	public static ConfigEntry<bool> AltClickInstallShortcut;
 	internal static ManualLogSource Log;
