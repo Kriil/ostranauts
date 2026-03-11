@@ -10,9 +10,13 @@ if ($LASTEXITCODE -ne 0) {
 
 Write-Host "Build succeeded! Deploying mod files..." -ForegroundColor Green
 
+# Create Room_Effects folder if it doesn't exist
+$destFolder = "C:\Steam\steamapps\common\Ostranauts\Ostranauts_Data\Mods\Room_Effects"
+New-Item -ItemType Directory -Path $destFolder -Force | Out-Null
+
 # Copy mod_data contents
 Write-Host "Copying mod_data to Mods folder..."
-Copy-Item -Path ".\mod_data\*" -Destination "C:\Steam\steamapps\common\Ostranauts\Ostranauts_Data\Mods\Room_Effects" -Recurse -Force
+Copy-Item -Path ".\mod_data\Room_Effects\*" -Destination $destFolder -Recurse -Force
 
 # Copy compiled DLL to BepInEx plugins
 Write-Host "Copying DLL to BepInEx plugins..."

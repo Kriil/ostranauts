@@ -1,10 +1,10 @@
 [
     {
-        "strName": "Room Effects",
+        "strName": "Construction Tweaks",
         "strAuthor": "Kriil",
         "strModURL": "",
         "strGameVersion": "0.14.5.20",
         "strModVersion": "1.0.0",
-        "strNotes": "Rooms apply bonuses to installables and work speeds."
+        "strNotes": "Tweaks to construction mechanics."
     }
 ]
