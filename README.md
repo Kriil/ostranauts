@@ -24,3 +24,26 @@ QoL Tweaks to the construction and installation behavior.
 1. First in the list should be `core`, then any non-FFU mods (i.e. all mods that don't rely on FFU modding API).
 2. Right after them goes `Minor Fixes Plus` mod (to ensure that nothing overwrites and disrupts it).
 3. Add `Room_Effects` and `Construction_Tweaks` after `Minor Fixes Plus`
+
+## Local Build and Deploy
+### Local Build and Deployment Script
+If you've cloned this repo, you can manaully build and deploy the mod using the `.\build-and-deploy.ps1` script making sure to set -GamePath to the Ostranauts folder
+
+    .\build-and-deploy.ps1 -Help
+
+    Usage:
+    From a project directory:
+        ..\build-and-deploy.ps1 [-GamePath <path>]
+    From the repo root:
+        .\build-and-deploy.ps1 -Project <project> [-GamePath <path>]
+
+    Accepted -Project values:
+    Construction_Tweaks, Room_Effects
+
+    Examples:
+    .\build-and-deploy.ps1 -Project Room_Effects
+    .\build-and-deploy.ps1 -Project ConstructionTweaks
+    .\build-and-deploy.ps1 -Project Room_Effects -GamePath D:\Games\Ostranauts
+
+### Manual build
+You can build the DLL by running `dontnet build <Project-Name>.csproj -c Release` in the appropriate directory

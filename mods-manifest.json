@@ -3,7 +3,7 @@
                             "Construction_Tweaks",
                             "Room_Effects"
                         ],
-    "mod-release-version":  "1.0.0",
+    "mod-release-version":  "2.1.0",
     "mod_list":  [
                      {
                          "mod_info":  [
@@ -12,7 +12,7 @@
                                               "strAuthor":  "Kriil",
                                               "strModURL":  "https://github.com/Kriil/ostranauts/tree/67886d02763905a00cbc112f286bebf7fe8cca3d/ConstructionTweaks",
                                               "strGameVersion":  "0.14.5.20",
-                                              "strModVersion":  "1.0.5",
+                                              "strModVersion":  "1.1.0",
                                               "strNotes":  "Tweaks to construction mechanics."
                                           }
                                       ]
