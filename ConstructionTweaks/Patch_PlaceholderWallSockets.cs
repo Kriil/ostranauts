@@ -9,6 +9,11 @@ internal static class Patch_PlaceholderSocketAdds
 {
 	private static void Postfix(Item __instance)
 	{
+		if (Plugin.PlaceholderWallSockets == null || !Plugin.PlaceholderWallSockets.Value)
+		{
+			return;
+		}
+
 		if (__instance == null || !__instance.bPlaceholder || __instance.aSocketAdds == null)
 		{
 			return;
@@ -59,6 +64,11 @@ internal static class Patch_PlaceholderWallReqs
 
 	private static void Postfix(CondTrigger __instance, CondOwner objOwner, string strIAStatsName, bool logOutcome, ref bool __result)
 	{
+		if (Plugin.PlaceholderWallSockets == null || !Plugin.PlaceholderWallSockets.Value)
+		{
+			return;
+		}
+
 		if (__result || _isHandlingPlaceholderWall || __instance == null || objOwner == null)
 		{
 			return;

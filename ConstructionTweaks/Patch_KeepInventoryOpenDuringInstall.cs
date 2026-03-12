@@ -10,6 +10,12 @@ public static class Patch_KeepInventoryOpenDuringInstall
 	[HarmonyPrefix]
 	private static void InstallStartPrefix()
 	{
+		if (Plugin.KeepInventoryOpenOnInstall == null || !Plugin.KeepInventoryOpenOnInstall.Value)
+		{
+			_suppressInventoryClose = false;
+			return;
+		}
+
 		_suppressInventoryClose = CrewSim.inventoryGUI != null && CrewSim.inventoryGUI.IsOpen;
 	}
 
@@ -23,6 +29,11 @@ public static class Patch_KeepInventoryOpenDuringInstall
 	[HarmonyPrefix]
 	private static bool ToggleInventoryPrefix(bool bForce)
 	{
+		if (Plugin.KeepInventoryOpenOnInstall == null || !Plugin.KeepInventoryOpenOnInstall.Value)
+		{
+			return true;
+		}
+
 		if (!_suppressInventoryClose)
 		{
 			return true;

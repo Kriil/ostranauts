@@ -1,8 +1,8 @@
-# RoomEffects Mod
+# Room Effects Mod
 
 Adds bonus effects to rooms on the player's ships.  Unless stated, bonuses require the player to be in the room to receive them. This mod is intended to add additional incentive to create rooms on your ship besides just increasing its value.  Plus it adds a little to the immersion and story telling aspects.
 
-## Room Effects Features
+## Features
 
 ### Engineering Room
 - Gives bonus to ship-wide work speeds → cause nothing beats your own workshop for finishing those projects faster.
@@ -38,7 +38,7 @@ Adds bonus effects to rooms on the player's ships.  Unless stated, bonuses requi
 
 ## Configuration
 
-`Ostranauts\BepInEx\config\Room_Effects.cfg` can be modified to change the default bonuses.  Descriptions of the bonus effects are given in the file. 
+Bonus amounts can be modifed through the BepInEx config for the mod, which will be created as `Ostranauts\BepInEx\config\Room_Effects.cfg` after the game is run once with the mod installed.  Descriptions of the bonus effects are given in the file.  Changes to the config require a game restart to take effect.
 
 The majority of the values are given as decimal fractions which represent the percentage bonus. e.g. 0.5 corresponds to a 50% bonus and 2 corresponds to a 200% bonus (or 3 times the base amount).  These can be set to 0 to remove the bonus altogether.  
 
@@ -49,12 +49,11 @@ The majority of the values are given as decimal fractions which represent the pe
 
 ### Engineering
 - Requirements for engineering room (Canister installed or Weber battery charger installed or ship battery installed or RCS Intake Installed) are too low considering how pwerful the bonus is. Maybe combine some of these or add other requirements. Add a config to turn this off and use vanilla requirements.
-- Bonus ignores normal cap for installation progress. Add a config to allow the game to honor the vanilla cap.
 
 ### AI Behavior
-- Crew prefer to use the appropriate room to get the bonuses. They'll happen upon the bonuses automatically of course but manual interaction is currently required to maximise bonuses. 
+- Crew prefer to use the appropriate room to get the bonuses. They'll happen upon some of the bonuses automatically (e.g. strength training in welness room or playing arcade game in recreation room) but manual interaction is currently required to maximise bonuses (making crew have conversations in the recreation room). 
 
-### Add New Rooms
+### New Rooms
 
 #### Ready Room
 - Tool battery charge bonus -> "Captain, I've diverted all power to ... batteries?"

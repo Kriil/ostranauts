@@ -17,6 +17,8 @@ public sealed class Plugin : BaseUnityPlugin
 	public const string PlaceholderWallAddLootName = "CTTILPlaceholderWallAdds";
 	public static ConfigEntry<bool> KeepInventoryOpenOnInstall;
 	public static ConfigEntry<bool> AltClickInstallShortcut;
+	public static ConfigEntry<bool> DragSelectionOverlay;
+	public static ConfigEntry<bool> PlaceholderWallSockets;
 	internal static ManualLogSource Log;
 	private Harmony _harmony;
 
@@ -35,6 +37,18 @@ public sealed class Plugin : BaseUnityPlugin
 			"AltClickInstallShortcut",
 			true,
 			"If true, Alt+left-clicking an installable inventory item starts placement immediately."
+		);
+		DragSelectionOverlay = Config.Bind(
+			"General",
+			"DragSelectionOverlay",
+			true,
+			"If true, drag-select shows tile highlights and a dimensions label. If false, the vanilla drag selection behavior is unchanged."
+		);
+		PlaceholderWallSockets = Config.Bind(
+			"General",
+			"PlaceholderWallSockets",
+			true,
+			"If true, wall placeholders get the custom socket and wall-passability behavior. If false, placeholder walls use vanilla behavior."
 		);
 		_harmony = new Harmony(PluginGuid);
 		_harmony.PatchAll();

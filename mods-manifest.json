@@ -1,0 +1,46 @@
+{
+  "mod-release-version":"1.0.0",
+  "mod_list": 
+  [
+    {
+      "mod_info" : 
+      [
+        {
+          "strName": "Construction Tweaks",
+          "strAuthor": "Kriil",
+          "strModURL": "https://github.com/Kriil/ostranauts/tree/67886d02763905a00cbc112f286bebf7fe8cca3d/ConstructionTweaks",
+          "strGameVersion": "0.14.5.20",
+          "strModVersion": "1.0.0",
+          "strNotes": "Tweaks to construction mechanics."
+        }
+      ]
+    },
+    {
+      "mod_info" : 
+      [
+        {
+          "strName": "Room Effects",
+          "strAuthor": "Kriil",
+          "strModURL": "https://github.com/Kriil/ostranauts/tree/67886d02763905a00cbc112f286bebf7fe8cca3d/RoomEffects",
+          "strGameVersion": "0.14.5.20",
+          "strModVersion": "1.0.0",
+          "strNotes": "Rooms apply bonuses to installables and work speeds."
+        }
+      ]
+    }
+  ],
+  "loading_order" : 
+  [
+    {
+      "strName": "Mod Loading Order",
+      "strNotes": "Controls the order mods are loaded. 'core' refers to base game data and should usually be first.",
+      "aLoadOrder": [
+        "core",
+        "Minor_Fixes_Plus",
+        "Construction_Tweaks",
+        "Room_Effects"
+      ],
+      "aIgnorePatterns": []
+    }
+  ]
+}

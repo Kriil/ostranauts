@@ -23,6 +23,12 @@ public static class Patch_DragSelectionOverlay
 	[HarmonyPostfix]
 	private static void UpdatePostfix(CrewSim __instance)
 	{
+		if (Plugin.DragSelectionOverlay == null || !Plugin.DragSelectionOverlay.Value)
+		{
+			HideOverlay();
+			return;
+		}
+
 		if (__instance == null || CrewSim.shipCurrentLoaded == null || LineSelectRectRef(__instance) == null)
 		{
 			HideOverlay();

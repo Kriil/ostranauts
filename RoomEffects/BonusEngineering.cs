@@ -5,7 +5,7 @@ internal static class BonusEngineering
 	private const string roomSpecName = "Engineering";
 	public static void ApplyBonuses(Room room)
 	{
-		// Placeholder for future engineering bonuses, currently no ship or room bonuses to apply
+		// Placeholder for future engineering bonuses, currently no room bonuses to apply
 	}
 
 	public static void ApplyShipBonuses(Ship ship, CondOwner shipCo)
@@ -28,7 +28,7 @@ internal static class BonusEngineering
 		}
 
 		float bonus = 0f;
-		if (hasEngineering)
+		if (hasEngineering && !Plugin.EnforceWorkSpeedCap.Value)
 		{
 			bonus = Plugin.EngineeringWorkBonus.Value;
 		} 

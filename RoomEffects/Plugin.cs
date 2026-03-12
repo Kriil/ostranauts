@@ -14,6 +14,7 @@ public sealed class Plugin : BaseUnityPlugin
 	public const string PluginVersion = "0.1.0";
 
 	public static ConfigEntry<float> EngineeringWorkBonus;
+	public static ConfigEntry<bool> EnforceWorkSpeedCap;
 	public static ConfigEntry<float> TowingSecureSpeedBonus;
 	public static ConfigEntry<float> WellnessFitnessBonus;
 	public static ConfigEntry<float> WellnessStrengthBonus;
@@ -38,13 +39,19 @@ public sealed class Plugin : BaseUnityPlugin
 			"Engineering Room",
 			"EngineeringWorkBonus",
 			0.1f,
-			"Ship-wide work-rate bonus (as decimal fraction) added when the ship has at least one Engineering room."
+			"Ship-wide work speed bonus (as decimal fraction) added when the ship has at least one Engineering room."
+		);
+		EnforceWorkSpeedCap = Config.Bind(
+			"Engineering Room",
+			"EnforceWorkSpeedCap",
+			false,
+			"Whether to enforce the vanilla work speed cap in Engineering rooms."
 		);
 		TowingSecureSpeedBonus = Config.Bind(
 			"Towing Room",
 			"TowingSecureSpeedBonus",
 			0.5f,
-			"Speed bonus (as decimal fraction) applied while securing a tow brace in a Towing room."
+			"Progress bonus (as decimal fraction) applied while securing a tow brace in a Towing room."
 		);
 		WellnessFitnessBonus = Config.Bind(
 			"Wellness Room",
