@@ -28,7 +28,7 @@ internal static class BonusEngineering
 		}
 
 		float bonus = 0f;
-		if (hasEngineering && !Plugin.EnforceWorkSpeedCap.Value)
+		if (hasEngineering)
 		{
 			bonus = Plugin.EngineeringWorkBonus.Value;
 		} 

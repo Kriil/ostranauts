@@ -97,8 +97,10 @@ internal static class Patch_Interaction_CalcRate
 			{
 				RoomEffectUtils.LogRoomEffect($"Applied engineering bonus of {bonus * 100f}% to '{instance.objUs.ship.ShipCO.strID}'.", "Engineering", null);
 				value += bonus;
-				// Add the bonus to the max as well to avoid capping the bonus.
-				max += bonus;
+				if(!Plugin.EnforceWorkSpeedCap.Value)
+				{
+					max += bonus;
+				}
 			}
 		}
 
