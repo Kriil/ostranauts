@@ -1,7 +1,8 @@
 ﻿{
     "mods_build_list":  [
                             "Construction_Tweaks",
-                            "Room_Effects"
+                            "Room_Effects",
+                            "Blueprints"
                         ],
     "mod-release-version":  "2.1.1",
     "mod_list":  [
@@ -28,6 +29,18 @@
                                               "strNotes":  "Rooms apply bonuses to installables and work speeds."
                                           }
                                       ]
+                     },
+                     {
+                         "mod_info":  [
+                                          {
+                                              "strName":  "Blueprints",
+                                              "strAuthor":  "Kriil",
+                                              "strModURL":  "",
+                                              "strGameVersion":  "0.14.5.20",
+                                              "strModVersion":  "0.1.0",
+                                              "strNotes":  "Drag-select installables into a temporary blueprint, queue uninstall tasks, and place install orders from the saved layout."
+                                          }
+                                      ]
                      }
                  ],
     "loading_order":  [
@@ -38,7 +51,8 @@
                                                  "core",
                                                  "Minor_Fixes_Plus",
                                                  "Construction_Tweaks",
-                                                 "Room_Effects"
+                                                 "Room_Effects",
+                                                 "Blueprints"
                                              ],
                               "aIgnorePatterns":  [
 
