@@ -29,5 +29,9 @@
       <HintPath>$(GameDir)\Ostranauts_Data\Managed\UnityEngine.UI.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="Vectrosity">
+      <HintPath>$(GameDir)\Ostranauts_Data\Managed\Vectrosity.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
   </ItemGroup>
 </Project>

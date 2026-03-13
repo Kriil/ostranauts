@@ -130,7 +130,17 @@ public static class Patch_DragSelectionOverlay
 		for (int i = 0; i < selectedTiles.Count; i++)
 		{
 			Tile source = selectedTiles[i];
+			if (source == null || i >= TilePool.Count)
+			{
+				continue;
+			}
+
 			Tile preview = TilePool[i];
+			if (preview == null)
+			{
+				continue;
+			}
+
 			preview.transform.position = new Vector3(source.transform.position.x, source.transform.position.y, -8f);
 			preview.SetMat(Item.strFit);
 			preview.SetColor(new Color(1f, 1f, 1f, 0.12f));
@@ -139,7 +149,10 @@ public static class Patch_DragSelectionOverlay
 
 		for (int i = selectedTiles.Count; i < TilePool.Count; i++)
 		{
-			TilePool[i].gameObject.SetActive(false);
+			if (TilePool[i] != null)
+			{
+				TilePool[i].gameObject.SetActive(false);
+			}
 		}
 	}
 
@@ -202,9 +215,23 @@ public static class Patch_DragSelectionOverlay
 	{
 		while (TilePool.Count < count)
 		{
-			GameObject tileObject = DataHandler.GetMesh("prefabQuadTile", null);
+			GameObject tilePrefab = Resources.Load<GameObject>("prefabQuadTile");
+			if (tilePrefab == null)
+			{
+				Plugin.Log?.LogWarning("DragSelectionOverlay could not load prefabQuadTile.");
+				return;
+			}
+
+			GameObject tileObject = Object.Instantiate(tilePrefab);
 			tileObject.transform.SetParent(_tileRoot.transform, false);
 			Tile tile = tileObject.GetComponent<Tile>();
+			if (tile == null)
+			{
+				Plugin.Log?.LogWarning("DragSelectionOverlay spawned a tile preview without a Tile component.");
+				Object.Destroy(tileObject);
+				return;
+			}
+
 			tile.SetMat(Item.strFit);
 			tile.SetColor(new Color(1f, 1f, 1f, 0.12f));
 			tileObject.SetActive(false);

@@ -2,11 +2,7 @@ game_data/
 game_source/
 FFU-BR/
 FFU-BR-Data/
-RoomEffects/bin/
-RoomEffects/obj/
-RoomEffects/release_archive/
-ConstructionTweaks/bin/
-ConstructionTweaks/obj/
-ConstructionTweaks/NuGet.Config
-ConstructionTweaks/release_archive/
+*/bin/
+*/obj/
+*/NuGet.Config
 Mods-v*.zip

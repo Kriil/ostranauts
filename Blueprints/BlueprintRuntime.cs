@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Vectrosity;
 
 namespace Ostranauts.Blueprints;
 
@@ -23,8 +25,8 @@ internal static class BlueprintRuntime
 	private static readonly System.Reflection.FieldInfo LineSelectRectField =
 		AccessTools.Field(typeof(CrewSim), "lineSelectRect");
 
-	private static readonly AccessTools.MethodDelegate<Action<CrewSim>> InstallFinishDelegate =
-		AccessTools.MethodDelegate<Action<CrewSim>>(AccessTools.Method(typeof(CrewSim), "InstallFinish"));
+	private static readonly MethodInfo InstallFinishMethod =
+		AccessTools.Method(typeof(CrewSim), "InstallFinish");
 
 	private static readonly List<CondOwner> PreviewObjects = new List<CondOwner>();
 	private static readonly Dictionary<string, JsonInstallable> InstallableCache = new Dictionary<string, JsonInstallable>();
@@ -458,7 +460,7 @@ internal static class BlueprintRuntime
 					item.fLastRotation = crewSim.goSelPart.transform.rotation.eulerAngles.z;
 				}
 
-				InstallFinishDelegate(crewSim);
+				InstallFinishMethod?.Invoke(crewSim, null);
 			}
 
 			ExitMode();

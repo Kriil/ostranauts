@@ -1,10 +1,9 @@
 ﻿{
     "mods_build_list":  [
                             "Construction_Tweaks",
-                            "Room_Effects",
-                            "Blueprints"
+                            "Room_Effects"
                         ],
-    "mod-release-version":  "2.1.1",
+    "mod-release-version":  "2.1.2",
     "mod_list":  [
                      {
                          "mod_info":  [
@@ -35,9 +34,9 @@
                                           {
                                               "strName":  "Blueprints",
                                               "strAuthor":  "Kriil",
-                                              "strModURL":  "",
+                                              "strModURL":  "cd",
                                               "strGameVersion":  "0.14.5.20",
-                                              "strModVersion":  "0.1.0",
+                                              "strModVersion":  "0.1.1",
                                               "strNotes":  "Drag-select installables into a temporary blueprint, queue uninstall tasks, and place install orders from the saved layout."
                                           }
                                       ]
