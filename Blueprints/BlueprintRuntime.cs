@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
@@ -30,6 +29,7 @@ internal static class BlueprintRuntime
 
 	private static readonly List<CondOwner> PreviewObjects = new List<CondOwner>();
 	private static readonly Dictionary<string, JsonInstallable> InstallableCache = new Dictionary<string, JsonInstallable>();
+	private static CondTrigger _installedTrigger;
 
 	private static BlueprintMode _mode;
 	private static BlueprintData _currentBlueprint;
@@ -39,6 +39,18 @@ internal static class BlueprintRuntime
 
 	internal static bool IsActive => _mode != BlueprintMode.Inactive;
 	internal static bool IsPlacing => _mode == BlueprintMode.Placing;
+	private static CondTrigger InstalledTrigger
+	{
+		get
+		{
+			if (_installedTrigger == null)
+			{
+				_installedTrigger = DataHandler.GetCondTrigger("TIsInstalled");
+			}
+
+			return _installedTrigger;
+		}
+	}
 
 	internal static void Initialize()
 	{
@@ -147,14 +159,30 @@ internal static class BlueprintRuntime
 
 	internal static string MakeSafeFileName(string value)
 	{
-		if (string.IsNullOrWhiteSpace(value))
+		if (value == null || value.Trim().Length == 0)
 		{
 			return "blueprint";
 		}
 
 		char[] invalidChars = Path.GetInvalidFileNameChars();
-		char[] chars = value.Select(ch => invalidChars.Contains(ch) ? '_' : ch).ToArray();
-		return new string(chars).Replace(' ', '_');
+		char[] chars = value.ToCharArray();
+		for (int i = 0; i < chars.Length; i++)
+		{
+			for (int j = 0; j < invalidChars.Length; j++)
+			{
+				if (chars[i] == invalidChars[j])
+				{
+					chars[i] = '_';
+					break;
+				}
+			}
+			if (chars[i] == ' ')
+			{
+				chars[i] = '_';
+			}
+		}
+
+		return new string(chars);
 	}
 
 	private static void HandleSelectingMouse(CrewSim crewSim)
@@ -242,9 +270,9 @@ internal static class BlueprintRuntime
 
 	private static List<BlueprintPart> CollectBlueprintParts(Bounds bounds)
 	{
+		HashSet<string> selectedTiles = CollectSelectedTileKeys(bounds);
 		HashSet<string> seen = new HashSet<string>();
 		List<BlueprintPart> results = new List<BlueprintPart>();
-		List<CondOwner> selected = new List<CondOwner>();
 
 		foreach (Ship ship in CrewSim.GetAllLoadedShips())
 		{
@@ -253,14 +281,15 @@ internal static class BlueprintRuntime
 				continue;
 			}
 
-			foreach (CondOwner co in ship.GetICOs1(null, false, true, true))
+			foreach (CondOwner co in ship.GetICOs1(null, true, true, true))
 			{
 				if (co == null || string.IsNullOrEmpty(co.strID) || !seen.Add(co.strID))
 				{
 					continue;
 				}
 
-				if (!bounds.Contains(co.transform.position))
+				Tile tile = co.ship == null ? null : co.ship.GetTileAtWorldCoords1(co.transform.position.x, co.transform.position.y, true, true);
+				if (tile == null || !selectedTiles.Contains(GetTileKey(tile)))
 				{
 					continue;
 				}
@@ -282,7 +311,6 @@ internal static class BlueprintRuntime
 					continue;
 				}
 
-				selected.Add(co);
 				results.Add(new BlueprintPart
 				{
 					Item = new JsonItem
@@ -304,19 +332,58 @@ internal static class BlueprintRuntime
 			return results;
 		}
 
-		float minX = results.Min(x => x.Item.fX);
-		float minY = results.Min(x => x.Item.fY);
-		foreach (BlueprintPart part in results)
+		float minX = float.MaxValue;
+		float minY = float.MaxValue;
+		for (int i = 0; i < results.Count; i++)
 		{
-			part.Item.fX -= minX;
-			part.Item.fY -= minY;
+			if (results[i].Item.fX < minX)
+			{
+				minX = results[i].Item.fX;
+			}
+			if (results[i].Item.fY < minY)
+			{
+				minY = results[i].Item.fY;
+			}
 		}
 
-		return results.OrderBy(x => x.Item.fX).ThenBy(x => x.Item.fY).ToList();
+		for (int i = 0; i < results.Count; i++)
+		{
+			results[i].Item.fX -= minX;
+			results[i].Item.fY -= minY;
+		}
+
+		results.Sort(CompareBlueprintParts);
+		return results;
+	}
+
+	private static HashSet<string> CollectSelectedTileKeys(Bounds bounds)
+	{
+		HashSet<string> tileKeys = new HashSet<string>();
+		foreach (Ship ship in CrewSim.GetAllLoadedShips())
+		{
+			if (ship == null || ship.aTiles == null)
+			{
+				continue;
+			}
+
+			for (int i = 0; i < ship.aTiles.Count; i++)
+			{
+				Tile tile = ship.aTiles[i];
+				if (tile == null || !IsTileIncluded(tile, bounds))
+				{
+					continue;
+				}
+
+				tileKeys.Add(GetTileKey(tile));
+			}
+		}
+
+		return tileKeys;
 	}
 
 	private static void QueueUninstallTasks(List<BlueprintPart> parts)
 	{
+		int queued = 0;
 		foreach (BlueprintPart part in parts)
 		{
 			if (string.IsNullOrEmpty(part.UninstallInteractionName) || string.IsNullOrEmpty(part.TargetCOID))
@@ -324,7 +391,11 @@ internal static class BlueprintRuntime
 				continue;
 			}
 
-			CondOwner target = DataHandler.GetCondOwner(part.TargetCOID);
+			CondOwner target = null;
+			if (DataHandler.mapCOs != null && DataHandler.mapCOs.ContainsKey(part.TargetCOID))
+			{
+				target = DataHandler.mapCOs[part.TargetCOID];
+			}
 			if (target == null)
 			{
 				continue;
@@ -338,13 +409,31 @@ internal static class BlueprintRuntime
 				strName = "BlueprintUninstall" + target.strID
 			};
 			CrewSim.objInstance.workManager.AddTask(task, 1);
+			queued++;
 		}
+
+		Plugin.LogInfo("Queued " + queued + " uninstall tasks for blueprint capture.");
 	}
 
 	private static BlueprintData CreateBlueprintData(List<BlueprintPart> parts)
 	{
-		float maxX = parts.Max(x => x.Item.fX);
-		float maxY = parts.Max(x => x.Item.fY);
+		float maxX = float.MinValue;
+		float maxY = float.MinValue;
+		JsonItem[] items = new JsonItem[parts.Count];
+		for (int i = 0; i < parts.Count; i++)
+		{
+			if (parts[i].Item.fX > maxX)
+			{
+				maxX = parts[i].Item.fX;
+			}
+			if (parts[i].Item.fY > maxY)
+			{
+				maxY = parts[i].Item.fY;
+			}
+
+			items[i] = parts[i].Item.Clone();
+		}
+
 		return new BlueprintData
 		{
 			strName = "blueprint_" + DateTime.Now.ToString("yyyyMMdd_HHmmss"),
@@ -355,7 +444,7 @@ internal static class BlueprintRuntime
 			fOriginY = 0f,
 			fWidth = maxX + 1f,
 			fHeight = maxY + 1f,
-			aItems = parts.Select(x => x.Item.Clone()).ToArray()
+			aItems = items
 		};
 	}
 
@@ -481,7 +570,8 @@ internal static class BlueprintRuntime
 			return false;
 		}
 
-		foreach (int index in Enumerable.Range(0, _parts.Count))
+		HashSet<string> footprintTiles = new HashSet<string>();
+		for (int index = 0; index < _parts.Count; index++)
 		{
 			if (index >= PreviewObjects.Count)
 			{
@@ -499,13 +589,43 @@ internal static class BlueprintRuntime
 			preview.transform.position = new Vector3(position.x, position.y, preview.transform.position.z);
 			preview.transform.rotation = Quaternion.Euler(0f, 0f, _parts[index].Item.fRotation + _rotationSteps * 90f);
 			item.fLastRotation = preview.transform.rotation.eulerAngles.z;
-			if (!item.CheckFit(preview.transform.position, ship, null, null))
+
+			Tile tile = ship.GetTileAtWorldCoords1(position.x, position.y, true, true);
+			if (tile == null)
+			{
+				return false;
+			}
+
+			string tileKey = GetTileKey(tile);
+			if (tileKey != null)
+			{
+				footprintTiles.Add(tileKey);
+			}
+		}
+
+		List<CondOwner> installed = ship.GetCOs(InstalledTrigger, true, true, true);
+		for (int i = 0; i < installed.Count; i++)
+		{
+			CondOwner co = installed[i];
+			if (co == null || co.ship == null)
+			{
+				continue;
+			}
+
+			Tile tile = co.ship.GetTileAtWorldCoords1(co.transform.position.x, co.transform.position.y, true, true);
+			if (tile == null)
+			{
+				continue;
+			}
+
+			string tileKey = GetTileKey(tile);
+			if (tileKey != null && footprintTiles.Contains(tileKey))
 			{
 				return false;
 			}
 		}
 
-		return true;
+		return footprintTiles.Count > 0;
 	}
 
 	private static string GetFirstValidJobAction(CondOwner co, string jobType)
@@ -541,7 +661,18 @@ internal static class BlueprintRuntime
 			return cached;
 		}
 
-		if (!DataHandler.dictInstallables2.TryGetValue(uninstallAction, out JsonInstallable uninstallInstallable))
+		string uninstallInstallableName = uninstallAction;
+		if (uninstallInstallableName.StartsWith("ACT"))
+		{
+			uninstallInstallableName = uninstallInstallableName.Substring(3);
+		}
+		if (uninstallInstallableName.EndsWith("Allow"))
+		{
+			uninstallInstallableName = uninstallInstallableName.Substring(0, uninstallInstallableName.Length - 5);
+		}
+
+		JsonInstallable uninstallInstallable = null;
+		if (!DataHandler.dictInstallables.TryGetValue(uninstallInstallableName, out uninstallInstallable))
 		{
 			return null;
 		}
@@ -569,7 +700,10 @@ internal static class BlueprintRuntime
 				break;
 			}
 
-			fallback ??= installable.Clone();
+			if (fallback == null)
+			{
+				fallback = installable.Clone();
+			}
 		}
 
 		JsonInstallable result = exact ?? fallback;
@@ -619,6 +753,22 @@ internal static class BlueprintRuntime
 			default:
 				return new Vector2(x, y);
 		}
+	}
+
+	private static bool IsTileIncluded(Tile tile, Bounds bounds)
+	{
+		Vector3 pos = tile.transform.position;
+		float tileMinX = pos.x - 0.5f;
+		float tileMaxX = pos.x + 0.5f;
+		float tileMinY = pos.y - 0.5f;
+		float tileMaxY = pos.y + 0.5f;
+
+		bool intersectsFromLeft = bounds.min.x < tileMaxX;
+		bool intersectsFromBottom = bounds.min.y < tileMaxY;
+		bool reachesCenterFromRight = bounds.max.x >= pos.x;
+		bool reachesCenterFromTop = bounds.max.y >= pos.y;
+
+		return intersectsFromLeft && intersectsFromBottom && reachesCenterFromRight && reachesCenterFromTop;
 	}
 
 	private static bool IsPointerOverUi()
@@ -677,5 +827,48 @@ internal static class BlueprintRuntime
 	private static void SetSelectionRect(CrewSim crewSim, VectorLine line)
 	{
 		LineSelectRectField?.SetValue(crewSim, line);
+	}
+
+	private static string GetTileKey(Tile tile)
+	{
+		if (tile == null || tile.coProps == null || tile.coProps.ship == null)
+		{
+			return null;
+		}
+
+		return tile.coProps.ship.strRegID + ":" + tile.Index;
+	}
+
+	private static int CompareBlueprintParts(BlueprintPart a, BlueprintPart b)
+	{
+		if (a == null && b == null)
+		{
+			return 0;
+		}
+		if (a == null)
+		{
+			return -1;
+		}
+		if (b == null)
+		{
+			return 1;
+		}
+		if (a.Item.fX < b.Item.fX)
+		{
+			return -1;
+		}
+		if (a.Item.fX > b.Item.fX)
+		{
+			return 1;
+		}
+		if (a.Item.fY < b.Item.fY)
+		{
+			return -1;
+		}
+		if (a.Item.fY > b.Item.fY)
+		{
+			return 1;
+		}
+		return 0;
 	}
 }

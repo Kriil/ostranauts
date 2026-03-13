@@ -1,7 +1,8 @@
 ﻿{
     "mods_build_list":  [
                             "Construction_Tweaks",
-                            "Room_Effects"
+                            "Room_Effects",
+                            "Blueprints"
                         ],
     "mod-release-version":  "2.1.2",
     "mod_list":  [
@@ -12,7 +13,7 @@
                                               "strAuthor":  "Kriil",
                                               "strModURL":  "https://github.com/Kriil/ostranauts/tree/67886d02763905a00cbc112f286bebf7fe8cca3d/ConstructionTweaks",
                                               "strGameVersion":  "0.14.5.20",
-                                              "strModVersion":  "1.1.0",
+                                              "strModVersion":  "1.1.1",
                                               "strNotes":  "Tweaks to construction mechanics."
                                           }
                                       ]
@@ -36,7 +37,7 @@
                                               "strAuthor":  "Kriil",
                                               "strModURL":  "cd",
                                               "strGameVersion":  "0.14.5.20",
-                                              "strModVersion":  "0.1.1",
+                                              "strModVersion":  "0.1.12",
                                               "strNotes":  "Drag-select installables into a temporary blueprint, queue uninstall tasks, and place install orders from the saved layout."
                                           }
                                       ]

@@ -19,7 +19,6 @@ public sealed class Plugin : BaseUnityPlugin
 	internal static ManualLogSource Log;
 
 	private Harmony _harmony;
-	private BlueprintCommand _command;
 
 	private void Awake()
 	{
@@ -38,7 +37,6 @@ public sealed class Plugin : BaseUnityPlugin
 		);
 
 		BlueprintRuntime.Initialize();
-		_command = new BlueprintCommand();
 		_harmony = new Harmony(PluginGuid);
 		_harmony.PatchAll();
 		Logger.LogInfo("Applied Harmony patches for Blueprints.");
