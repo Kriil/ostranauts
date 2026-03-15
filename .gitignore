@@ -6,3 +6,5 @@ FFU-BR-Data/
 */obj/
 */NuGet.Config
 Mods-v*.zip
+.codex/
+codex_docs/
