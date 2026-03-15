@@ -8,3 +8,5 @@ FFU-BR-Data/
 Mods-v*.zip
 .codex/
 codex_docs/
+.agents/
+Agents.md
