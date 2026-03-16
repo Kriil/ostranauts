@@ -30,6 +30,7 @@ internal static class BlueprintRuntime
 
 	private static readonly List<CondOwner> PreviewObjects = new List<CondOwner>();
 	private static readonly Dictionary<string, JsonInstallable> InstallableCache = new Dictionary<string, JsonInstallable>();
+	private static readonly Dictionary<string, float> PendingPlaceholderRotations = new Dictionary<string, float>();
 	private static CondTrigger _installedTrigger;
 
 	private static BlueprintMode _mode;
@@ -59,11 +60,13 @@ internal static class BlueprintRuntime
 		_parts.Clear();
 		PreviewObjects.Clear();
 		InstallableCache.Clear();
+		PendingPlaceholderRotations.Clear();
 	}
 
 	internal static void Shutdown()
 	{
 		ExitMode();
+		PendingPlaceholderRotations.Clear();
 	}
 
 	internal static void StartSelectionMode()
@@ -322,7 +325,7 @@ internal static class BlueprintRuntime
 
 				results.Add(new BlueprintPart
 				{
-					Item = new JsonItem
+					Item = new BlueprintItemData
 					{
 						strName = installable.strStartInstall,
 						fX = co.transform.position.x,
@@ -429,7 +432,7 @@ internal static class BlueprintRuntime
 	{
 		float maxX = float.MinValue;
 		float maxY = float.MinValue;
-		JsonItem[] items = new JsonItem[parts.Count];
+		BlueprintItemData[] items = new BlueprintItemData[parts.Count];
 		for (int i = 0; i < parts.Count; i++)
 		{
 			if (parts[i].Item.fX > maxX)
@@ -443,6 +446,17 @@ internal static class BlueprintRuntime
 
 			items[i] = parts[i].Item.Clone();
 		}
+
+		int rotatedItemCount = 0;
+		for (int i = 0; i < items.Length; i++)
+		{
+			if (Mathf.Abs(Mathf.Repeat(items[i].fRotation, 360f)) > 0.01f)
+			{
+				rotatedItemCount++;
+			}
+		}
+
+		Plugin.LogInfo("Blueprint capture serialized " + items.Length + " items; " + rotatedItemCount + " have non-zero saved rotation.");
 
 		return new BlueprintData
 		{
@@ -552,13 +566,29 @@ internal static class BlueprintRuntime
 				}
 
 				Vector2 position = RotateAndOffset(part.Item.fX, part.Item.fY, _rotationSteps) + anchor;
+				float rotation = part.Item.fRotation + _rotationSteps * 90f;
 				crewSim.goSelPart.transform.position = new Vector3(position.x, position.y, crewSim.goSelPart.transform.position.z);
-				crewSim.goSelPart.transform.rotation = Quaternion.Euler(0f, 0f, part.Item.fRotation + _rotationSteps * 90f);
+				ApplyPlacementRotation(crewSim.goSelPart.GetComponent<CondOwner>(), rotation);
+				ApplyPlacementRotation(interaction.objThem, rotation);
 				Item item = crewSim.goSelPart.GetComponent<Item>();
 				if (item != null)
 				{
-					item.fLastRotation = crewSim.goSelPart.transform.rotation.eulerAngles.z;
+					item.fLastRotation = rotation;
 				}
+
+				float selPartTransformRotation = crewSim.goSelPart.transform.rotation.eulerAngles.z;
+				float selPartItemRotation = item != null ? item.fLastRotation : selPartTransformRotation;
+				Item targetItem = interaction.objThem?.GetComponent<Item>();
+				float targetTransformRotation = interaction.objThem != null ? interaction.objThem.transform.rotation.eulerAngles.z : 0f;
+				float targetItemRotation = targetItem != null ? targetItem.fLastRotation : targetTransformRotation;
+				Plugin.LogInfo(
+					"Blueprint placement handoff '" + part.Item.strName +
+					"': desired=" + rotation.ToString("0.##") +
+					", selPart.transform=" + selPartTransformRotation.ToString("0.##") +
+					", selPart.item=" + selPartItemRotation.ToString("0.##") +
+					", target.transform=" + targetTransformRotation.ToString("0.##") +
+					", target.item=" + targetItemRotation.ToString("0.##") + "."
+				);
 
 				InstallFinishMethod?.Invoke(crewSim, null);
 			}
@@ -692,6 +722,53 @@ internal static class BlueprintRuntime
 		}
 
 		return footprintTiles.Count > 0;
+	}
+
+	internal static void ApplyPlacementRotation(CondOwner target, float rotation)
+	{
+		if (target == null)
+		{
+			return;
+		}
+
+		target.transform.rotation = Quaternion.Euler(0f, 0f, rotation);
+		Item item = target.GetComponent<Item>();
+		if (item != null)
+		{
+			item.fLastRotation = rotation;
+			item.ResetTransforms(target.transform.position.x, target.transform.position.y);
+		}
+	}
+
+	internal static void RegisterPlaceholderRotation(CondOwner placeholder, float rotation)
+	{
+		if (placeholder == null || string.IsNullOrEmpty(placeholder.strID))
+		{
+			return;
+		}
+
+		PendingPlaceholderRotations[placeholder.strID] = rotation;
+	}
+
+	internal static bool TryGetPlaceholderRotation(string placeholderId, out float rotation)
+	{
+		if (string.IsNullOrEmpty(placeholderId))
+		{
+			rotation = 0f;
+			return false;
+		}
+
+		return PendingPlaceholderRotations.TryGetValue(placeholderId, out rotation);
+	}
+
+	internal static void ClearPlaceholderRotation(string placeholderId)
+	{
+		if (string.IsNullOrEmpty(placeholderId))
+		{
+			return;
+		}
+
+		PendingPlaceholderRotations.Remove(placeholderId);
 	}
 
 	private static string GetFirstValidJobAction(CondOwner co, string jobType)

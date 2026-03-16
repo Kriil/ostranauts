@@ -13,13 +13,33 @@ public sealed class BlueprintData
 	public float fOriginY;
 	public float fWidth;
 	public float fHeight;
-	public JsonItem[] aItems;
+	public BlueprintItemData[] aItems;
+}
+
+[Serializable]
+public sealed class BlueprintItemData
+{
+	public string strName;
+	public float fX;
+	public float fY;
+	public float fRotation;
+
+	public BlueprintItemData Clone()
+	{
+		return new BlueprintItemData
+		{
+			strName = strName,
+			fX = fX,
+			fY = fY,
+			fRotation = fRotation
+		};
+	}
 }
 
 [Serializable]
 public sealed class BlueprintPart
 {
-	public JsonItem Item;
+	public BlueprintItemData Item;
 	public string SourceCODef;
 	public string InstallInteractionName;
 	public string UninstallInteractionName;
