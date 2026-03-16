@@ -40,12 +40,6 @@ public static class Patch_GUIPDA_BlueprintsShowJobPaintUI
 			return;
 		}
 
-		Texture2D icon = Plugin.EnsureBlueprintActionTextureLoaded();
-		if (icon == null || icon.name == "missing.png")
-		{
-			Plugin.LogWarning("Blueprint PDA injection could not resolve GUIActionBlueprint.png.");
-		}
-
 		GUIJobItem blueprintButton = Object.Instantiate(prefab, parent);
 		blueprintButton.name = BlueprintButtonName;
 		blueprintButton.SetData("BLUE", "GUIActionBlueprint", BlueprintRuntime.StartSelectionModeFromPda);

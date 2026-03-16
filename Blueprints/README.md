@@ -6,9 +6,12 @@ Current status: the mod can be started from the `blueprint` console command or f
 
 Requirements: BepInEx and Harmony in the local Ostranauts install used by this workspace.
 
+Saved blueprints:
+- Default location: `Ostranauts_Data/Mods/Blueprints/saved_blueprints`
+- Generated files avoid double `blueprint_` prefixes when the blueprint name already starts with that prefix.
+
 Troubleshooting:
 - Look for `Applied Harmony patches for Blueprints.`
-- Look for `Registered Blueprint action image from ...`
 - Look for `Inserted Blueprint PDA action button after the vanilla jobs actions.`
 - Look for `Blueprint PDA button clicked.`
 - Look for `Blueprint selection mode started.`

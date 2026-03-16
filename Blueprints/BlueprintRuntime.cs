@@ -77,7 +77,6 @@ internal static class BlueprintRuntime
 		ExitMode();
 		_mode = BlueprintMode.Selecting;
 		_lastModeChangeFrame = Time.frameCount;
-		Plugin.EnsureBlueprintActionTextureLoaded();
 		CrewSim.objInstance.StartAction("GUIActionBlueprint.png");
 		Plugin.LogInfo("Blueprint selection mode started.");
 	}
@@ -125,7 +124,6 @@ internal static class BlueprintRuntime
 		{
 			if (crewSim.goPaintJob == null)
 			{
-				Plugin.EnsureBlueprintActionTextureLoaded();
 				crewSim.StartAction("GUIActionBlueprint.png");
 			}
 			return;
@@ -135,7 +133,6 @@ internal static class BlueprintRuntime
 		{
 			if (crewSim.goPaintJob == null)
 			{
-				Plugin.EnsureBlueprintActionTextureLoaded();
 				crewSim.StartAction("GUIActionBlueprint.png");
 			}
 			UpdatePlacementPreview(crewSim);
@@ -673,6 +670,20 @@ internal static class BlueprintRuntime
 			return cached;
 		}
 
+		JsonInstallable exactInstallable = FindInstallableByStartInstall(co.strCODef);
+		if (exactInstallable != null)
+		{
+			InstallableCache[co.strCODef] = exactInstallable;
+			return exactInstallable;
+		}
+
+		JsonInstallable actionMatchedInstallable = FindInstallableFromUninstallAction(uninstallAction);
+		if (actionMatchedInstallable != null)
+		{
+			InstallableCache[co.strCODef] = actionMatchedInstallable;
+			return actionMatchedInstallable;
+		}
+
 		string uninstallInstallableName = uninstallAction;
 		if (uninstallInstallableName.StartsWith("ACT"))
 		{
@@ -722,9 +733,65 @@ internal static class BlueprintRuntime
 		if (result != null)
 		{
 			InstallableCache[co.strCODef] = result;
+			if (result.strStartInstall != co.strCODef)
+			{
+				Plugin.LogWarning("Blueprint capture fell back from installed '" + co.strCODef + "' to installer '" + result.strStartInstall + "'.");
+			}
 		}
 
 		return result;
+	}
+
+	private static JsonInstallable FindInstallableByStartInstall(string installedCoDef)
+	{
+		if (string.IsNullOrEmpty(installedCoDef))
+		{
+			return null;
+		}
+
+		foreach (JsonInstallable installable in DataHandler.dictInstallables.Values)
+		{
+			if (installable != null &&
+				installable.strJobType == "install" &&
+				installable.strStartInstall == installedCoDef)
+			{
+				return installable.Clone();
+			}
+		}
+
+		return null;
+	}
+
+	private static JsonInstallable FindInstallableFromUninstallAction(string uninstallAction)
+	{
+		if (string.IsNullOrEmpty(uninstallAction))
+		{
+			return null;
+		}
+
+		string installableName = uninstallAction;
+		if (installableName.StartsWith("ACT"))
+		{
+			installableName = installableName.Substring(3);
+		}
+		if (installableName.EndsWith("Allow"))
+		{
+			installableName = installableName.Substring(0, installableName.Length - 5);
+		}
+		if (!installableName.EndsWith("Uninstall"))
+		{
+			return null;
+		}
+
+		installableName = installableName.Substring(0, installableName.Length - "Uninstall".Length) + "Install";
+		if (!DataHandler.dictInstallables.TryGetValue(installableName, out JsonInstallable installable))
+		{
+			return null;
+		}
+
+		return installable != null && installable.strJobType == "install"
+			? installable.Clone()
+			: null;
 	}
 
 	private static Vector2 GetPlacementAnchor(CrewSim crewSim)
