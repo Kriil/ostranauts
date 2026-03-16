@@ -20,6 +20,7 @@ public sealed class BlueprintData
 public sealed class BlueprintPart
 {
 	public JsonItem Item;
+	public string SourceCODef;
 	public string InstallInteractionName;
 	public string UninstallInteractionName;
 	public string TargetCOID;

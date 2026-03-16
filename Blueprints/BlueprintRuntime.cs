@@ -329,6 +329,7 @@ internal static class BlueprintRuntime
 						fY = co.transform.position.y,
 						fRotation = co.transform.rotation.eulerAngles.z
 					},
+					SourceCODef = co.strCODef,
 					InstallInteractionName = installable.strInteractionName,
 					UninstallInteractionName = uninstallAction,
 					TargetCOID = co.strID
@@ -528,9 +529,10 @@ internal static class BlueprintRuntime
 		{
 			foreach (BlueprintPart part in _parts)
 			{
-				JsonInstallable installable = Installables.GetJsonInstallable(part.Item.strName);
+				JsonInstallable installable = ResolvePlacementInstallable(part.Item.strName, part.SourceCODef);
 				if (installable == null)
 				{
+					Plugin.LogWarning("Blueprint placement skipped part '" + part.Item.strName + "': no installable could be resolved.");
 					continue;
 				}
 
@@ -570,6 +572,61 @@ internal static class BlueprintRuntime
 			ExitMode();
 			return false;
 		}
+	}
+
+	private static JsonInstallable ResolvePlacementInstallable(string startInstall, string sourceCoDef)
+	{
+		if (string.IsNullOrEmpty(startInstall))
+		{
+			return null;
+		}
+
+		JsonInstallable installable = Installables.GetJsonInstallable(startInstall);
+		if (installable == null)
+		{
+			return null;
+		}
+
+		if (string.IsNullOrEmpty(installable.strActionCO))
+		{
+			return installable;
+		}
+
+		JsonCOOverlay overlay = TryGetOverlay(sourceCoDef);
+		if (overlay == null)
+		{
+			overlay = TryGetOverlay(installable.strActionCO);
+		}
+		if (overlay == null)
+		{
+			return installable;
+		}
+
+		string modeSwitch = overlay.GetModeSwitch(installable.strStartInstall);
+		if (string.IsNullOrEmpty(modeSwitch) || string.Equals(modeSwitch, installable.strStartInstall, StringComparison.Ordinal))
+		{
+			return installable;
+		}
+
+		JsonInstallable switchedInstallable = Installables.GetJsonInstallable(modeSwitch);
+		if (switchedInstallable == null)
+		{
+			Plugin.LogWarning("Blueprint placement mode-switch from '" + installable.strStartInstall + "' to '" + modeSwitch + "' failed: no installable found.");
+			return installable;
+		}
+
+		Plugin.LogInfo("Blueprint placement mode-switch applied: '" + installable.strStartInstall + "' -> '" + modeSwitch + "'.");
+		return switchedInstallable;
+	}
+
+	private static JsonCOOverlay TryGetOverlay(string coDef)
+	{
+		if (string.IsNullOrEmpty(coDef) || DataHandler.dictCOOverlays == null || !DataHandler.dictCOOverlays.ContainsKey(coDef))
+		{
+			return null;
+		}
+
+		return DataHandler.dictCOOverlays[coDef];
 	}
 
 	private static bool BlueprintFits(Ship ship, Vector2 anchor)

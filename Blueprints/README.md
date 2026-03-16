@@ -15,8 +15,11 @@ Troubleshooting:
 - Look for `Inserted Blueprint PDA action button after the vanilla jobs actions.`
 - Look for `Blueprint PDA button clicked.`
 - Look for `Blueprint selection mode started.`
+- Look for `Blueprint placement mode-switch applied:` when placing overlay-backed blueprint parts that used to show the purple generic placeholder.
 
 Technical notes:
 - The PDA button is injected with a postfix on `GUIPDA.ShowJobPaintUI("actions")`.
 - The injected button clones the vanilla `GUIJobItem` prefab so it inherits the existing layout and icon treatment.
 - The action uses `GUIActionBlueprint.png` for both the PDA button and the in-world cursor overlay.
+- Placement now resolves `JsonCOOverlay.GetModeSwitch(...)` for overlay-backed installables before calling `CrewSim.InstallStart(...)`, matching the vanilla/radial install flow used by `ConstructionTweaks`.
+- Blueprint capture preserves the source installed `strCODef` for each part so shared installables such as the air pump family can still pick the correct visual variant during placement.
