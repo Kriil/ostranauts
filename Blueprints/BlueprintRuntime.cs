@@ -5,6 +5,7 @@ using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Vectrosity;
 
 namespace Ostranauts.Blueprints;
@@ -76,8 +77,15 @@ internal static class BlueprintRuntime
 		ExitMode();
 		_mode = BlueprintMode.Selecting;
 		_lastModeChangeFrame = Time.frameCount;
-		CrewSim.objInstance.StartAction("GUIActionRepair.png");
+		Plugin.EnsureBlueprintActionTextureLoaded();
+		CrewSim.objInstance.StartAction("GUIActionBlueprint.png");
 		Plugin.LogInfo("Blueprint selection mode started.");
+	}
+
+	internal static void StartSelectionModeFromPda()
+	{
+		Plugin.LogInfo("Blueprint PDA button clicked.");
+		StartSelectionMode();
 	}
 
 	internal static void HandleMouse(CrewSim crewSim)
@@ -111,11 +119,14 @@ internal static class BlueprintRuntime
 			return;
 		}
 
+		UpdatePaintCursorPosition();
+
 		if (_mode == BlueprintMode.Selecting)
 		{
 			if (crewSim.goPaintJob == null)
 			{
-				crewSim.StartAction("GUIActionRepair.png");
+				Plugin.EnsureBlueprintActionTextureLoaded();
+				crewSim.StartAction("GUIActionBlueprint.png");
 			}
 			return;
 		}
@@ -124,7 +135,8 @@ internal static class BlueprintRuntime
 		{
 			if (crewSim.goPaintJob == null)
 			{
-				crewSim.StartAction("GUIActionRepair.png");
+				Plugin.EnsureBlueprintActionTextureLoaded();
+				crewSim.StartAction("GUIActionBlueprint.png");
 			}
 			UpdatePlacementPreview(crewSim);
 		}
@@ -774,6 +786,29 @@ internal static class BlueprintRuntime
 	private static bool IsPointerOverUi()
 	{
 		return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+	}
+
+	private static void UpdatePaintCursorPosition()
+	{
+		if (CrewSim.objInstance == null || CrewSim.objInstance.goPaintJob == null || CrewSim.CanvasManager == null)
+		{
+			return;
+		}
+
+		Canvas canvas = CrewSim.CanvasManager.goCanvasGUI.GetComponent<Canvas>();
+		if (canvas == null)
+		{
+			return;
+		}
+
+		Vector2 localPoint;
+		RectTransformUtility.ScreenPointToLocalPointInRectangle(
+			canvas.transform as RectTransform,
+			Input.mousePosition,
+			canvas.worldCamera,
+			out localPoint
+		);
+		CrewSim.objInstance.goPaintJob.transform.localPosition = localPoint;
 	}
 
 	private static void ClearSelectionRect()

@@ -253,13 +253,20 @@ function Update-Manifest {
         $manifest | Add-Member -MemberType NoteProperty -Name mod_list -Value @()
     }
 
-    $matchingEntry = $manifest.mod_list | Where-Object {
+    $matchingEntries = @($manifest.mod_list | Where-Object {
         $_.mod_info -and $_.mod_info.Count -gt 0 -and $_.mod_info[0].strName -eq $DisplayName
-    } | Select-Object -First 1
+    })
+
+    if ($matchingEntries.Count -gt 1) {
+        throw "Found multiple mod_info entries for '$DisplayName' in '$ManifestPath'."
+    }
+
+    $matchingEntry = $matchingEntries | Select-Object -First 1
 
     if ($matchingEntry) {
         $modVersion = Increment-Version -Version $matchingEntry.mod_info[0].strModVersion
         $matchingEntry.mod_info[0].strModVersion = $modVersion
+        Write-Host "Incremented manifest version for '$DisplayName' to $modVersion" -ForegroundColor Cyan
     }
     else {
         $newEntry = [pscustomobject][ordered]@{
@@ -277,6 +284,7 @@ function Update-Manifest {
 
         $manifest.mod_list = @($manifest.mod_list) + @($newEntry)
         $modVersion = $newEntry.mod_info[0].strModVersion
+        Write-Host "Created manifest entry for '$DisplayName' at version $modVersion" -ForegroundColor Cyan
     }
 
     if (-not $manifest.loading_order) {
