@@ -1,4 +1,4 @@
-using BepInEx;
+﻿using BepInEx;
 using HarmonyLib;
 using BepInEx.Configuration;
 using BepInEx.Logging;
@@ -12,7 +12,7 @@ public sealed class Plugin : BaseUnityPlugin
 {
 	public const string PluginGuid = "Construction_Tweaks";
 	public const string PluginName = "Construction Tweaks";
-	public const string PluginVersion = "0.1.2";
+	public const string PluginVersion = "1.1.2";
 	public const string PlaceholderWallConditionName = "TIsPlaceholderWall1x1";
 	public const string PlaceholderWallAddLootName = "CTTILPlaceholderWallAdds";
 	public static ConfigEntry<bool> KeepInventoryOpenOnInstall;
@@ -66,3 +66,4 @@ public sealed class Plugin : BaseUnityPlugin
 		Log?.LogError($"Exception in {context}: {ex}");
 	}
 }
+

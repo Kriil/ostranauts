@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Logging;
@@ -12,7 +12,7 @@ public sealed class Plugin : BaseUnityPlugin
 {
 	public const string PluginGuid = "Blueprints";
 	public const string PluginName = "Blueprints";
-	public const string PluginVersion = "0.1.0";
+	public const string PluginVersion = "0.1.14";
 
 	public static ConfigEntry<string> BlueprintDirectory;
 	public static ConfigEntry<string> BlueprintFilePrefix;
@@ -69,3 +69,4 @@ public sealed class Plugin : BaseUnityPlugin
 		Log?.LogError($"Exception in {context}: {ex}");
 	}
 }
+

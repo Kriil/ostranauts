@@ -247,7 +247,7 @@ function Update-Manifest {
         [string]$LoadOrderName
     )
 
-    $manifest = Get-Content -Path $ManifestPath -Raw | ConvertFrom-Json
+    $manifest = Get-Manifest -ManifestPath $ManifestPath
 
     if (-not $manifest.mod_list) {
         $manifest | Add-Member -MemberType NoteProperty -Name mod_list -Value @()
@@ -258,7 +258,8 @@ function Update-Manifest {
     } | Select-Object -First 1
 
     if ($matchingEntry) {
-        $matchingEntry.mod_info[0].strModVersion = Increment-Version -Version $matchingEntry.mod_info[0].strModVersion
+        $modVersion = Increment-Version -Version $matchingEntry.mod_info[0].strModVersion
+        $matchingEntry.mod_info[0].strModVersion = $modVersion
     }
     else {
         $newEntry = [pscustomobject][ordered]@{
@@ -275,6 +276,7 @@ function Update-Manifest {
         }
 
         $manifest.mod_list = @($manifest.mod_list) + @($newEntry)
+        $modVersion = $newEntry.mod_info[0].strModVersion
     }
 
     if (-not $manifest.loading_order) {
@@ -302,6 +304,51 @@ function Update-Manifest {
     }
 
     Save-Manifest -Manifest $manifest -ManifestPath $ManifestPath
+    return $modVersion
+}
+
+function Update-PluginVersion {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$ProjectRoot,
+        [Parameter(Mandatory = $true)]
+        [string]$Version
+    )
+
+    $pluginFiles = @(Get-ChildItem -Path $ProjectRoot -Recurse -File -Filter "Plugin.cs")
+    $pluginVersionPattern = 'public const string PluginVersion = "[^"]+";'
+
+    $matchingPluginFiles = @(
+        $pluginFiles | Where-Object {
+            $content = Get-Content -Path $_.FullName -Raw
+            $content -match $pluginVersionPattern
+        }
+    )
+
+    if ($matchingPluginFiles.Count -eq 0) {
+        throw "Could not find a Plugin.cs file with a PluginVersion constant under '$ProjectRoot'."
+    }
+
+    if ($matchingPluginFiles.Count -gt 1) {
+        throw "Found multiple Plugin.cs files with a PluginVersion constant under '$ProjectRoot': $($matchingPluginFiles.FullName -join ', ')"
+    }
+
+    $pluginPath = $matchingPluginFiles[0].FullName
+    $pluginContent = Get-Content -Path $pluginPath -Raw
+    $updatedContent = [System.Text.RegularExpressions.Regex]::Replace(
+        $pluginContent,
+        $pluginVersionPattern,
+        "public const string PluginVersion = `"$Version`";",
+        1
+    )
+
+    if ($updatedContent -ceq $pluginContent) {
+        Write-Host "Plugin.cs already matches manifest version $Version" -ForegroundColor DarkGray
+        return
+    }
+
+    Set-Content -Path $pluginPath -Value $updatedContent -Encoding utf8
+    Write-Host "Updated PluginVersion in $pluginPath to $Version" -ForegroundColor Cyan
 }
 
 function Get-ModInfoFromManifest {
@@ -324,7 +371,7 @@ function Get-ModInfoFromManifest {
     return $matchingEntry.mod_info[0]
 }
 
-$workspaceRoot = $PSScriptRoot
+$workspaceRoot = Split-Path -Path $PSScriptRoot -Parent
 $manifestPath = Join-Path $workspaceRoot "mods-manifest.json"
 $availableProjects = Get-AvailableProjects -ManifestPath $manifestPath
 
@@ -343,8 +390,11 @@ $displayName = Convert-ToDisplayName -Value $projectName
 
 Write-Host "Project: $projectName" -ForegroundColor Cyan
 Write-Host "Project root: $projectRoot" -ForegroundColor Cyan
-Write-Host "Building $($projectFile.Name)..." -ForegroundColor Cyan
+Write-Host "Updating mods-manifest.json..." -ForegroundColor Cyan
+$modVersion = Update-Manifest -ManifestPath $manifestPath -DisplayName $displayName -LoadOrderName $modFolderName
+Update-PluginVersion -ProjectRoot $projectRoot -Version $modVersion
 
+Write-Host "Building $($projectFile.Name)..." -ForegroundColor Cyan
 dotnet build $projectFile.FullName -c Release
 if ($LASTEXITCODE -ne 0) {
     throw "Build failed with exit code $LASTEXITCODE."
@@ -357,9 +407,6 @@ $builtDll = Get-ChildItem -Path (Join-Path $projectRoot "bin\Release") -Recurse 
 if (-not $builtDll) {
     throw "Could not find built DLL '$projectName.dll' under '$projectRoot\bin\Release'."
 }
-
-Write-Host "Updating mods-manifest.json..." -ForegroundColor Cyan
-Update-Manifest -ManifestPath $manifestPath -DisplayName $displayName -LoadOrderName $modFolderName
 
 $modsRoot = Join-Path $GamePath "Ostranauts_Data\Mods"
 $pluginsRoot = Join-Path $GamePath "BepInEx\plugins"

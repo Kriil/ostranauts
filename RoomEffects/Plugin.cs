@@ -1,4 +1,4 @@
-using BepInEx;
+﻿using BepInEx;
 using HarmonyLib;
 using BepInEx.Configuration;
 
@@ -11,7 +11,7 @@ public sealed class Plugin : BaseUnityPlugin
 
 	public const string PluginName = "Room Effects";
 
-	public const string PluginVersion = "0.1.0";
+	public const string PluginVersion = "1.0.5";
 
 	public static ConfigEntry<float> EngineeringWorkBonus;
 	public static ConfigEntry<bool> EnforceWorkSpeedCap;
@@ -148,3 +148,4 @@ public sealed class Plugin : BaseUnityPlugin
 		_harmony?.UnpatchSelf();
 	}
 }
+
