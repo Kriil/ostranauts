@@ -30,9 +30,9 @@ function Save-Manifest {
 
 function Show-Usage {
     Write-Host "Usage:" -ForegroundColor Cyan
-    Write-Host "  .\build-release.ps1" -ForegroundColor White
-    Write-Host "  .\build-release.ps1 -buildtype <major|minor|fix>" -ForegroundColor White
-    Write-Host "  .\build-release.ps1 -version <#.#.#>" -ForegroundColor White
+    Write-Host "  .\scripts\build-release.ps1" -ForegroundColor White
+    Write-Host "  .\scripts\build-release.ps1 -buildtype <major|minor|fix>" -ForegroundColor White
+    Write-Host "  .\scripts\build-release.ps1 -version <#.#.#>" -ForegroundColor White
     Write-Host ""
     Write-Host "Behavior:" -ForegroundColor Cyan
     Write-Host "  Builds every mod listed in mods-manifest.json -> mods_build_list." -ForegroundColor White
@@ -46,10 +46,10 @@ function Show-Usage {
     Write-Host "  loading_order.json and each mod_info.json are generated from mods-manifest.json." -ForegroundColor White
     Write-Host ""
     Write-Host "Examples:" -ForegroundColor Cyan
-    Write-Host "  .\build-release.ps1" -ForegroundColor White
-    Write-Host "  .\build-release.ps1 -buildtype fix" -ForegroundColor White
-    Write-Host "  .\build-release.ps1 -buildtype minor" -ForegroundColor White
-    Write-Host "  .\build-release.ps1 -version 1.2.0" -ForegroundColor White
+    Write-Host "  .\scripts\build-release.ps1" -ForegroundColor White
+    Write-Host "  .\scripts\build-release.ps1 -buildtype fix" -ForegroundColor White
+    Write-Host "  .\scripts\build-release.ps1 -buildtype minor" -ForegroundColor White
+    Write-Host "  .\scripts\build-release.ps1 -version 1.2.0" -ForegroundColor White
 }
 
 function Convert-ToDisplayName {
@@ -227,7 +227,8 @@ function Find-BuiltDll {
     return $dll
 }
 
-$workspaceRoot = $PSScriptRoot
+$scriptRoot = $PSScriptRoot
+$workspaceRoot = Split-Path -Path $scriptRoot -Parent
 $manifestPath = Join-Path $workspaceRoot "mods-manifest.json"
 
 if ($Help) {
