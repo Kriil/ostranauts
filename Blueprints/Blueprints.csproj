@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="BepInEx">
       <HintPath>$(GameDir)\BepInEx\core\BepInEx.dll</HintPath>
       <Private>false</Private>
@@ -27,6 +28,10 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>$(GameDir)\Ostranauts_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="TextMeshPro-5.6-Runtime">
+      <HintPath>$(GameDir)\Ostranauts_Data\Managed\TextMeshPro-5.6-Runtime.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="Vectrosity">

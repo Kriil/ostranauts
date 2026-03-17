@@ -20,6 +20,7 @@ public sealed class BlueprintData
 public sealed class BlueprintItemData
 {
 	public string strName;
+	public string strSourceCODef;
 	public float fX;
 	public float fY;
 	public float fRotation;
@@ -29,6 +30,7 @@ public sealed class BlueprintItemData
 		return new BlueprintItemData
 		{
 			strName = strName,
+			strSourceCODef = strSourceCODef,
 			fX = fX,
 			fY = fY,
 			fRotation = fRotation

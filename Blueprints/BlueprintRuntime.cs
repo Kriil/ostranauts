@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using HarmonyLib;
+using LitJson;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -38,9 +39,11 @@ internal static class BlueprintRuntime
 	private static readonly List<BlueprintPart> _parts = new List<BlueprintPart>();
 	private static int _rotationSteps;
 	private static int _lastModeChangeFrame;
+	private static string _selectedBlueprintFileName;
 
 	internal static bool IsActive => _mode != BlueprintMode.Inactive;
 	internal static bool IsPlacing => _mode == BlueprintMode.Placing;
+	internal static string SelectedBlueprintFileName => _selectedBlueprintFileName ?? string.Empty;
 	private static CondTrigger InstalledTrigger
 	{
 		get
@@ -61,6 +64,7 @@ internal static class BlueprintRuntime
 		PreviewObjects.Clear();
 		InstallableCache.Clear();
 		PendingPlaceholderRotations.Clear();
+		_selectedBlueprintFileName = string.Empty;
 	}
 
 	internal static void Shutdown()
@@ -88,6 +92,57 @@ internal static class BlueprintRuntime
 	{
 		Plugin.LogInfo("Blueprint PDA button clicked.");
 		StartSelectionMode();
+	}
+
+	internal static void SelectBlueprintFromDialog()
+	{
+		string path = BlueprintDialog.SelectBlueprintFile();
+		if (string.IsNullOrEmpty(path))
+		{
+			Plugin.LogInfo("Blueprint file selection cancelled.");
+			return;
+		}
+
+		TryStartPlacementFromFile(path);
+	}
+
+	internal static bool TryStartPlacementFromFile(string path)
+	{
+		if (path == null || path.Trim().Length == 0)
+		{
+			Plugin.LogWarning("Blueprint file load skipped: path was empty.");
+			return false;
+		}
+
+		try
+		{
+			string fullPath = Path.GetFullPath(path);
+			if (!File.Exists(fullPath))
+			{
+				Plugin.LogWarning("Blueprint file load skipped: file was not found at " + fullPath);
+				return false;
+			}
+
+			BlueprintData blueprint = JsonMapper.ToObject<BlueprintData>(File.ReadAllText(fullPath));
+			if (blueprint == null || blueprint.aItems == null || blueprint.aItems.Length == 0)
+			{
+				Plugin.LogWarning("Blueprint file load skipped: file contained no blueprint items. Path=" + fullPath);
+				return false;
+			}
+
+			if (!TryBeginPlacement(blueprint, Path.GetFileName(fullPath), "file"))
+			{
+				return false;
+			}
+
+			Plugin.LogInfo("Loaded blueprint from file " + fullPath);
+			return true;
+		}
+		catch (Exception ex)
+		{
+			Plugin.LogException("TryStartPlacementFromFile", ex);
+			return false;
+		}
 	}
 
 	internal static void HandleMouse(CrewSim crewSim)
@@ -275,6 +330,7 @@ internal static class BlueprintRuntime
 			_rotationSteps = 0;
 			_currentBlueprint.nRotationSteps = 0;
 			string path = BlueprintPersistence.Save(_currentBlueprint);
+			SetSelectedBlueprintFileName(Path.GetFileName(path));
 			Plugin.LogInfo("Saved blueprint to " + path);
 			PreparePreviewObjects();
 			_mode = BlueprintMode.Placing;
@@ -336,6 +392,7 @@ internal static class BlueprintRuntime
 					Item = new BlueprintItemData
 					{
 						strName = installable.strStartInstall,
+						strSourceCODef = co.strCODef,
 						fX = co.transform.position.x,
 						fY = co.transform.position.y,
 						fRotation = co.transform.rotation.eulerAngles.z
@@ -655,6 +712,58 @@ internal static class BlueprintRuntime
 
 		Plugin.LogInfo("Blueprint placement mode-switch applied: '" + installable.strStartInstall + "' -> '" + modeSwitch + "'.");
 		return switchedInstallable;
+	}
+
+	private static bool TryBeginPlacement(BlueprintData blueprint, string fileName, string source)
+	{
+		if (CrewSim.objInstance == null)
+		{
+			Plugin.LogWarning("Blueprint " + source + " placement skipped: CrewSim does not exist yet.");
+			return false;
+		}
+
+		List<BlueprintPart> loadedParts = new List<BlueprintPart>();
+		for (int i = 0; i < blueprint.aItems.Length; i++)
+		{
+			BlueprintItemData item = blueprint.aItems[i];
+			if (item == null || string.IsNullOrEmpty(item.strName))
+			{
+				continue;
+			}
+
+			loadedParts.Add(new BlueprintPart
+			{
+				Item = item.Clone(),
+				SourceCODef = item.strSourceCODef
+			});
+		}
+
+		if (loadedParts.Count == 0)
+		{
+			Plugin.LogWarning("Blueprint " + source + " placement skipped: no valid installables were found.");
+			return false;
+		}
+
+		ExitMode();
+		_currentBlueprint = blueprint;
+		_parts.Clear();
+		_parts.AddRange(loadedParts);
+		_rotationSteps = ((blueprint.nRotationSteps % 4) + 4) % 4;
+		_currentBlueprint.nRotationSteps = _rotationSteps;
+		SetSelectedBlueprintFileName(fileName);
+		PreparePreviewObjects();
+		_mode = BlueprintMode.Placing;
+		_lastModeChangeFrame = Time.frameCount;
+		CrewSim.objInstance.StartAction("GUIActionBlueprint.png");
+		UpdatePlacementPreview(CrewSim.objInstance);
+		Plugin.LogInfo("Blueprint " + source + " placement started with " + loadedParts.Count + " parts.");
+		return true;
+	}
+
+	private static void SetSelectedBlueprintFileName(string fileName)
+	{
+		_selectedBlueprintFileName = fileName ?? string.Empty;
+		Patch_GUIPDA_BlueprintsShowJobPaintUI.RefreshSelectorUI();
 	}
 
 	private static JsonCOOverlay TryGetOverlay(string coDef)
