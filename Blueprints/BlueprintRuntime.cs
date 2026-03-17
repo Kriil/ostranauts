@@ -512,7 +512,7 @@ internal static class BlueprintRuntime
 
 			Vector2 position = RotateAndOffset(part.Item.fX, part.Item.fY, _rotationSteps) + anchor;
 			preview.transform.position = new Vector3(position.x, position.y, preview.transform.position.z);
-			preview.transform.rotation = Quaternion.Euler(0f, 0f, part.Item.fRotation + _rotationSteps * 90f);
+			preview.transform.rotation = Quaternion.Euler(0f, 0f, GetPartRotation(part.Item.fRotation, _rotationSteps));
 			Item item = preview.GetComponent<Item>();
 			if (item != null)
 			{
@@ -566,7 +566,7 @@ internal static class BlueprintRuntime
 				}
 
 				Vector2 position = RotateAndOffset(part.Item.fX, part.Item.fY, _rotationSteps) + anchor;
-				float rotation = part.Item.fRotation + _rotationSteps * 90f;
+				float rotation = GetPartRotation(part.Item.fRotation, _rotationSteps);
 				crewSim.goSelPart.transform.position = new Vector3(position.x, position.y, crewSim.goSelPart.transform.position.z);
 				ApplyPlacementRotation(crewSim.goSelPart.GetComponent<CondOwner>(), rotation);
 				ApplyPlacementRotation(interaction.objThem, rotation);
@@ -683,7 +683,7 @@ internal static class BlueprintRuntime
 
 			Vector2 position = RotateAndOffset(_parts[index].Item.fX, _parts[index].Item.fY, _rotationSteps) + anchor;
 			preview.transform.position = new Vector3(position.x, position.y, preview.transform.position.z);
-			preview.transform.rotation = Quaternion.Euler(0f, 0f, _parts[index].Item.fRotation + _rotationSteps * 90f);
+			preview.transform.rotation = Quaternion.Euler(0f, 0f, GetPartRotation(_parts[index].Item.fRotation, _rotationSteps));
 			item.fLastRotation = preview.transform.rotation.eulerAngles.z;
 
 			Tile tile = ship.GetTileAtWorldCoords1(position.x, position.y, true, true);
@@ -966,6 +966,11 @@ internal static class BlueprintRuntime
 			default:
 				return new Vector2(x, y);
 		}
+	}
+
+	private static float GetPartRotation(float baseRotation, int rotationSteps)
+	{
+		return MathUtils.NormalizeAngleDegrees(baseRotation - rotationSteps * 90f);
 	}
 
 	private static bool IsTileIncluded(Tile tile, Bounds bounds)

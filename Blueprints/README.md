@@ -26,5 +26,6 @@ Technical notes:
 - Blueprints persist their own item payload with explicit `fRotation` fields instead of relying on nested game `JsonItem` serialization, so saved layouts retain per-part orientation.
 - Blueprint placement also copies the chosen rotation onto the install interaction target and the generated placeholder, because some installables otherwise revert to their default facing when the job is queued.
 - Blueprint-created placeholders now also reapply their saved rotation during the worker-side `CondOwner.ModeSwitch(...)` that turns a finished placeholder into the real installed object.
+- Blueprint rotation applies clockwise to both the overall footprint and each part's own facing; the per-part angle uses the same clockwise step as the offset transform.
 - Placement now resolves `JsonCOOverlay.GetModeSwitch(...)` for overlay-backed installables before calling `CrewSim.InstallStart(...)`, matching the vanilla/radial install flow used by `ConstructionTweaks`.
 - Blueprint capture preserves the source installed `strCODef` for each part so shared installables such as the air pump family can still pick the correct visual variant during placement.
