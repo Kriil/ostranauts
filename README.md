@@ -5,7 +5,11 @@ Adds bonus effects to rooms on the player's ships. This mod is intended to add a
 
 ### Construction Tweaks
 
-QoL Tweaks to the construction and installation behavior.  
+QoL Tweaks to the construction and installation behavior.  Includes walking through uninstalled wall placeholders and drag-select highlighting with displayed dimensions
+
+### Blueprints
+
+Drag-select installables into a temporary blueprint, queue uninstall tasks, and place install orders from the saved layout.
 
 ## Installation Instructions
 
@@ -23,7 +27,7 @@ QoL Tweaks to the construction and installation behavior.
 ### Mod Loading Order Instructions
 1. First in the list should be `core`, then any non-FFU mods (i.e. all mods that don't rely on FFU modding API).
 2. Right after them goes `Minor Fixes Plus` mod (to ensure that nothing overwrites and disrupts it).
-3. Add `Room_Effects` and `Construction_Tweaks` after `Minor Fixes Plus`
+3. Add `Room_Effects`, `Construction_Tweaks` and `Blueprints` after `Minor Fixes Plus`
 
 ## Local Build and Deploy
 ### Local Build and Deployment Script
