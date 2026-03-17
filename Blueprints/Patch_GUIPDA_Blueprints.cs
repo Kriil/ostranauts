@@ -26,8 +26,14 @@ public static class Patch_GUIPDA_BlueprintsShowJobPaintUI
 	[HarmonyPostfix]
 	private static void Postfix(GUIPDA __instance, string btn)
 	{
-		if (__instance == null || btn != "actions")
+		if (__instance == null)
 		{
+			return;
+		}
+
+		if (btn != "actions")
+		{
+			SetSelectorVisible(__instance.transform, false);
 			return;
 		}
 
@@ -168,6 +174,7 @@ public static class Patch_GUIPDA_BlueprintsShowJobPaintUI
 		}
 
 		RefreshSelectorUI();
+		SetSelectorVisible(pda.transform, true);
 	}
 
 	private static void PositionSelectorRoot(RectTransform rootRect, RectTransform parentRect, RectTransform referenceRect)
@@ -222,5 +229,42 @@ public static class Patch_GUIPDA_BlueprintsShowJobPaintUI
 		element.minHeight = preferredHeight;
 		element.preferredHeight = preferredHeight;
 		element.flexibleHeight = 0f;
+	}
+
+	private static void SetSelectorVisible(Transform pdaTransform, bool visible)
+	{
+		if (pdaTransform == null)
+		{
+			return;
+		}
+
+		Transform selector = pdaTransform.Find(BlueprintSelectorRootName);
+		if (selector != null && selector.gameObject.activeSelf != visible)
+		{
+			selector.gameObject.SetActive(visible);
+		}
+	}
+}
+
+[HarmonyPatch(typeof(GUIPDA), "set_State")]
+public static class Patch_GUIPDA_BlueprintsStateVisibility
+{
+	[HarmonyPostfix]
+	private static void Postfix(GUIPDA __instance, GUIPDA.UIState value)
+	{
+		if (__instance == null)
+		{
+			return;
+		}
+
+		bool shouldShow =
+			value == GUIPDA.UIState.JobOrder ||
+			value == GUIPDA.UIState.JobBuild ||
+			value == GUIPDA.UIState.JobBuildScroll;
+		Transform selector = __instance.transform.Find("BlueprintSelectorPanel");
+		if (selector != null && selector.gameObject.activeSelf != shouldShow)
+		{
+			selector.gameObject.SetActive(shouldShow);
+		}
 	}
 }
