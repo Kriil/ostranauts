@@ -71,10 +71,12 @@ public static class Patch_GUIPDA_BlueprintsShowJobPaintUI
 
 	private static void EnsureBlueprintSelectorUi(GUIPDA pda, GUIJobItem prefab)
 	{
+		RectTransform pdaRoot = pda.transform as RectTransform;
+		RectTransform jobsPanel = pda.transform.Find("pnlJobs") as RectTransform;
 		RectTransform filterPanel = pda.transform.Find("pnlJobs/pnlJobFilters") as RectTransform;
-		if (filterPanel == null)
+		if (pdaRoot == null || jobsPanel == null || filterPanel == null)
 		{
-			Plugin.LogWarning("Blueprint selector UI injection skipped: pnlJobFilters was null.");
+			Plugin.LogWarning("Blueprint selector UI injection skipped: pdaRoot, pnlJobs, or pnlJobFilters was null.");
 			return;
 		}
 
@@ -85,8 +87,7 @@ public static class Patch_GUIPDA_BlueprintsShowJobPaintUI
 			return;
 		}
 
-		RectTransform lastToggle = pda.transform.Find("pnlJobs/pnlJobFilters/pnlToggles/chkLoose") as RectTransform;
-		Transform existingRoot = filterPanel.Find(BlueprintSelectorRootName);
+		Transform existingRoot = pda.transform.Find(BlueprintSelectorRootName);
 		if (existingRoot == null)
 		{
 			GameObject selectorRoot = new GameObject(
@@ -95,10 +96,11 @@ public static class Patch_GUIPDA_BlueprintsShowJobPaintUI
 				typeof(Image),
 				typeof(VerticalLayoutGroup)
 			);
-			selectorRoot.transform.SetParent(filterPanel, false);
+			selectorRoot.transform.SetParent(pda.transform, false);
 
 			RectTransform rootRect = selectorRoot.GetComponent<RectTransform>();
-			PositionSelectorRoot(rootRect, lastToggle);
+			PositionSelectorRoot(rootRect, pdaRoot, filterPanel);
+			rootRect.SetSiblingIndex(jobsPanel.GetSiblingIndex() + 1);
 
 			Image rootImage = selectorRoot.GetComponent<Image>();
 			rootImage.color = new Color(0.08f, 0.12f, 0.18f, 0.94f);
@@ -145,13 +147,14 @@ public static class Patch_GUIPDA_BlueprintsShowJobPaintUI
 			TMP_Text buttonText = CreateText(textTemplate, buttonObject.transform, "Label", "Select Blueprint", TextAlignmentOptions.Center);
 			ConfigureFillRect(buttonText.rectTransform, 8f, 8f, 4f, 4f);
 
-			Plugin.LogInfo("Inserted Blueprint selector UI under PDA job filters.");
+			Plugin.LogInfo("Inserted Blueprint selector UI after pnlJobs.");
 			existingRoot = selectorRoot.transform;
 		}
 		else
 		{
 			RectTransform rootRect = existingRoot as RectTransform;
-			PositionSelectorRoot(rootRect, lastToggle);
+			PositionSelectorRoot(rootRect, pdaRoot, filterPanel);
+			rootRect.SetSiblingIndex(jobsPanel.GetSiblingIndex() + 1);
 		}
 
 		Transform display = existingRoot.Find(BlueprintSelectorDisplayName);
@@ -167,25 +170,30 @@ public static class Patch_GUIPDA_BlueprintsShowJobPaintUI
 		RefreshSelectorUI();
 	}
 
-	private static void PositionSelectorRoot(RectTransform rootRect, RectTransform lastToggle)
+	private static void PositionSelectorRoot(RectTransform rootRect, RectTransform parentRect, RectTransform referenceRect)
 	{
-		if (rootRect == null)
+		if (rootRect == null || parentRect == null || referenceRect == null)
 		{
 			return;
 		}
 
-		rootRect.anchorMin = new Vector2(0f, 1f);
-		rootRect.anchorMax = new Vector2(1f, 1f);
+		rootRect.anchorMin = new Vector2(0.5f, 0.5f);
+		rootRect.anchorMax = new Vector2(0.5f, 0.5f);
 		rootRect.pivot = new Vector2(0.5f, 1f);
 
-		float sectionTop = 116f;
-		if (lastToggle != null)
-		{
-			sectionTop = Mathf.Abs(lastToggle.anchoredPosition.y) + lastToggle.rect.height + 10f;
-		}
+		Vector3[] corners = new Vector3[4];
+		referenceRect.GetWorldCorners(corners);
 
-		rootRect.offsetMin = new Vector2(10f, -(sectionTop + 68f));
-		rootRect.offsetMax = new Vector2(-10f, -sectionTop);
+		Vector3 topLeft = parentRect.InverseTransformPoint(corners[1]);
+		Vector3 topRight = parentRect.InverseTransformPoint(corners[2]);
+		Vector3 bottomRight = parentRect.InverseTransformPoint(corners[3]);
+
+		float width = topRight.x - topLeft.x;
+		float centerX = (topLeft.x + topRight.x) * 0.5f;
+		float top = bottomRight.y - 8f;
+
+		rootRect.anchoredPosition = new Vector2(centerX, top);
+		rootRect.sizeDelta = new Vector2(width, 68f);
 	}
 
 	private static TMP_Text CreateText(TMP_Text template, Transform parent, string name, string value, TextAlignmentOptions alignment)
