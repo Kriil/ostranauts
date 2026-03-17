@@ -9,6 +9,7 @@ Requirements: BepInEx and Harmony in the local Ostranauts install used by this w
 
 Saved blueprints:
 - Default location: `Ostranauts_Data/Mods/Blueprints/saved_blueprints`
+- Saving is controlled by `Storage.EnableBlueprintSaving` in the BepInEx config. Default: `false`
 - Generated files avoid double `blueprint_` prefixes when the blueprint name already starts with that prefix.
 - Captured and newly saved blueprint files now persist the source installed `strCODef` per part so file-based reloads can preserve overlay-backed installable variants.
 
@@ -19,6 +20,7 @@ Troubleshooting:
 - Look for `Blueprint PDA button clicked.`
 - Look for `Blueprint selection mode started.`
 - Look for `Blueprint file selection cancelled.` when testing the no-op cancel path from the file picker.
+- Look for `Blueprint capture completed without writing a JSON file because blueprint saving is disabled.` when confirming capture-only mode.
 - Look for `Loaded blueprint from file ...` when testing blueprint placement from an existing JSON file.
 - Look for `Blueprint mode cancelled via Escape.` or `Blueprint mode cancelled via right-click.` when confirming the mode exits through the same cancel inputs players use for other order modes.
 - Look for `Blueprint capture serialized ... have non-zero saved rotation.` when checking whether item orientation made it into the saved blueprint payload.
@@ -29,6 +31,7 @@ Technical notes:
 - The PDA button is injected with a postfix on `GUIPDA.ShowJobPaintUI("actions")`.
 - The injected button clones the vanilla `GUIJobItem` prefab so it inherits the existing layout and icon treatment.
 - The selector UI under `Toggle Affected Item Type(s)` is also built at runtime from cloned `GUIJobItem` instances, so it survives PDA rebuilds without needing a custom prefab asset.
+- The file selector UI is only shown when `Storage.EnableBlueprintSaving` is enabled; with the default `false` setting, Blueprint capture still works but no JSON file is written.
 - The action uses `GUIActionBlueprint.png` for both the PDA button and the in-world cursor overlay.
 - Selecting a blueprint JSON uses a Windows `OpenFileDialog` pointed at the configured blueprint save directory; cancelling the dialog leaves the current game state untouched.
 - Because the mod suppresses the vanilla `CrewSim.MouseHandler` while blueprint mode is active, it must explicitly mirror the normal cancel inputs (`Esc` and right-click) to exit the mode like other order tools.

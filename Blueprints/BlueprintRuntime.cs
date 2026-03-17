@@ -96,6 +96,12 @@ internal static class BlueprintRuntime
 
 	internal static void SelectBlueprintFromDialog()
 	{
+		if (!Plugin.IsBlueprintSavingEnabled())
+		{
+			Plugin.LogInfo("Blueprint file selection skipped because blueprint saving is disabled.");
+			return;
+		}
+
 		string path = BlueprintDialog.SelectBlueprintFile();
 		if (string.IsNullOrEmpty(path))
 		{
@@ -329,9 +335,17 @@ internal static class BlueprintRuntime
 			_parts.AddRange(parts);
 			_rotationSteps = 0;
 			_currentBlueprint.nRotationSteps = 0;
-			string path = BlueprintPersistence.Save(_currentBlueprint);
-			SetSelectedBlueprintFileName(Path.GetFileName(path));
-			Plugin.LogInfo("Saved blueprint to " + path);
+			if (Plugin.IsBlueprintSavingEnabled())
+			{
+				string path = BlueprintPersistence.Save(_currentBlueprint);
+				SetSelectedBlueprintFileName(Path.GetFileName(path));
+				Plugin.LogInfo("Saved blueprint to " + path);
+			}
+			else
+			{
+				SetSelectedBlueprintFileName(string.Empty);
+				Plugin.LogInfo("Blueprint capture completed without writing a JSON file because blueprint saving is disabled.");
+			}
 			PreparePreviewObjects();
 			_mode = BlueprintMode.Placing;
 			_lastModeChangeFrame = Time.frameCount;

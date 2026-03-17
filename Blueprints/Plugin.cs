@@ -13,8 +13,9 @@ public sealed class Plugin : BaseUnityPlugin
 {
 	public const string PluginGuid = "Blueprints";
 	public const string PluginName = "Blueprints";
-	public const string PluginVersion = "0.3.7";
+	public const string PluginVersion = "0.3.8";
 
+	public static ConfigEntry<bool> EnableBlueprintSaving;
 	public static ConfigEntry<string> BlueprintDirectory;
 	public static ConfigEntry<string> BlueprintFilePrefix;
 	internal static ManualLogSource Log;
@@ -33,6 +34,12 @@ public sealed class Plugin : BaseUnityPlugin
 			"BlueprintDirectory",
 			System.IO.Path.GetFullPath(defaultBlueprintDirectory),
 			"Directory where blueprint JSON files are written."
+		);
+		EnableBlueprintSaving = Config.Bind(
+			"Storage",
+			"EnableBlueprintSaving",
+			false,
+			"When true, captured blueprints are written to JSON files and the Orders file-selection panel is shown."
 		);
 		BlueprintFilePrefix = Config.Bind(
 			"Storage",
@@ -73,7 +80,13 @@ public sealed class Plugin : BaseUnityPlugin
 		Debug.LogError($"[{PluginGuid}] Exception in {context}: {ex}");
 		Log?.LogError($"Exception in {context}: {ex}");
 	}
+
+	internal static bool IsBlueprintSavingEnabled()
+	{
+		return EnableBlueprintSaving != null && EnableBlueprintSaving.Value;
+	}
 }
+
 
 
 

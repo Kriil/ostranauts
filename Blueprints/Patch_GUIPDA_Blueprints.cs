@@ -77,6 +77,12 @@ public static class Patch_GUIPDA_BlueprintsShowJobPaintUI
 
 	private static void EnsureBlueprintSelectorUi(GUIPDA pda, GUIJobItem prefab)
 	{
+		if (!Plugin.IsBlueprintSavingEnabled())
+		{
+			SetSelectorVisible(pda.transform, false);
+			return;
+		}
+
 		RectTransform pdaRoot = pda.transform as RectTransform;
 		RectTransform jobsPanel = pda.transform.Find("pnlJobs") as RectTransform;
 		RectTransform filterPanel = pda.transform.Find("pnlJobs/pnlJobFilters") as RectTransform;
