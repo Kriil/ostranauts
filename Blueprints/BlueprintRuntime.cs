@@ -97,8 +97,16 @@ internal static class BlueprintRuntime
 			return;
 		}
 
+		if (GUIActionKeySelector.commandEscape != null && GUIActionKeySelector.commandEscape.Down)
+		{
+			Plugin.LogInfo("Blueprint mode cancelled via Escape.");
+			ExitMode();
+			return;
+		}
+
 		if (Input.GetMouseButtonDown(1))
 		{
+			Plugin.LogInfo("Blueprint mode cancelled via right-click.");
 			ExitMode();
 			return;
 		}

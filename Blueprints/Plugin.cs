@@ -13,7 +13,7 @@ public sealed class Plugin : BaseUnityPlugin
 {
 	public const string PluginGuid = "Blueprints";
 	public const string PluginName = "Blueprints";
-	public const string PluginVersion = "0.2.13";
+	public const string PluginVersion = "0.2.14";
 
 	public static ConfigEntry<string> BlueprintDirectory;
 	public static ConfigEntry<string> BlueprintFilePrefix;
@@ -74,6 +74,7 @@ public sealed class Plugin : BaseUnityPlugin
 		Log?.LogError($"Exception in {context}: {ex}");
 	}
 }
+
 
 
 

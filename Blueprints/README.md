@@ -15,6 +15,7 @@ Troubleshooting:
 - Look for `Inserted Blueprint PDA action button after the vanilla jobs actions.`
 - Look for `Blueprint PDA button clicked.`
 - Look for `Blueprint selection mode started.`
+- Look for `Blueprint mode cancelled via Escape.` or `Blueprint mode cancelled via right-click.` when confirming the mode exits through the same cancel inputs players use for other order modes.
 - Look for `Blueprint capture serialized ... have non-zero saved rotation.` when checking whether item orientation made it into the saved blueprint payload.
 - Look for `Blueprint placeholder rotation copied from cursor:`, `Blueprint placement handoff`, and `Blueprint final ModeSwitch rotation applied:` when checking whether queued install placeholders inherited the ghost cursor's facing instead of the installable's default orientation.
 - Look for `Blueprint placement mode-switch applied:` when placing overlay-backed blueprint parts that used to show the purple generic placeholder.
@@ -23,6 +24,7 @@ Technical notes:
 - The PDA button is injected with a postfix on `GUIPDA.ShowJobPaintUI("actions")`.
 - The injected button clones the vanilla `GUIJobItem` prefab so it inherits the existing layout and icon treatment.
 - The action uses `GUIActionBlueprint.png` for both the PDA button and the in-world cursor overlay.
+- Because the mod suppresses the vanilla `CrewSim.MouseHandler` while blueprint mode is active, it must explicitly mirror the normal cancel inputs (`Esc` and right-click) to exit the mode like other order tools.
 - Blueprints persist their own item payload with explicit `fRotation` fields instead of relying on nested game `JsonItem` serialization, so saved layouts retain per-part orientation.
 - Blueprint placement also copies the chosen rotation onto the install interaction target and the generated placeholder, because some installables otherwise revert to their default facing when the job is queued.
 - Blueprint-created placeholders now also reapply their saved rotation during the worker-side `CondOwner.ModeSwitch(...)` that turns a finished placeholder into the real installed object.
