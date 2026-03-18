@@ -5,7 +5,7 @@
                             "Blueprints",
                             "Docking_Autosave_Delay"
                         ],
-    "mod-release-version":  "3.0.0",
+    "mod-release-version":  "3.1.0",
     "mod_list":  [
                      {
                          "mod_info":  [
@@ -48,10 +48,10 @@
                                           {
                                               "strName":  "Docking Autosave Delay",
                                               "strAuthor":  "Kriil",
-                                              "strModURL":  "",
+                                              "strModURL":  "https://github.com/Kriil/ostranauts/tree/main/DockingAutosaveDelay",
                                               "strGameVersion":  "0.14.5.20",
                                               "strModVersion":  "1.0.0",
-                                              "strNotes":  ""
+                                              "strNotes":  "Delays periodic autosaves while the docking UI is active by pushing the timer back one minute at a time until docking mode ends."
                                           }
                                       ]
                      }
