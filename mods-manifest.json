@@ -2,7 +2,8 @@
     "mods_build_list":  [
                             "Construction_Tweaks",
                             "Room_Effects",
-                            "Blueprints"
+                            "Blueprints",
+                            "Docking_Autosave_Delay"
                         ],
     "mod-release-version":  "3.0.0",
     "mod_list":  [
@@ -41,6 +42,18 @@
                                               "strNotes":  "Drag-select installables into a temporary blueprint, queue uninstall tasks, and place install orders from the saved layout."
                                           }
                                       ]
+                     },
+                     {
+                         "mod_info":  [
+                                          {
+                                              "strName":  "Docking Autosave Delay",
+                                              "strAuthor":  "Kriil",
+                                              "strModURL":  "",
+                                              "strGameVersion":  "0.14.5.20",
+                                              "strModVersion":  "1.0.0",
+                                              "strNotes":  ""
+                                          }
+                                      ]
                      }
                  ],
     "loading_order":  [
@@ -52,7 +65,8 @@
                                                  "Minor_Fixes_Plus",
                                                  "Construction_Tweaks",
                                                  "Room_Effects",
-                                                 "Blueprints"
+                                                 "Blueprints",
+                                                 "Docking_Autosave_Delay"
                                              ],
                               "aIgnorePatterns":  [
 
